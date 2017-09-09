@@ -1,0 +1,17 @@
+.submission{
+  float: left;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 5px;
+  overflow: auto;
+  width: 46%;
+}
+
+.submission-label{
+  float: left;
+  margin-left: 5px;
+}
+.submission-input{
+  float: left;
+}

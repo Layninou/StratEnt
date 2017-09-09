@@ -1,0 +1,85 @@
+<div class="charge">
+
+  <p>Charges d'Exploitation</p>
+
+  <div class="block">
+
+    <div class="charge-label">
+      <div><label>   </label></div>
+
+      <div><label>Consommation matières</label></div>
+      <div><label>Main d'oeuvre directe</label></div>
+      <div><label>Coût de la qualité</label></div>
+      <div><label>Publicité</label></div>
+      <div><label>Action Commerciale</label></div>
+      <div><label>Remunération de la Force de Vente</label></div>
+      <div><label>Coût de Stockage</label></div>
+      <div><label>Dotation aux amortissements</label></div>
+
+      <div><label>Rémunération de l'encadrement</label></div>
+      <div><label>Coût d'embauche</label></div>
+      <div><label>Coût de licenciement</label></div>
+      <div><label>Coût de formation</label></div>
+      <div><label>Coût fixes de production</label></div>
+      <div><label>Coût des réparations</label></div>
+      <div><label>Coût d'entretien des machines</label></div>
+      <div><label>Primes d'assurances</label></div>
+      <div><label>Coût des études</label></div>
+    </div>
+
+    <!-- TODO: Service de résultats -->
+    <div class="charge-result" *ngFor="let product of company.companyProduct; let iProd = index">
+      <div><label> Produit {{ iProd + 1 }}</label></div>
+
+      <div><label> {{ charges[iProd].materialConso | roundAt2 }} </label></div>
+      <div><label> {{ charges[iProd].directLabour | roundAt2 }} </label></div>
+      <div><label> {{ charges[iProd].qualityCost | roundAt2 }} </label></div>
+      <div><label> {{ charges[iProd].publicityCost | roundAt2 }} </label></div>
+      <div><label> {{ charges[iProd].marketingCost | roundAt2 }} </label></div>
+      <div><label> {{ charges[iProd].sellerLabour | roundAt2 }} </label></div>
+      <div><label> {{ charges[iProd].stockCost | roundAt2 }} </label></div>
+      <div><label> {{ charges[iProd].amortissementDot | roundAt2 }} </label></div>
+    </div>
+
+    <div class="charge-total">
+      <div><label>Total</label></div>
+
+      <div><label> {{ chargesTotal.materialConso | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.directLabour | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.qualityCost | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.publicityCost | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.marketingCost | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.sellerLabour | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.stockCost | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.amortissementDot | roundAt2 }} </label></div>
+
+      <div><label> {{ chargesTotal.managerCost | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.hireCost | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.fireCost | roundAt2 }} </label></div>  <!-- {{ chargesTotal.fireCost | roundAt2 }} -->
+      <div><label> {{ chargesTotal.formationCost | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.productionFixCost | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.reparationCost | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.servicingCost | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.assuranceBonus | roundAt2 }} </label></div>
+      <div><label> {{ chargesTotal.studiesCost | roundAt2 }} </label></div>
+    </div>
+
+  </div>
+
+  <div class="block">
+
+    <div class="charge-label">
+      <div><label></label></div>
+    </div>
+
+    <div class="charge-result" *ngFor="let product of company.companyProduct; let iProd = index">
+      <div><label>{{ sumCharges[iProd] }}</label></div>
+    </div>
+
+    <div class="charge-total">
+      <div><label>{{ sumChargesTotal }}</label></div>
+    </div>
+
+  </div>
+
+</div>

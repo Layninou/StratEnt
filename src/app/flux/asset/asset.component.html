@@ -1,0 +1,104 @@
+<div class="actif">
+
+  <p class="title">Emplois Principaux (Actif)</p>
+
+  <div class="block immobilised-actif">
+
+    <p>Actif Immobilisé</p>
+
+    <div class="article">
+
+      <div class="actif-label">
+        <div><label>Outillage</label></div>
+        <div><label>Amortissement</label></div>
+      </div>
+
+      <div class="actif-first">
+        <div><label>{{ asset.tools }}</label></div>
+        <div><label>{{ asset.amortizement }}</label></div>
+      </div>
+
+      <div class="actif-total space-only">
+        <div><label>&nbsp;</label></div>
+        <div><label>&nbsp;</label></div>
+      </div>
+
+    </div>
+
+    <div class="result-article">
+
+      <div class="actif-label space-only">
+        <div><label>&nbsp;</label></div>
+      </div>
+      <div class="actif-first space-only">
+        <div><label>&nbsp;</label></div>
+      </div>
+      <div class="actif-total">
+        <div>{{ asset.immobilisation }}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="block ciculated-actif">
+
+    <p>Actif Circulant</p>
+
+    <div class="article">
+
+      <div class="actif-label">
+        <div><label>Stock Produits Finis</label></div>
+        <div><label>Clients</label></div>
+        <div><label>Banque</label></div>
+      </div>
+
+      <div class="actif-first">
+        <div><label>{{ asset.stockage }}</label></div>
+        <div><label>{{ asset.clients }}</label></div>
+        <div><label>{{ asset.bank }}</label></div>
+      </div>
+
+      <div class="actif-total space-only">
+        <div><label>&nbsp;</label></div>
+        <div><label>&nbsp;</label></div>
+        <div><label>&nbsp;</label></div>
+      </div>
+
+    </div>
+
+    <div class="result-article">
+
+      <div class="actif-label space-only">
+        <div><label>&nbsp;</label></div>
+      </div>
+
+      <div class="actif-first space-only">
+        <div><label>&nbsp;</label></div>
+      </div>
+
+      <div class="actif-total">
+        <div>{{ asset.circulization }}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="block total-actif">
+
+    <div class="actif-label">
+      <div><label>Total de l'Actif</label></div>
+    </div>
+
+    <div class="actif-first space-only">
+      <div><label>&nbsp;</label></div>
+    </div>
+
+    <div class="actif-total">
+      <div>{{ asset.totalAssets }}</div>
+    </div>
+
+  </div>
+
+</div>

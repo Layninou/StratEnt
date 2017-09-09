@@ -1,0 +1,15 @@
+<div class="game">
+  <div>
+    <div class="label"><label>Nombre d'Entreprises</label></div>
+
+    <input type="number" [(ngModel)]="init.nbCompany" (change)="initCompanies()" (keyup)="initCompanies()"/>
+  </div>
+<br>
+  <div>
+    <div class="label">
+      <label>Nombre de Produits</label>
+    </div>
+
+    <input type="number" [(ngModel)]="init.nbProducts" (change)="initProducts()" (keyupe)="initProducts()"/>
+  </div>
+</div>

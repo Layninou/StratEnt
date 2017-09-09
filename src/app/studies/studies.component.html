@@ -1,0 +1,49 @@
+<div class="result studies">
+
+  <div class="studies-show">
+    <div><h1>Studies</h1></div>
+    <div><h3>Entreprise:  {{ company.name }}</h3></div>
+  </div>
+
+  <div class="studies-periode">
+
+    <div class="periode">
+      <h3>PERIODE: </h3>
+    </div>
+    <div class="periode periode-result" *ngIf="company.result">
+      <div *ngFor="let item of listPeriode; let i = index" (click)="changePeriode(i)">
+        <span>{{ i + 1 }}</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="studies-article" *ngIf="periode !== undefined">
+
+    <div class="studies studies-products">
+      <studies-product [game]="game" [periode]="periode"></studies-product>
+    </div>
+
+    <div class="studies studies-maket">
+      <studies-market [game]="game" [company]="company" [periode]="periode"></studies-market>
+    </div>
+
+    <div class="studies studies-concurrence">
+      <studies-concurrence [game]="game" [periode]="periode"></studies-concurrence>
+    </div>
+
+    <div class="studies studies-structure">
+      <studies-structure [game]="game" [periode]="periode"></studies-structure>
+    </div>
+
+    <div class="studies studies-selling">
+      <studies-selling [game]="game" [periode]="periode"></studies-selling>
+    </div>
+
+    <div class="studies studies-performance">
+      <studies-performance [game]="game" [periode]="periode"></studies-performance>
+    </div>
+
+  </div>
+
+</div>

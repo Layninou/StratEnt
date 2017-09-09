@@ -1,0 +1,52 @@
+<div class="productions">
+
+  <p>Produits d'Exploitation</p>
+
+  <div class="block">
+
+    <div class="productions-label">
+      <div><label>   </label></div>
+      <div><label>Production vendue</label></div>
+      <div><label>Production soldée</label></div>
+      <div><label>Production offre spéciale</label></div>
+      <div><label>Production stockée</label></div>
+      <div><label>Subventions</label></div>
+    </div>
+
+    <!-- TODO: Service de résultats -->
+    <div class="productions-result" *ngFor="let product of company.companyProduct; let iProd = index">
+      <div><label> Produit {{ iProd + 1 }}</label></div>
+      <div><label> {{ exploitations[iProd].sellingNormalValue | roundAt2 }} </label></div>
+      <div><label> {{ exploitations[iProd].sellingClearValue | roundAt2 }} </label></div>
+      <div><label> {{ exploitations[iProd].sellingSpecialValue | roundAt2 }} </label></div>
+      <div><label> {{ exploitations[iProd].stockValue | roundAt2 }}</label></div>
+    </div>
+
+    <div class="productions-total">
+      <div><label>Total</label></div>
+      <div><label> {{ exploitationTotal.sellingNormalValue | roundAt2 }} </label></div>
+      <div><label> {{ exploitationTotal.sellingClearValue | roundAt2 }} </label></div>
+      <div><label> {{ exploitationTotal.sellingSpecialValue | roundAt2 }} </label></div>
+      <div><label> {{ exploitationTotal.stockValue | roundAt2 }} </label></div>
+      <div><label> {{ exploitationTotal.subvention | roundAt2 }} </label></div>
+    </div>
+
+  </div>
+
+  <div class="block">
+
+    <div class="productions-label">
+      <div><label></label></div>
+    </div>
+
+    <div class="productions-result" *ngFor="let product of company.companyProduct; let iProd = index">
+      <div><label>{{ sumExploitations[iProd] }}</label></div>
+    </div>
+
+    <div class="productions-total">
+      <div><label>{{ sumAllExploitations }}</label></div>
+    </div>
+
+  </div>
+
+</div>

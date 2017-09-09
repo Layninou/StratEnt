@@ -1,0 +1,31 @@
+.affinities{
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 5px;
+  overflow: auto;
+
+  font-size: 18px;
+}
+
+.affinities-data{
+  float: left;
+  width: 75%;
+  border-right: 2px solid black;
+}
+.affinities-graph{
+  width: 20%;
+  float: left;
+}
+
+.affinities-type{
+  overflow: auto;
+}
+.affinities-label{
+  float: left;
+  margin: 5px;
+}
+.affinities-inputs{
+  float: left;
+  margin: 5px;
+}

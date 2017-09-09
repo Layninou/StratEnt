@@ -1,0 +1,46 @@
+<div class="companies">
+
+  <!-- All Companies -->
+  <div>
+    <!-- Company Labels -->
+    <div class="company-labels">
+      <div>
+        <label>Nom de l'entreprise: </label>
+      </div>
+      <div>
+        <label>Capital Social: </label>
+      </div>
+      <div>
+        <label>Nombre de Machine: </label>
+      </div>
+    </div>
+
+    <!-- Company Inputs -->
+    <div class="company-all">
+      <div>
+        <label>{{allCompanies.name}}</label>
+      </div>
+      <div>
+        <input type="number" [(ngModel)]="allCompanies.socialCapital" (ngModelChange)="initAllSocialCapital()"/>
+      </div>
+      <div>
+        <input type="number" [(ngModel)]="allCompanies.nbMachine" (ngModelChange)="initAllNumberMachine()"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Each Company -->
+  <div class="company-each" *ngFor="let company of companies; let i = index">
+    <div>
+      <input type="string" [(ngModel)]="company.name" placeholder="Entreprise {{i + 1}}"/>
+      <!-- <label>Entreprise {{i + 1}}</label> -->
+    </div>
+    <div>
+      <input type="number" [(ngModel)]="company.socialCapital"/>
+    </div>
+    <div>
+      <input type="number" [(ngModel)]="company.nbMachine"/>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,17 @@
+.management{
+  float: left;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 5px;
+  overflow: auto;
+  width: 46%;
+}
+
+.management-label{
+  float: left;
+  margin-left: 5px;
+}
+.management-input{
+  float: left;
+}

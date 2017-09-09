@@ -1,0 +1,48 @@
+<!-- TODO: Mettre une entreprise -->
+<div class="result situation">
+
+  <div class="results-show">
+    <div><span>Entreprise:  {{ testCompany.name }}</span></div>
+    <div><span>Periode: </span></div>
+    <div><span>Situation</span></div>
+  </div>
+
+  <div class="results results-structure">
+    <results-structure [company]="testCompany"></results-structure>
+  </div>
+
+  <div class="results results-exploitation">
+    <results-exploitation [company]="testCompany"></results-exploitation>
+  </div>
+
+  <div class="results results-selling">
+    <results-selling [company]="testCompany"></results-selling>
+  </div>
+
+</div>
+
+<div class="result comptability">
+
+  <div class="results-show">
+    <div><span>Entreprise:  {{ testCompany.name }}</span></div>
+    <div><span>Periode: </span></div>
+    <div><span>Comptes de Résultats</span></div>
+  </div>
+
+  <div class="results results-productions">
+    <results-productions [company]="testCompany"></results-productions>
+  </div>
+
+  <div class="results results-charge">
+    <results-charge [company]="testCompany"></results-charge>
+  </div>
+
+  <div class="results results-financial">
+    <results-financial></results-financial>
+  </div>
+
+  <div class="results results-final">
+    <results-final></results-final>
+  </div>
+
+</div>

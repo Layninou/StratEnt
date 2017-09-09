@@ -1,0 +1,44 @@
+.market{
+  border: 1px solid black;
+  padding: 0px;
+  margin: 5px 0px;
+}
+
+.title{
+  background-color: grey;
+  border: 1px solid black;
+}
+.products-space{
+  background-color: grey;
+  border: 1px solid black;
+}
+.products-name{
+  background-color: grey;
+  border: 1px solid black;
+}
+.items-name{
+  background-color: grey;
+  border: 1px solid black;
+}
+.items-result{
+  background-color: none;
+  border: 1px solid black;
+}
+
+.items div{
+  display: inline-block;
+  width: 10vw;
+  text-align: center;
+}
+.products div{
+  display: inline-block;
+  width: 10vw;
+  text-align: center;
+}
+
+.items-name{
+  width: 20vw !important;
+}
+.products-space{
+  width: 20vw !important;
+}

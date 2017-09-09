@@ -1,0 +1,25 @@
+<div class="market">
+
+  <div class="title">
+    Résultats des concurrents
+  </div>
+
+  <div class="teams">
+    <div class="teams-space">
+      <span>&nbsp;</span>
+    </div>
+    <div class="teams-name" *ngFor="let team of allTeams">
+      <span>{{ team.name }}</span>
+    </div>
+  </div>
+
+  <div class="items" *ngFor="let item of keyList; let iTem = index">
+    <div class="items-name">
+      {{ item }}
+    </div>
+    <div class="items-result" *ngFor="let team of allTeams; let iTeam= index">
+      {{ valueList[iTeam][item] | roundAt2 }}
+    </div>
+  </div>
+
+</div>

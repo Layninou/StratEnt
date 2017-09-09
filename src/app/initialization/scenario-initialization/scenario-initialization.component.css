@@ -1,0 +1,5 @@
+.scenario{
+  overflow: auto;
+  margin: 10px;
+  float: left;
+}

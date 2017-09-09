@@ -1,0 +1,39 @@
+.finance{
+  overflow: auto;
+  border: 2px solid black;
+  border-radius: 12px;
+  width: 95%;
+  padding: 10px 15px;
+}
+
+.finance-label{
+  float: left;
+  width: 40%;
+}
+.finance-label>div{
+  border: 0.5px solid black;
+  background-color: #808080;
+  height: 22px;
+  padding: 1px 5px;
+  margin-bottom: 1px;
+  width: 80%
+}
+
+.finance-first,
+.finance-second{
+  float: left;
+  width: 25%;
+}
+
+.finance-first>div,
+.finance-second>div{
+  text-align: right;
+  border: 0.5px solid black;
+  height: 22px;
+  padding: 1px 5px;
+  margin: 1px 5px;
+}
+
+.finance-second>div:nth-child(1){
+  border: none
+}

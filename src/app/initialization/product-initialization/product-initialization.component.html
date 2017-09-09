@@ -1,0 +1,57 @@
+<div class="products">
+
+  <div class="products-label">
+    <div>
+      <label>Produits: </label>
+    </div>
+    <div>
+      <label>Potentiel de demande par entreprise: </label>
+    </div>
+    <div>
+      <label>Evolution de cette demande: </label>
+    </div>
+    <div>
+      <label>Temps de production: </label>
+    </div>
+    <div>
+      <label>Prix unitaire de production: </label>
+    </div>
+    <div>
+      <label>Prix minimum de vente: </label>
+    </div>
+    <div>
+      <label>Prix maximum de vente: </label>
+    </div>
+  </div>
+
+  <div class="products-output" *ngFor="let product of products; let i = index">
+    <div>
+      <label>Produit {{i + 1}}</label>
+    </div>
+    <div>
+      <input type="number" [(ngModel)]="product.potentialSell"/>
+    </div>
+    <div>
+      <!-- <input type="string" [(ngModel)]="product.typeEvolution"/> -->
+      <select [(ngModel)]="product.typeEvolution">
+        <option value="c/d">Croissante / Decroissante</option>
+        <option value="exponential">Exponnentielle</option>
+        <option value="random">Aléatoire</option>
+        <option value="totallyRandom">Totalement Aléatoire</option>
+      </select>
+    </div>
+    <div>
+      <input type="number" [(ngModel)]="product.productTime"/>
+    </div>
+    <div>
+      <input type="number" [(ngModel)]="product.unitaryCost"/>
+    </div>
+    <div>
+      <input type="number" [(ngModel)]="product.minPrice"/>
+    </div>
+    <div>
+      <input type="number" [(ngModel)]="product.maxPrice"/>
+    </div>
+  </div>
+
+</div>

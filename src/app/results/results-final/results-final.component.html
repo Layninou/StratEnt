@@ -1,0 +1,72 @@
+<!-- TODO: Faire le service bon sens -->
+<div class="comptability">
+
+  <p>Résultats</p>
+
+  <div class="block">
+
+    <div class="comptability-label">
+      <div><label>Resultats d'Exploitation</label></div>
+      <div><label>Resultats Financiers</label></div>
+      <div><label>Resultats Exceptionnels (produits)</label></div>
+      <div><label>Resultats Exceptionnels (charges)</label></div>
+      <div><label>Remboursement assurances</label></div>
+    </div>
+
+    <div class="comptability-first">
+      <!-- The Blank One are here to make the space -->
+      <div></div>
+      <div></div>
+      <div>{{ exceptional.exceptionalCharges }}</div>
+      <div>{{ exceptional.exceptionalProduct }}</div>
+      <div></div>
+    </div>
+
+    <div class="comptability-second">
+      <div>0</div>
+      <div>0</div> <!-- TODO: exercice finances -->
+      <div></div>
+      <div>{{ exceptional.result }}</div>
+      <div>0</div>
+    </div>
+
+  </div>
+
+  <div class="block">
+
+    <div class="comptability-label">
+      <div><label>Resultat avant impôt</label></div>
+      <div><label>impôt sur les societes</label></div>
+    </div>
+
+    <div class="comptability-first">
+      <!-- The Blank One are here to make the space -->
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="comptability-second">
+      <div>{{ exercice.exerciceNet }}</div>
+      <div>0</div> <!-- TODO: exercice finances -->
+    </div>
+
+  </div>
+
+  <div class="block">
+
+    <div class="comptability-label">
+      <div><label>Resultats Net</label></div>
+    </div>
+
+    <div class="comptability-first">
+      <!-- The Blank One are here to make the space -->
+      <div></div>
+    </div>
+
+    <div class="comptability-second">
+      <div>{{ exercice.exerciceWithTax }}</div>
+    </div>
+
+  </div>
+
+</div>

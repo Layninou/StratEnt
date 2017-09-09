@@ -1,0 +1,25 @@
+<div class="market">
+
+  <div class="title">
+    Parts de marché des concurrents sur les produits
+  </div>
+
+  <div class="teams">
+    <div class="teams-space">
+      <span>&nbsp;</span>
+    </div>
+    <div class="teams-name" *ngFor="let team of allTeams">
+      <span>{{ team.name }}</span>
+    </div>
+  </div>
+
+  <div class="products" *ngFor="let product of allProducts; let iProd = index">
+    <div class="products-name">
+      Product {{ iProd + 1 }}
+    </div>
+    <div class="products-result" *ngFor="let team of allTeams; let iTeam= index">
+      {{ markets[iProd][iTeam][team.name] | roundAt2 }}
+    </div>
+  </div>
+
+</div>

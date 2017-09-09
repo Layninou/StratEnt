@@ -1,0 +1,96 @@
+/*********************** GENERAL ********************************/
+.article{
+  position: relative;
+  margin-top: 10%;
+  margin-left: 10%;
+  width: 100%;
+  display: inline-block;
+}
+.article::after{
+  position: static;
+}
+.form{
+  position: relative;
+  text-align: center;
+}
+
+.form-block{
+  margin: 5px 5px;
+  text-align: center;
+}
+
+/************************* BUTTON ******************************/
+
+button{
+  padding: 5px 25px;
+  background: none;
+  border: solid 2px black;
+  color: black;
+  font-size: 20px;
+}
+ button:active{
+  color: white;
+  background-color: black;
+  transition: all 500ms ease-in-out;
+}
+ button:hover{
+  color: white;
+  background-color: black;
+  transition: all 500ms ease-in-out;
+}
+
+/************************** INPUT ******************************/
+
+input{
+  background: none;
+  color: black;
+  font-size: 20px;
+
+  border: none;
+  border-bottom: solid 2px black;
+  padding-bottom: 7px;
+}
+input:focus, input:active{
+  outline: none;
+}
+
+.form-input{
+  position: relative;
+  padding: 0px 7px;
+}
+
+label{
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-style: italic;
+  font-size: 20px;
+  color: #808080;
+  pointer-events: none;
+  transition: all 500ms ease-in-out;
+}
+
+/*TODO: reduire et monter les labels quand clic*/
+
+/************************** Other Session ******************************/
+
+.user-list{
+  text-align: center;
+}
+.user-list p{
+  font-size: 20px;
+  color: black;
+}
+
+.user{
+  display: inline-block;
+  font-size: 18px;
+  padding: 5px 10px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.user div{
+  display: block;
+}

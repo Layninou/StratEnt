@@ -1,0 +1,17 @@
+<div class="remuneration">
+
+  <p>Rémunérations</p>
+
+  <div class="remuneration-label">
+    <div><label>Indice des salaires:</label></div>
+    <div><label>Commissions aux vendeurs (%):</label></div>
+    <div><label>Budget Formation (%):</label></div>
+  </div>
+
+  <div class="remuneration-input">
+    <div><input type="number" [(ngModel)]="remuneration.wageIndex"        (change)="changement()" (keyup)="changement()"></div>
+    <div><input type="number" [(ngModel)]="remuneration.commission"       (change)="changement()" (keyup)="changement()"></div>
+    <div><input type="number" [(ngModel)]="remuneration.formationBudget"  (change)="changement()" (keyup)="changement()"></div>
+  </div>
+
+</div>

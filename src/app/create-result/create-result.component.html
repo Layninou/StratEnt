@@ -1,0 +1,14 @@
+<div class="article">
+
+  <div class="team" *ngFor="let name of teamsName; let iTeam = index">
+    <div [class.has-decide]="teamsBool[teamsKey[iTeam]]" [class.hasnt-decide]="!teamsBool[teamsKey[iTeam]]">
+      {{ name }}
+    </div>
+  </div>
+
+  <h1>Create Result</h1>
+  <h3>This simulation is at round: {{ round + 1}}</h3>
+
+  <button [class.is-able]="!disability" [disabled]="disability" (click)="createResult()"> Change Round </button>
+
+</div>

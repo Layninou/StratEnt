@@ -1,0 +1,18 @@
+.init{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+h1{
+  text-align: center;
+}
+
+.game-about{
+  overflow: auto;
+}
+
+.final{
+  text-align: center;
+  margin-top: 5px;
+}

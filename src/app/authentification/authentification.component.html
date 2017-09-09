@@ -1,0 +1,45 @@
+<div class="article">
+
+  <div class="authentification" *ngIf="!auth">
+
+    <div class="form">
+
+      <div class="form-block form-input">
+        <label>Animateur</label>
+        <input [(ngModel)]="author">
+      </div>
+
+      <div class="form-block form-input">
+        <label>Lieu</label>
+        <input [(ngModel)]="place">
+      </div>
+
+      <div class="form-block form-input">
+        <label>Annee</label>
+        <input [(ngModel)]="date">
+      </div>
+
+    </div>
+
+    <div class="form-block create-button">
+      <button (click)="createAuth()">Créer</button>
+    </div>
+
+  </div>
+
+
+  <div class="user-list" *ngIf="!auth">
+
+    <p>Other Sessions</p>
+
+    <div class="user" *ngFor="let user of users" (click)="logAuth(user)">
+
+      <div> <span>{{ user.author }}</span> </div>
+      <div> <span>{{ user.place }}</span>  </div>
+      <div> <span>{{ user.date }}</span>   </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+.remuneration{
+  float: left;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 5px;
+  overflow: auto;
+  width: 46%;
+}
+
+.employee{
+  float: none;
+  width: 100%;
+}
+
+.remuneration-label{
+  float: left;
+  margin-left: 5px;
+}
+.remuneration-input{
+  float: left;
+}

@@ -1,0 +1,43 @@
+.market{
+  border: 1px solid black;
+  padding: 0px;
+  margin: 5px 0px;
+}
+
+.title{
+  background-color: grey;
+  border: 1px solid black;
+}
+.product-space{
+  background-color: grey;
+  border: 1px solid black;
+}
+.product-name{
+  background-color: grey;
+  border: 1px solid black;
+}
+.selling-name{
+  background-color: grey;
+  border: 1px solid black;
+}
+.selling-result{
+  border: 1px solid black;
+}
+
+.selling div{
+  display: inline-block;
+  width: 12vw;
+  text-align: center;
+}
+.product div{
+  display: inline-block;
+  width: 12vw;
+  text-align: center;
+}
+
+.product-space{
+  width: 25vw !important;
+}
+.selling-name{
+  width: 25vw !important;
+}

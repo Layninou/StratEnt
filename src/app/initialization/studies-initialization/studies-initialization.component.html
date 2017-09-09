@@ -1,0 +1,21 @@
+<div class="studies">
+
+  <div class="product-studies">
+    <div *ngFor="let product of products; let i = index">
+      <label>produit {{ i + 1 }} : </label>
+      <input type="text" [(ngModel)]="studies.productStudies[i]">
+    </div>
+  </div>
+
+  <div class="concurrence-studies">
+    <div><label>Parts de marché : </label><input type="text" [(ngModel)]="studies.marketStudies"></div>
+    <div><label>Résultats : </label><input type="text" [(ngModel)]="studies.concurrenceStudies"></div>
+    <div><label>Structure financière : </label><input type="text" [(ngModel)]="studies.structureStudies"></div>
+  </div>
+
+  <div class="evaluation-studies">
+    <div><label>Situation du marché : </label><input type="text" [(ngModel)]="studies.sellingStudies"></div>
+    <div><label>Performance de l'entreprise : </label><input type="text" [(ngModel)]="studies.performanceStudies"></div>
+  </div>
+
+</div>

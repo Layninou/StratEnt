@@ -1,0 +1,87 @@
+.liability{
+  width: 90%;
+  /*height: 50vh;*/
+  padding: 10px 15px;
+
+  border: 2px solid black;
+  border-radius: 25px;
+
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 5% 45% 45% 10%;
+  grid-row-gap: 15px;
+  grid-template-areas:
+            "title"
+            "own"
+            "loaning"
+            "total";
+}
+
+.block{
+  overflow: auto;
+  padding-left: 15px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.title{
+  grid-area: title;
+  height: 100%;
+}
+.own-liability{
+  grid-area: own;
+  height: 100%;
+}
+.loaning-liability{
+  grid-area: loaning;
+  height: 100%;
+}
+.total-liability{
+  grid-area: total;
+  text-align: center;
+  border: none;
+}
+
+/*********************************************************/
+
+.article{
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+}
+.result-article{
+  width: 100%;
+  text-align: center;
+}
+
+.liability-label{
+  float: left;
+  width: 30%;
+  margin: auto 5px;
+}
+.liability-first{
+  float: left;
+  width: 30%;
+  margin: auto 5px;
+}
+.liability-total{
+  float: left;
+  width: 30%;
+  margin: auto 5px;
+}
+
+
+.liability-label{
+  border: 2px solid black;
+  background: grey;
+}
+.liability-first{
+  border: 1px solid black;
+}
+.liability-total{
+  border: 1px solid black;
+}
+.space-only{
+  border: none;
+  background: none;
+}

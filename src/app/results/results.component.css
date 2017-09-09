@@ -1,0 +1,11 @@
+.result{
+  font-size: 18px;
+}
+
+.results{
+  width: 97%;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 5px;
+}

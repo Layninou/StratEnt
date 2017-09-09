@@ -1,0 +1,154 @@
+<div class="politics">
+  <h3>Politique de la simulation</h3>
+
+  <!-- Over Pricing -->
+  <table class="politics-overprice">
+    <p>Supplément</p>
+    <div>
+      <label>Heures Supplémentaire (%): </label>
+      <span><input type="number" [(ngModel)]="politics.overtimePercent"/></span>
+    </div>
+    <div>
+      <label>Surcoût (%): </label>
+      <span><input type="number" [(ngModel)]="politics.overheadPercent"/></span>
+    </div>
+  </table>
+
+  <!-- Salary -->
+  <table class="politics-salary">
+    <p>Salaires</p>
+    <!-- Kind Of Employees and Prices -->
+    <div class="employees">
+      <div *ngFor="let employee of politics.typeOfEmployees">
+        <label *ngIf="employee.type === 'Productor' "> Producteur </label>
+        <label *ngIf="employee.type === 'Sellor' "> Vendeur </label>
+        <label *ngIf="employee.type === 'Manager' "> Cadre </label>
+        <span><input type="number" [(ngModel)]="employee.salary"></span>
+      </div>
+    </div>
+
+    <div class="cout-employees">
+      <div>
+        <label>Coût du licenciement (%): </label>
+        <span><input type="number" [(ngModel)]="politics.firePricePourcent"/></span>
+      </div>
+      <div>
+        <label>Coût d'embauche (%): </label>
+        <span><input type="number" [(ngModel)]="politics.hirePricePourcent"/></span>
+      </div>
+      <div>
+        <label>Formation minimal (%): </label>
+        <span><input type="number" [(ngModel)]="politics.minimalTraining"/></span>
+      </div>
+    </div>
+  </table>
+
+  <!-- Finances -->
+  <table class="politics-finances">
+
+    <p>Taux(%)</p>
+    <div class="finances-part-one">
+      <div>
+        <label>Emprunt: </label>
+        <input type="number" [(ngModel)]="politics.loaning"/>
+      </div>
+      <div>
+        <label>Decouvert authorise: </label>
+        <input type="number" [(ngModel)]="politics.overdraft"/>
+      </div>
+      <div>
+        <label>Decouvert non authorise: </label>
+        <input type="number" [(ngModel)]="politics.unauthorizedOverdraft"/>
+      </div>
+      <div>
+        <label>Montant du decouvert authorise: </label>
+        <input type="number" [(ngModel)]="politics.overdraftAmountPercent"/>
+      </div>
+    </div>
+    <div class="finances-part-two">
+      <div>
+        <label>Placement: </label>
+        <input type="number" [(ngModel)]="politics.placement"/>
+      </div>
+      <div>
+        <label>TVA: </label>
+        <input type="number" [(ngModel)]="politics.VAT"/>
+      </div>
+      <div>
+        <label>Impots societes: </label>
+        <input type="number" [(ngModel)]="politics.IT"/>
+      </div>
+      <div>
+        <label>Credit fournisseurs: </label>
+        <input type="number" [(ngModel)]="politics.supplierCredits"/>
+      </div>
+    </div>
+
+  </table>
+
+  <table class="politics-product">
+
+    <!-- Production -->
+    <div class="politics-production">
+      <p>Capacité de production</p>
+      <div>
+        <label>Heure possible de production par machine: </label>
+        <input type="number" [(ngModel)]="politics.machineProduction"/>
+      </div>
+      <div>
+        <label>Heure possible de production par productif: </label>
+        <input type="number" [(ngModel)]="politics.productorProduction"/>
+      </div>
+    </div>
+
+    <!-- Machinery -->
+    <div class="politics-machinery">
+      <p>Type de Machine</p>
+      <div>
+        <label>Prix d'une machine: </label>
+        <input type="number" [(ngModel)]="politics.machineryType.price"/>
+      </div>
+      <div>
+        <label>Amortissement d'une machine: </label>
+        <input type="number" [(ngModel)]="politics.machineryType.amortization"/>
+      </div>
+      <div>
+        <label>Prix de reparation d'une machine: </label>
+        <input type="number" [(ngModel)]="politics.machineryType.repairPrice"/>
+      </div>
+    </div>
+
+  </table>
+
+  <!-- General Cost -->
+  <table class="politics-cost">
+    <p>Coûts Généraux</p>
+    <div class="politics-cost-one">
+      <div>
+        <label>Prix du stockage: </label>
+        <input type="number" [(ngModel)]="politics.generalCost.stockage"/>
+      </div>
+      <div>
+        <label>coûts fixes: </label>
+        <input type="number" [(ngModel)]="politics.generalCost.fixedPrice"/>
+      </div>
+    </div>
+    <div class="politics-cost-two">
+      <div>
+        <label>Tranches d'immovilisations: </label>
+        <input type="number" [(ngModel)]="politics.generalCost.immbilizationTranche"/>
+      </div>
+      <div>
+        <label>Supplément de coûts fixe par tranche: </label>
+        <input type="number" [(ngModel)]="politics.generalCost.supplementTranche"/>
+      </div>
+    </div>
+    <div class="politics-cost-three">
+      <div>
+        <label>Prix de l'assurance (%): </label>
+        <input type="number" [(ngModel)]="politics.generalCost.insurance"/>
+      </div>
+    </div>
+  </table>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="management">
+
+  <p>Employees</p>
+
+  <div class="employee" *ngFor="let employee of hireFire; let i = index">
+
+    <p>{{ employee.type }}</p>
+
+    <div class="management-label">
+      <div><label>Embauche:</label></div>
+      <div><label>Licenciement:</label></div>
+    </div>
+
+    <div class="management-input">
+      <div><input type="number" [(ngModel)]="employee.hire" (change)="changement()" (keyup)="changement()"></div>
+      <div><input type="number" [(ngModel)]="employee.fire" (change)="changement()" (keyup)="changement()"></div>
+    </div>
+
+    <br>
+    <br>
+  </div>
+
+</div>

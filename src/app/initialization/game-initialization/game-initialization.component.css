@@ -1,0 +1,20 @@
+.game{
+  float: left;
+  width: 40vw;
+
+  border: solid 2px black;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 5px;
+
+  font-size: 18px;
+}
+
+.game div{
+  display: inline-block;
+}
+
+.label{
+  width: 180px;
+  padding-left: 5px;
+}

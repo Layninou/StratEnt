@@ -1,0 +1,45 @@
+.financial-structure{
+  display: inline-block;
+  margin: 5px;
+  overflow: auto;
+  width: 60%;
+}
+
+.all{
+  margin: 5px auto;
+}
+.financial-label{
+  display: inline-block;
+  text-align: left;
+}
+.financial-input{
+  display: inline-block;
+}
+
+/*****************************************/
+
+.financial-label div{
+  margin: 5px 7px;
+}
+.financial-input div{
+  margin: 5px 7px;
+}
+input{
+  text-align: right;
+}
+
+/*****************************************/
+
+.financial-structure{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  padding: 0px;
+  text-align: center;
+}
+
+.financial-structure p{
+  background: #808080;
+  margin-top: 0px;
+  margin-bottom: 1px;
+  font-size: 20px;
+}

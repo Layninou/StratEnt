@@ -1,0 +1,53 @@
+.machinery{
+  display: inline-block;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 5px;
+  overflow: auto;
+  width: 30%;
+  min-width: 400px;
+}
+
+.machinery-label{
+  display: inline-block;
+  margin-left: 8%;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  text-align: left;
+}
+.machinery-input{
+  margin-top: 0.5px;
+  display: inline-block;
+}
+
+input{
+  text-align: right;
+}
+
+/*****************************************/
+
+.machinery{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  padding: 0px;
+  text-align: center;
+}
+
+.machinery p{
+  background: #808080;
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+/****************************************/
+.machinery-label div,
+.machinery-input div{
+  margin: 5px;
+}
+
+
+/****************************************/
+
+.add-machine{
+  color: green;
+}

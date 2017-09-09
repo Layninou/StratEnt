@@ -1,0 +1,25 @@
+<div class="financial-structure">
+
+  <p>Structure Financière</p>
+
+  <div class="all">
+
+    <div class="financial-label">
+      <div><label>Variation de Capital (+/-):</label></div>
+      <div><label>Distributions:</label></div>
+      <div><label>Variation d'emprunt (+/-):</label></div>
+      <div><label>Subventions:</label></div>
+      <div><label>Produit ou Charge Ex. (+/-):</label></div>
+    </div>
+
+    <div class="financial-input">
+      <div><input type="number" [(ngModel)]="financial.variateCaptial"  (change)="changement()" (keyup)="changement()"></div>
+      <div><input type="number" [(ngModel)]="financial.distribution"    (change)="changement()" (keyup)="changement()"></div>
+      <div><input type="number" [(ngModel)]="financial.variateLoaning"  (change)="changement()" (keyup)="changement()"></div>
+      <div><input type="number" [(ngModel)]="financial.subventions"     (change)="changement()" (keyup)="changement()"></div>
+      <div><input type="number" [(ngModel)]="financial.exonerate"       (change)="changement()" (keyup)="changement()"></div>
+    </div>
+
+  </div>
+
+</div>

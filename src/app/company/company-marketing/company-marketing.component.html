@@ -1,0 +1,19 @@
+<div class="marketing">
+
+  <p>Commercialisation</p>
+
+  <div class="marketing-label">
+    <div><label>Type de produit:</label></div>
+    <div class="marketing-label-product" *ngFor="let item of largerAttracts.attracts">
+      <div><label>{{ item.name }}:</label></div>
+    </div>
+  </div>
+
+  <div class="marketing-input" *ngFor="let product of products; let iProd = index;">
+    <div><span>Produit {{ iProd + 1 }}</span></div>
+    <div class="marketing-input-product" *ngFor="let item of product.attracts; let iAttract = index;">
+      <div><input type="number" [(ngModel)]="marketings[iAttract].decision[iProd]" (change)="changement()" (keyup)="changement()"></div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,37 @@
+<div class="result situation">
+
+  <div class="situation-show">
+    <div><h1>Situation</h1></div>
+    <div><h3>Entreprise:  {{ company.name }}</h3></div>
+  </div>
+
+  <div class="situation-periode">
+
+    <div class="periode">
+      <h3>PERIODE: </h3>
+    </div>
+    <div class="periode periode-result" *ngIf="company.result">
+      <div *ngFor="let item of listPeriode; let i = index" (click)="changePeriode(i)">
+        <span>{{ i + 1 }}</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="situation-article" *ngIf="periode !== undefined">
+
+    <div class="results results-structure">
+      <results-structure [company]="company" [periode]="periode"></results-structure>
+    </div>
+
+    <div class="results results-exploitation">
+      <results-exploitation [company]="company" [periode]="periode"></results-exploitation>
+    </div>
+
+    <div class="results results-selling">
+      <results-selling [company]="company" [periode]="periode"></results-selling>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,17 @@
+<div class="submission">
+
+  <p>Fabrication</p>
+
+  <div class="submission-label">
+    <div><label>Nom du Produit:</label></div>
+    <div><label>Quantité:</label></div>
+    <div><label>Prix:</label></div>
+  </div>
+
+  <div class="submission-input" *ngFor="let product of products; let i = index;">
+    <div><span>Produit {{ i +1 }}</span></div>
+    <div><input type="number" [(ngModel)]="submission.exceptionnalSelling[i]" (change)="changement()" (keyup)="changement()"></div>
+    <div><input type="number" [(ngModel)]="submission.exceptionnalPrice[i]"   (change)="changement()" (keyup)="changement()"></div>
+  </div>
+
+</div>

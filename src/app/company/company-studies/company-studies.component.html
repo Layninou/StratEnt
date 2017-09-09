@@ -1,0 +1,24 @@
+<div class="studies">
+
+  <div class="product-studies">
+    <div *ngFor="let product of products; let i = index">
+      <label><input type="checkbox" [(ngModel)]="studies.productStudies[i]" (change)="changement()">produit {{ i + 1 }}</label>
+    </div>
+  </div>
+
+  <div class="concurrence-studies">
+    <div><label><input type="checkbox" [(ngModel)]="studies.market" (change)="changement()">Parts de marché</label></div>
+    <div><label><input type="checkbox" [(ngModel)]="studies.result" (change)="changement()">Résultats</label></div>
+    <div><label><input type="checkbox" [(ngModel)]="studies.finance" (change)="changement()">Structure financière</label></div>
+  </div>
+
+  <div class="evaluation-studies">
+    <div><label><input type="checkbox" [(ngModel)]="studies.situation" (change)="changement()">Situation du marché</label></div>
+    <div><label><input type="checkbox" [(ngModel)]="studies.performance" (change)="changement()">Performance de l'entreprise</label></div>
+  </div>
+
+  <div class="price-studies">
+    <div><p>Montant: {{ montant }}</p></div>
+  </div>
+
+</div>

@@ -1,0 +1,61 @@
+.charge{
+  overflow: auto;
+  border: 2px solid black;
+  border-radius: 12px;
+  width: 95%;
+  padding: 10px 15px;
+  margin: 10px 0px;
+}
+
+.block{
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+.charge>div>div>div:nth-child(1){
+  height: 25px;
+}
+
+.charge-label{
+  float: left;
+  width: 40%;
+}
+.charge-label>div{
+  border: 0.5px solid black;
+  background-color: #808080;
+  height: 22px;
+  padding: 1px 5px;
+  margin-bottom: 1px;
+  width: 80%
+}
+
+.charge-label>div:nth-child(1){
+  background: none;
+  border: none;
+}
+
+.charge-result{
+  float: left;
+  width: 10%;
+}
+
+.charge-total{
+  float: right;
+  width: 10%
+}
+
+.charge-result>div,
+.charge-total>div{
+  text-align: right;
+  border: 0.5px solid black;
+  height: 22px;
+  padding: 1px 5px;
+  margin: 1px 5px;
+}
+
+.charge-result>div:nth-child(1),
+.charge-total>div:nth-child(1){
+  text-align: center;
+  background-color: #808080;
+  border: none;
+}

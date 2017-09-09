@@ -1,0 +1,46 @@
+.fabrication{
+  display: inline-block;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 5px;
+  overflow: auto;
+  width: 30%;
+  min-width: 50vw;
+}
+
+.all{
+  margin: 0px auto;
+}
+.fabrication-label{
+  display: inline-block;
+  margin-right: 5px;
+  text-align: left;
+}
+.fabrication-input{
+  margin-top: 0.5px;
+  display: inline-block;
+}
+input{
+  text-align: right;
+}
+
+/****************************************************/
+
+.fabrication{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  padding: 0px;
+  text-align: center;
+}
+.fabrication p{
+  background: #808080;
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+/****************************************/
+
+.fabrication-label div,
+.fabrication-input div{
+  margin: 5px;
+}

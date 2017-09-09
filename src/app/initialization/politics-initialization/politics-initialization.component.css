@@ -1,0 +1,66 @@
+.politics{
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 5px;
+
+  font-size: 18px;
+}
+
+
+/********SALARY*********/
+.politics-salary{
+  width: 98%;
+}
+.employees{
+  width: 50%;
+  float: left;
+}
+.cout-employees{
+  width: 40%;
+  float: left;
+}
+
+/********FINANCES************/
+.politics-finances{
+  width: 98%;
+}
+.finances-part-one{
+  width: 50%;
+  float: left;
+}
+.finances-part-two{
+  width: 40%;
+  float: left;
+}
+
+/***********PRODUCT***************/
+.politics-product{
+  width: 98%;
+}
+.politics-production{
+  width: 50%;
+  float: left;
+}
+.politics-machinery{
+  width: 40%;
+  float: left;
+}
+
+
+/************COST*****************/
+.politics-cost{
+  width: 98%;
+}
+.politics-cost-one{
+  width: 30%;
+  float: left;
+}
+.politics-cost-two{
+  width: 35%;
+  float: left;
+}
+.politics-cost-three{
+  width: 30%;
+  float: left;
+}

@@ -1,0 +1,23 @@
+<div class="fabrication">
+
+  <p>Fabrication</p>
+
+  <div class="all">
+
+    <div class="fabrication-label">
+      <div><label>Nom du Produit:</label></div>
+      <div><label>Production:</label></div>
+      <div><label>Machine affectées:</label></div>
+      <div><label>Producteurs affectées:</label></div>
+    </div>
+
+    <div class="fabrication-input" *ngFor="let product of products; let i = index;">
+      <div><span>Produit {{ i + 1 }}</span></div>
+      <div><input type="number" [(ngModel)]="production.production[i]"         (change)="changement()" (keyup)="changement()"></div>
+      <div><input type="number" [(ngModel)]="production.affectedMachine[i]"    (change)="changement()" (keyup)="changement()"></div>
+      <div><input type="number" [(ngModel)]="production.affectedProductor[i]"  (change)="changement()" (keyup)="changement()"></div>
+    </div>
+
+  </div>
+
+</div>

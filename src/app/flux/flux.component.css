@@ -1,0 +1,31 @@
+.flux{
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+.flux-show div{
+  text-align: center;
+}
+
+.flux-periode div{
+  display: inline-block;
+  float: left;
+}
+.periode{
+  margin: 5px;
+}
+.periode h3{
+  padding: 0px;
+  margin: 0px;
+}
+.periode-result div{
+  display: inline-block;
+  float: left;
+  text-align: center;
+  margin: 1px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  background: #808080;
+}

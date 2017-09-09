@@ -1,0 +1,118 @@
+<div class="liability">
+
+  <p class="title">Fiances par (Passif)</p>
+
+  <div class="block own-liability">
+
+    <p>Ressources Immobilisé</p>
+
+    <div class="article">
+
+      <div class="liability-label">
+        <div><label>Capital Social</label></div>
+        <div><label>Reserves / Report</label></div>
+        <div><label>Résultat de l'Exercice</label></div>
+      </div>
+
+      <div class="liability-first">
+        <div><label>{{ liability.socialCapital }}</label></div>
+        <div><label>{{ liability.reserve }}</label></div>
+        <div><label>{{ liability.exercice }}</label></div>
+      </div>
+
+      <div class="liability-total space-only">
+        <div><label>&nbsp;</label></div>
+        <div><label>&nbsp;</label></div>
+        <div><label>&nbsp;</label></div>
+      </div>
+
+    </div>
+
+    <div class="result-article">
+
+      <div class="liability-label space-only">
+        <div><label>&nbsp;</label></div>
+      </div>
+
+      <div class="liability-first space-only">
+        <div><label>&nbsp;</label></div>
+      </div>
+
+      <div class="liability-total">
+        <div>{{ liability.ownRessource }}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="block loaning-liability">
+
+    <p>Ressources Circulant</p>
+
+    <div class="article">
+
+      <div class="liability-label">
+        <div><label>Emprunts</label></div>
+        <div><label>Concours bancaires</label></div>
+        <div><label>Fournisseurs</label></div>
+        <div><label>Dettes fiscales</label></div>
+      </div>
+
+      <div class="liability-first">
+        <div><label>{{ liability.borrow }}</label></div>
+        <div><label>{{ liability.bankLoans }}</label></div>
+        <div><label>{{ liability.provider }}</label></div>
+        <div><label>{{ liability.taxDebts }}</label></div>
+      </div>
+
+      <div class="liability-total space-only">
+        <div><label>&nbsp;</label></div>
+        <div><label>&nbsp;</label></div>
+        <div><label>&nbsp;</label></div>
+        <div><label>&nbsp;</label></div>
+      </div>
+
+    </div>
+
+    <div class="result-article">
+
+      <div class="liability-label space-only">
+        <div><label>&nbsp;</label></div>
+      </div>
+
+      <div class="liability-first space-only">
+        <div><label>&nbsp;</label></div>
+      </div>
+
+      <div class="liability-total">
+        <div>{{ liability.borrowRessource }}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="total-liability">
+
+    <div class="liability-label">
+      <div><label>Total du passif</label></div>
+    </div>
+
+    <div class="liability-first space-only">
+      <div><label>&nbsp;</label></div>
+    </div>
+
+    <div class="liability-total">
+      <div>{{ liability.totalLiabilities }}</div>
+    </div>
+
+  </div>
+
+</div>

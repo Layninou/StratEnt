@@ -1,0 +1,37 @@
+.market{
+  border: 1px solid black;
+  padding: 0px;
+  margin: 5px 0px;
+}
+
+.title{
+  background-color: grey;
+  border: 1px solid black;
+}
+.teams-space{
+  background-color: grey;
+  border: 1px solid black;
+}
+.teams-name{
+  background-color: grey;
+  border: 1px solid black;
+}
+.choices-name{
+  background-color: grey;
+  border: 1px solid black;
+}
+.choices-result{
+  background-color: none;
+  border: 1px solid black;
+}
+
+.choices div{
+  display: inline-block;
+  width: 10vw;
+  text-align: center;
+}
+.teams div{
+  display: inline-block;
+  width: 10vw;
+  text-align: center;
+}

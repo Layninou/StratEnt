@@ -1,0 +1,46 @@
+<!-- It is the component of each company, where they make their decisions -->
+<!-- TODO: pour la création de ce composant il faut une Company et un Game -->
+<div class="decision">
+
+  <div class="show">
+    <h1>Décisions</h1>
+    <h3>Entreprise: {{ company.name}}</h3>
+    <h3>Période: {{ round }}</h3>
+  </div>
+
+  <div class="article-decision general-decision">
+    <p>Décisions Générales:</p>
+    <company-finances  [financial]="companyDecision.financialDecision" (financial-decision)="financialDecision($event)"></company-finances>
+    <company-machinery [machinery]="companyDecision.machineFlux"       (machinery)="machineryDecision($event)"></company-machinery>
+  </div>
+
+  <div class="article-decision product-decision">
+    <p>Décisions Produits:</p>
+    <company-fabrication [products]="company.companyProduct"  [production]="companyDecision.productionDecision" (production)="productionDecision($event)"></company-fabrication>
+    <br>
+    <company-marketing   [products]="company.companyProduct"  [marketings]="companyDecision.marketingDecision"  (marketings)="marketingDecision($event)"></company-marketing>
+  </div>
+
+  <div class="article-decision human-ressources-decision">
+    <p>Ressources Humaines:</p>
+    <company-remuneration [remuneration]="companyDecision.remuneration" (remuneration)="remunerationDecision($event)"></company-remuneration>
+    <company-management   [employees]="employees" [hireFire]="companyDecision.hireFire" (hire-fire)="encadrementDecision($event)"></company-management>
+  </div>
+
+  <div class="article-decision market-decision">
+    <p>Etudes de marchés:</p>
+    <!-- TODO: Mettre le produit de façon général  -->
+    <company-studies [products]="company.companyProduct" [studies]="companyDecision.studies" (studies)="studiesDecision($event)"></company-studies>
+  </div>
+
+  <div class="article-decision exceptional-decision">
+    <p>Décisions Exceptionnelles:</p>
+    <company-clearing   [products]="company.companyProduct" [liquidation]="companyDecision.liquidation" (liquidation)="liquidationDecision($event)"></company-clearing>
+    <company-submission [products]="company.companyProduct" [submission]="companyDecision.exceptionnal" (submission)="exceptionnalDecision($event)"></company-submission>
+  </div>
+
+  <div class="save-decision">
+    <button type="button" (click)="saveDecision()">Save Change</button>
+  </div>
+
+</div>

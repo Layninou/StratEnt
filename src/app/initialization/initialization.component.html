@@ -1,0 +1,40 @@
+<div class="init">
+
+  <h1>Initialisation du Jeu</h1>
+
+  <div class="game-about">
+    <!-- Game Initialization -->
+    <game-initialization [init]="init" (update-product)="initProducts($event)" (update-companie)="initCompanies($event)"></game-initialization>
+    <!-- All Game Scenario Save -->
+    <scenario-initialization (products)="initProducts($event)" (game)="initGame($event)"
+                             (capital)="initAllSocialCapital($event)" (machines)="initAllNumberMachine($event)"></scenario-initialization>
+  </div>
+
+  <!-- Define the companies ressources for the game -->
+  <div class="game-about">
+    <company-initialization [allCompanies]="allCompanies" [companies]=companies [changeNb]="allCompanies.socialCapital"></company-initialization>
+  </div>
+
+  <!-- Politics during the game -->
+  <div class="game-about">
+    <politics-initialization [politics]="politics"></politics-initialization>
+  </div>
+
+  <!-- Define the products composant -->
+  <div class="game-about">
+    <product-initialization [products]="products"></product-initialization>
+  </div>
+  <!-- Define the diversification of attraction for the clients -->
+  <div class="game-about">
+    <affinities-initialization [products]="products"></affinities-initialization>
+  </div>
+
+  <div class="game-about">
+    <studies-initialization [products]="products" [studies]="studies"></studies-initialization>
+  </div>
+
+  <div class="final">
+    <button type="button" (click)="createTheGame()">Lancer la Simulation</button>
+  </div>
+
+</div>
