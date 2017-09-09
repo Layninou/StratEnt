@@ -11,9 +11,9 @@ export class StudiesMarketComponent implements OnInit, OnChanges {
   @Input() company: any;
   @Input() periode: number;
 
-  private allTeams: any[];
-  private allProducts: any[];
-  private markets: any[];
+  allTeams: any[];
+  allProducts: any[];
+  markets: any[];
 
   constructor() {
   }

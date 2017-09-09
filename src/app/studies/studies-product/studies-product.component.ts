@@ -20,10 +20,10 @@ export class StudiesProductComponent implements OnInit, OnChanges {
   @Input() game: any;
   @Input() periode: number;
 
-  private allTeams: any[];
-  private allProducts: any[];
-  private productsChoices: any[];
-  private proprety: any[];
+  allTeams: any[];
+  allProducts: any[];
+  productsChoices: any[];
+  proprety: any[];
 
   constructor() {}
 

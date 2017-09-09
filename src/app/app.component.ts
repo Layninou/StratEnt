@@ -28,12 +28,12 @@ import { DbFirebaseService } from './firebase/db-firebase.service';
 })
 export class AppComponent{
 
-  private game: FirebaseListObservable<any[]>;
-  private companyList: FirebaseListObservable<any[]>;
-  private currentUser: firebase.User;
+  game: FirebaseListObservable<any[]>;
+  companyList: FirebaseListObservable<any[]>;
+  currentUser: firebase.User;
 
-  private syncGame: Game;
-  private protoGame: any[];
+  syncGame: Game;
+  protoGame: any[];
 
   round : number;
   authentification: boolean;

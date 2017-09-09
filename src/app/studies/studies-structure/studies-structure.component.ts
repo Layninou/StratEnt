@@ -10,10 +10,10 @@ export class StudiesStructureComponent implements OnInit, OnChanges {
   @Input() game: any;
   @Input() periode: number;
 
-  private allTeams: any[];
-  private allProducts: any[];
-  private keyList: any[];
-  private valueList: any[];
+  allTeams: any[];
+  allProducts: any[];
+  keyList: any[];
+  valueList: any[];
 
   constructor() {}
 

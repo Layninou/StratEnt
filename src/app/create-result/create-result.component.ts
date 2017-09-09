@@ -18,12 +18,12 @@ import { DbFirebaseService } from '../firebase/db-firebase.service';
 })
 export class CreateResultComponent implements OnInit, OnChanges {
 
-  private game: Game;
-  private round: number;
-  private disability: boolean;
-  private teamsName: any[];
-  private teamsBool: any;
-  private teamsKey: any[];
+  game: Game;
+  round: number;
+  disability: boolean;
+  teamsName: any[];
+  teamsBool: any;
+  teamsKey: any[];
 
   constructor( private rServ: ResultService, private dbLink: DbFirebaseService) {
     this.disability = true;

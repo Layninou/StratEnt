@@ -26,13 +26,13 @@ import { DECISION }     from '../constant/init-decision.const';
 export class CompanyComponent implements OnInit {
 
   //Component Output
-  private companyDecision: Decision;
+  companyDecision: Decision;
 
   //Test Attributs
-  private teamId: number;
-  private company: Company;
-  private employees: Employee[];
-  private currentUser: firebase.User;
+  teamId: number;
+  company: Company;
+  employees: Employee[];
+  currentUser: firebase.User;
   round: number;
 
   //Hire Fire

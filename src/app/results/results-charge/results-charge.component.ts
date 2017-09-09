@@ -4,6 +4,7 @@ import { Company }  from '../../objects/company';
 import { Product }    from '../../objects/product';
 import { Employee } from '../../objects/salary';
 import { Result }   from '../../objects/result';
+import { Charges }   from '../../objects/result/charges';
 
 //Service
 import { DecisionsService } from '../../service/decisions.service';
@@ -16,8 +17,8 @@ export class ResultsChargeComponent implements OnInit, OnChanges {
 
   @Input() company: any;
   @Input() periode: number;
-  charges: any[];
-  chargesTotal: any[];
+  charges: Charges[];
+  chargesTotal: Charges;
 
   sumCharges: number[];
   sumChargesTotal: number;

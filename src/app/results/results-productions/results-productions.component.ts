@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Company }  from '../../objects/company';
+import { Exploitation } from '../../objects/result/exploitation'
 
 @Component({
   selector: 'results-productions',
@@ -11,8 +12,8 @@ export class ResultsProductionsComponent implements OnInit, OnChanges {
 
   @Input() company: any;
   @Input() periode: number;
-  exploitations: any[];
-  exploitationTotal: any[];
+  exploitations: Exploitation[];
+  exploitationTotal: Exploitation;
 
   sumExploitations: number[];
   sumAllExploitations: number;

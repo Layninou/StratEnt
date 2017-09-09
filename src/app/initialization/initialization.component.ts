@@ -27,14 +27,14 @@ import { STUDIES } from '../constant/studies.const';
 })
 export class InitializationComponent implements OnInit {
 
-  private init: Initialization;
-  private game: Game;
-  private newGame: Game;
-  private products: Product[];
-  private companies: Company[];
-  private allCompanies: Company;
-  private politics: Politic;
-  private studies: Studies;
+  init: Initialization;
+  game: Game;
+  newGame: Game;
+  products: Product[];
+  companies: Company[];
+  allCompanies: Company;
+  politics: Politic;
+  studies: Studies;
 
   constructor( private initService: InitializationService, private dbLink: DbFirebaseService) {
 
