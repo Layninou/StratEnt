@@ -1,5 +1,9 @@
 <div class="companies">
 
+  <p>Compagnies</p>
+
+  <div class="all">
+
   <!-- All Companies -->
   <div>
     <!-- Company Labels -->
@@ -18,7 +22,7 @@
     <!-- Company Inputs -->
     <div class="company-all">
       <div>
-        <label>{{allCompanies.name}}</label>
+        <label *ngIf="allCompanies.name === 'All Company'">Toutes Les Compagnies</label>
       </div>
       <div>
         <input type="number" [(ngModel)]="allCompanies.socialCapital" (ngModelChange)="initAllSocialCapital()"/>
@@ -41,6 +45,8 @@
     <div>
       <input type="number" [(ngModel)]="company.nbMachine"/>
     </div>
+  </div>
+
   </div>
 
 </div>

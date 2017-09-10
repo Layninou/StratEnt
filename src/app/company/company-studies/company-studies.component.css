@@ -1,34 +1,61 @@
 .studies{
+  position: relative;
   margin: 5px;
   overflow: auto;
+  text-align: center;
 }
+
 
 .price-studies{
-  float: right;
-  margin-right: 100px;
+  margin: 5px;
 }
-
 .product-studies{
-  float: left;
-  border: 2px solid black;
-  border-radius: 12px;
-  padding: 10px 15px;
-  margin: 5px 10px;
-  width: 29.5%;
+  display: inline-block;
+  margin-right: 5px;
 }
 .concurrence-studies{
-  float: left;
-  border: 2px solid black;
-  border-radius: 12px;
-  padding: 10px 15px;
-  margin: 5px 10px;
-  width: 29.5%;
+  display: inline-block;
 }
 .evaluation-studies{
-  float: left;
-  border: 2px solid black;
+  display: inline-block;
+}
+
+/******************************************************************/
+
+.product-studies{
   border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
   padding: 10px 15px;
   margin: 5px 10px;
-  width: 29.5%;
+  text-align: left;
+  vertical-align: top;
+}
+.concurrence-studies{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  padding: 10px 15px;
+  margin: 5px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.evaluation-studies{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  padding: 10px 15px;
+  margin: 5px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+/******************************************************************/
+
+.price-studies{
+  font-size: 25px;
+}
+
+/******************************************************************/
+.product-studies div,
+.concurrence-studies div,
+.evaluation-studies div{
+  margin: 5px;
 }

@@ -1,20 +1,31 @@
 .affinities{
-  border: 2px solid black;
+  box-shadow: 1px 1px 5px #808080;
   border-radius: 12px;
-  padding: 10px 15px;
   margin: 5px;
   overflow: auto;
 
   font-size: 18px;
 }
 
+.affinities h3{
+  background: #808080;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+}
+
 .affinities-data{
   float: left;
+  padding: 10px 15px;
   width: 75%;
-  border-right: 2px solid black;
+  border-right: 0.5px solid #808080;
 }
 .affinities-graph{
   width: 20%;
+  padding: 10px 15px;
   float: left;
 }
 

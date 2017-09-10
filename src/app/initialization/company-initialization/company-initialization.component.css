@@ -1,11 +1,25 @@
 .companies{
-  border: solid 2px black;
-  border-radius: 12px;
-  padding: 10px 15px;
-  margin: 5px;
   overflow: auto;
 
+  box-shadow: 1px 1px 5px #808080;
+  border-radius: 12px;
+  margin: 5px;
+
   font-size: 18px;
+}
+
+.companies p{
+  background: #808080;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+}
+
+.all{
+  padding: 10px 15px;
 }
 
 /**************************/

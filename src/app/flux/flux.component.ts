@@ -21,6 +21,7 @@ export class FluxComponent implements OnInit {
   round: number;
   periode: number;
   listPeriode: any[];
+  boolPeriode: boolean[];
   company: Company;
 
   constructor(private route: ActivatedRoute, private router: Router,
@@ -33,15 +34,22 @@ export class FluxComponent implements OnInit {
       this.teamId = + param['id'];
       var teamShare = "team" + this.teamId;
       this.listPeriode = [];
+      this.boolPeriode = [];
       this.company = this.decision.updateCompany(this.teamId);
       this.round = this.decision.getRound() + 1;
       this.periode = this.decision.getRound() - 1;
-      Object.keys(this.company.result).map( (key) => { this.listPeriode.push( this.company.result[key] ); });
+      Object.keys(this.company.result).map( (key) => {
+        this.listPeriode.push( this.company.result[key] );
+        this.boolPeriode.push(false);
+      });
+      this.boolPeriode[this.boolPeriode.length - 1] = true;
     });
   }
 
   changePeriode(n: number): void{
     this.periode = n;
+    this.boolPeriode.map( (elt,i) => this.boolPeriode[i] = false);
+    this.boolPeriode[n] = true;
   }
 
 }

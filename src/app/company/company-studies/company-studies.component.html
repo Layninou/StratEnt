@@ -2,7 +2,7 @@
 
   <div class="product-studies">
     <div *ngFor="let product of products; let i = index">
-      <label><input type="checkbox" [(ngModel)]="studies.productStudies[i]" (change)="changement()">produit {{ i + 1 }}</label>
+      <label><input type="checkbox" [(ngModel)]="studies.productStudies[i]" (change)="changement()">Produit {{ i + 1 }}</label>
     </div>
   </div>
 
@@ -18,7 +18,7 @@
   </div>
 
   <div class="price-studies">
-    <div><p>Montant: {{ montant }}</p></div>
+    <div>Montant: {{ montant }}</div>
   </div>
 
 </div>

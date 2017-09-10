@@ -23,6 +23,7 @@ export class StudiesComponent implements OnInit {
   round: number;
   periode: number;
   listPeriode: any[];
+  boolPeriode: boolean[];
 
   company: Company;
   game: Game;
@@ -31,7 +32,6 @@ export class StudiesComponent implements OnInit {
               private decision: DecisionsService, private rServ: ResultService) {
     this.company = TEST_COMPANY;
     this.game = NULL_GAME;
-    this.listPeriode = [];
   }
 
   ngOnInit() {
@@ -39,15 +39,23 @@ export class StudiesComponent implements OnInit {
     this.route.params.subscribe( (param) =>{
       this.teamId = + param['id'];
       var teamShare = "team" + this.teamId;
+      this.listPeriode = [];
+      this.boolPeriode = [];
       this.company = this.decision.updateCompany(this.teamId);
       this.round = this.decision.getRound();
       this.periode = this.decision.getRound() - 1;
-      Object.keys(this.company.result).map( (key) => { this.listPeriode.push( this.company.result[key] ); });
+      Object.keys(this.company.result).map( (key) => {
+        this.listPeriode.push( this.company.result[key] );
+        this.boolPeriode.push(false);
+      });
+      this.boolPeriode[this.boolPeriode.length - 1] = true;
     });
   }
 
   changePeriode(n: number): void{
     this.periode = n;
+    this.boolPeriode.map( (elt,i) => this.boolPeriode[i] = false);
+    this.boolPeriode[n] = true;
   }
 
 }

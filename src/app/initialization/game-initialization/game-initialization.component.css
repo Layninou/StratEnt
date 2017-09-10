@@ -1,20 +1,32 @@
 .game{
-  float: left;
+  display: inline-block;
+  overflow: auto;
+  vertical-align: top;
   width: 40vw;
 
-  border: solid 2px black;
+  box-shadow: 1px 1px 5px #808080;
   border-radius: 12px;
-  padding: 10px 15px;
-  margin: 5px;
 
-  font-size: 18px;
+
+  text-align: center;
+  margin-bottom: 2.5px;
 }
 
-.game div{
+.game p{
+  background: #808080;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/*************************************************************/
+.choice div{
   display: inline-block;
+  margin: 2.5px;
+  text-align: left;
 }
-
-.label{
-  width: 180px;
-  padding-left: 5px;
+input{
+  text-align: right;
 }

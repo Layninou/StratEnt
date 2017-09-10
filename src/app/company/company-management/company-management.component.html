@@ -2,9 +2,13 @@
 
   <p>Employees</p>
 
-  <div class="employee" *ngFor="let employee of hireFire; let i = index">
+  <div class="management-type" *ngFor="let employee of hireFire; let i = index">
 
-    <p>{{ employee.type }}</p>
+    <p>
+      <span *ngIf="employee.type === 'Productor'">Producteur</span>
+      <span *ngIf="employee.type === 'Sellor'">Vendeur</span>
+      <span *ngIf="employee.type === 'Manager'">Cadre</span>
+    </p>
 
     <div class="management-label">
       <div><label>Embauche:</label></div>

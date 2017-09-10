@@ -1,17 +1,42 @@
 .clearing{
-  float: left;
-  border: 2px solid black;
+  display: inline-block;
   border-radius: 12px;
   padding: 10px 15px;
   margin: 5px;
   overflow: auto;
-  width: 46%;
+  width: 40%;
+  vertical-align: top;
 }
 
 .clearing-label{
-  float: left;
-  margin-left: 5px;
+  display: inline-block;
+  margin-right: 5px;
+  text-align: left;
 }
 .clearing-input{
-  float: left;
+  display: inline-block;
+}
+input{
+  text-align: right;
+}
+
+/****************************************************/
+
+.clearing{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  padding: 0px;
+  text-align: center;
+}
+.clearing p{
+  background: #808080;
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+/****************************************************/
+
+.clearing-label div,
+.clearing-input div{
+  margin: 5px;
 }

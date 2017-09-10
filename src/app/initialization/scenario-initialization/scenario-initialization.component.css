@@ -1,5 +1,53 @@
 .scenario{
+  display: inline-block;
   overflow: auto;
-  margin: 10px;
-  float: left;
+  vertical-align: top;
+  width: 30vw;
+
+  box-shadow: 1px 1px 5px #808080;
+  border-radius: 12px;
+
+  text-align: center;
+  margin-bottom: 2.5px;
+}
+
+.scenario p{
+  background: #808080;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.scenario-buttons{
+  margin: 5px;
+}
+
+/****************************************************************/
+
+button{
+  display: inline-block;
+  z-index: 2;
+  padding: 5px 25px;
+  margin: 5px;
+
+  background: none;
+  border: solid 2px #808080;
+  color: #808080;
+
+  font-size: 16px;
+  text-transform: uppercase;
+}
+ button:active{
+  color: white;
+  background-color: #808080;
+  transition: all 500ms ease-in-out;
+  transform: translate(2px,2px);
+}
+ button:hover{
+  color: white;
+  background-color: #808080;
+  transition: all 500ms ease-in-out;
+  transform: translate(2px,2px);
 }

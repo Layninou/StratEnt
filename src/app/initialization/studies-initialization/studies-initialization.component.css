@@ -1,8 +1,23 @@
 .studies{
-  padding: 10px 15px;
-  border: 2px solid black;
+  box-shadow: 1px 1px 5px #808080;
   border-radius: 12px;
   overflow: auto;
+  margin: 5px;
+}
+.all{
+  padding: 10px 15px;
+}
+.studies p{
+  background: #808080;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+}
+input{
+  text-align: right;
 }
 
 .product-studies{
@@ -10,7 +25,6 @@
   width: 30%;
   padding: 10px;
   margin: 5px;
-  border: 1px solid black;
   border-radius: 12px;
 }
 .product-studies div{
@@ -22,7 +36,6 @@
   width: 30%;
   padding: 10px;
   margin: 5px;
-  border: 1px solid black;
   border-radius: 12px;
 }
 .concurrence-studies div{
@@ -34,7 +47,6 @@
   width: 30%;
   padding: 10px;
   margin: 5px;
-  border: 1px solid black;
   border-radius: 12px;
 }
 .evaluation-studies div{

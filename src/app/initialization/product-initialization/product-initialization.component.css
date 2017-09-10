@@ -1,11 +1,26 @@
 .products{
-  border: solid 2px black;
+  box-shadow: 1px 1px 5px #808080;
   border-radius: 12px;
-  padding: 10px 15px;
   margin: 5px;
   overflow: auto;
 
   font-size: 18px;
+}
+
+.products p{
+  background: #808080;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+}
+.all{
+  padding: 10px 15px;
+}
+input{
+  text-align: right;
 }
 
 /***********************/

@@ -1,10 +1,9 @@
 .actif{
-  width: 90%;
-  /*height: 50vh;*/
-  padding: 10px 15px;
+  width: 98%;
 
-  border: 2px solid black;
+  box-shadow: 1px 1px 5px #808080;
   border-radius: 25px;
+  margin: 5px;
 
   display: grid;
   grid-template-columns: 100%;
@@ -20,26 +19,38 @@
 .block{
   overflow: auto;
   padding-left: 15px;
-  border: 1px solid black;
+  border: 0.5px solid black;
   border-radius: 15px;
 }
 
 .title{
   grid-area: title;
   height: 100%;
+
+  background: #808080;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 25px 25px 0px 0px;
+
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
 }
 .immobilised-actif{
   grid-area: immobilization;
   height: 100%;
+  margin: 10px 15px;
 }
 .ciculated-actif{
   grid-area: circulation;
   height: 100%;
+  margin: 10px 15px;
 }
 .total-actif{
   grid-area: total;
   text-align: center;
   border: none;
+  margin: 10px 15px;
 }
 
 /*********************************************************/

@@ -1,17 +1,41 @@
 .submission{
-  float: left;
-  border: 2px solid black;
+  display: inline-block;
   border-radius: 12px;
   padding: 10px 15px;
   margin: 5px;
   overflow: auto;
-  width: 46%;
+  width: 55%;
 }
 
 .submission-label{
-  float: left;
-  margin-left: 5px;
+  display: inline-block;
+  margin-right: 5px;
+  text-align: left;
 }
 .submission-input{
-  float: left;
+  display: inline-block;
+}
+input{
+  text-align: right;
+}
+
+/****************************************************/
+
+.submission{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  padding: 0px;
+  text-align: center;
+}
+.submission p{
+  background: #808080;
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+/****************************************************/
+
+.submission-label div,
+.submission-input div{
+  margin: 5px;
 }

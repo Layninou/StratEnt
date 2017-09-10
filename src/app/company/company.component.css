@@ -69,7 +69,7 @@ button{
   text-align: center;
 }
 
-/****************************GENERAL DECISION**************************/
+/****************************PRODUCT DECISION**************************/
 
 .product-decision{
   width: 98%;
@@ -77,6 +77,30 @@ button{
   text-align: center;
 }
 .product-decision div{
+  clear: both;
+  margin: 0px auto;
+}
+
+/****************************HUMAN DECISION**************************/
+
+.human-ressources-decision{
+
+}
+
+/****************************STUDIES DECISION**************************/
+
+.market-decision{
+
+}
+
+/****************************EXCEPTIONAL DECISION**************************/
+
+.exceptional-decision{
+  width: 98%;
+  display: inline-block;
+  text-align: center;
+}
+.exceptional-decision div{
   clear: both;
   margin: 0px auto;
 }

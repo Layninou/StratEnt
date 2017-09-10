@@ -1,17 +1,54 @@
 .management{
-  float: left;
-  border: 2px solid black;
+  display: inline-block;
   border-radius: 12px;
   padding: 10px 15px;
   margin: 5px;
   overflow: auto;
-  width: 46%;
+  width: 90%;
 }
 
+.management-type{
+  display: inline-block;
+  margin-right: 5px;
+  text-align: left;
+}
 .management-label{
-  float: left;
-  margin-left: 5px;
+  display: inline-block;
 }
 .management-input{
-  float: left;
+  display: inline-block;
+  margin-left: 5px;
+}
+input{
+  text-align: right;
+}
+
+/****************************************************/
+
+.management{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  padding: 0px;
+  text-align: center;
+}
+.management p{
+  background: #808080;
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+/****************************************************/
+.management-type{
+  margin: 5px 5px;
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+}
+.management-type p{
+  border-radius: 12px 12px 0px 0px;
+  padding: 5px 10px;
+}
+
+.management-label div,
+.management-input div{
+  margin: 5px;
 }

@@ -48,15 +48,15 @@ export const ORDINATIX: Game = {
             minimalTraining: 1.6,
             typeOfEmployees: [
               {
-                type: "Producteur",
+                type: "Productor",
                 salary: 45000
               },
               {
-                type: "Vendeur",
+                type: "Sellor",
                 salary: 54000
               },
               {
-                type: "Cadre",
+                type: "Manager",
                 salary: 105000
               }
             ],
