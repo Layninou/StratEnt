@@ -1,50 +1,69 @@
 .comptability{
-  overflow: auto;
-  border: 2px solid black;
-  border-radius: 12px;
-  width: 95%;
-  padding: 10px 15px;
-  margin: 10px 0px;
+  display: inline-block;
+  width: 99%;
 }
-
 .block{
-  margin-bottom: 10px;
-  overflow: auto;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+.comptability-label,
+.comptability-first,
+.comptability-second,
+.all-product{
+  display: inline-block;
+  vertical-align: top;
 }
 
 .comptability-label{
-  float: left;
-  width: 40%;
+  width: 30%;
+  text-align: left;
 }
-.comptability-label>div{
-  border: 0.5px solid black;
-  background-color: #808080;
-  height: 22px;
-  padding: 1px 5px;
-  margin-bottom: 1px;
-  width: 80%
+.comptability-first{
+  width: 50%;
 }
-
-.comptability-first,
 .comptability-second{
-  float: left;
-  width: 25%;
+  width: 10%;
+}
+/************************************/
+
+.comptability{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  overflow: auto;
+  padding: 0px;
+}
+.comptability p{
+  background: #808080;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0x;
+  font-size: 25px;
 }
 
-.comptability-first>div,
-.comptability-second>div{
-  text-align: right;
-  height: 22px;
-  padding: 1px 5px;
-  margin: 1px 5px;
+/************************************/
+.block{
+  margin-bottom: 5px;
 }
-
-.comptability-first>div:nth-child(3),
-.comptability-first>div:nth-child(4),
-.comptability-second>div{
+.comptability-label div,
+.comptability-first div,
+.comptability-second div{
+  padding: 2px 5px;
+  margin: 2.5px 10px;
   border: 0.5px solid black;
 }
 
-.comptability-second>div:nth-child(3){
-  border: none
+.comptability-label div{
+  background: #808080;
+}
+
+/************************************/
+.comptability-first div{
+  width: 20%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: 0px;
+}
+.space{
+  border: none !important;
 }

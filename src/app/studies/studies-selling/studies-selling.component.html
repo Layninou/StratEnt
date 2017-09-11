@@ -18,7 +18,7 @@
       Demande Potentielle
     </div>
     <div class="potential-result selling-result" *ngFor="let product of allProducts; let iProd = index">
-      {{ selling.potential[iProd] }}
+      {{ selling.potential[iProd] | roundAt0 }}
     </div>
   </div>
 

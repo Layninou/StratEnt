@@ -6,7 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class RoundAt2Pipe implements PipeTransform {
 
   transform(input: number): number {
-    return 0.01 * Math.round(input * 100);
+    var int = input * 100;
+    var roundat2 = Math.round(int);
+    var result = roundat2/100;
+    return result;
   }
 
 }

@@ -1,49 +1,77 @@
 .selling{
-  overflow: auto;
-  border: 2px solid black;
-  border-radius: 12px;
-  width: 95%;
-  padding: 10px 15px;
-  margin: 10px 0px;
+  display: inline-block;
+  width: 99%;
 }
-
-.selling>div>div:nth-child(1){
-  height: 25px;
+.block{
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+.selling-label,
+.selling-result,
+.selling-total,
+.all-product{
+  display: inline-block;
+  vertical-align: top;
 }
 
 .selling-label{
-  float: left;
-  width: 40%;
+  width: 30%;
+  text-align: left;
 }
-.selling-label>div{
-  border: 0.5px solid black;
-  background-color: #808080;
-  height: 22px;
-  padding: 1px 5px;
-  margin-bottom: 1px;
-  width: 80%
+.all-product{
+  width: 50%;
+}
+.selling-result{
+  width: 25%;
+}
+.selling-total{
+  width: 10%;
+}
+/************************************/
+
+.selling{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  overflow: auto;
+  padding: 0px;
+}
+.selling p{
+  background: #808080;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0x;
+  font-size: 25px;
 }
 
-.selling-label>div:nth-child(1){
+/************************************/
+.block{
+  margin-bottom: 5px;
+}
+.selling-label div,
+.selling-result div,
+.selling-total div{
+  padding: 2px 5px;
+  margin: 2.5px 10px;
+  border: 0.5px solid black;
+}
+
+.selling-label div{
+  background: #808080;
+}
+.selling-result div:nth-child(1),
+.selling-total div:nth-child(1){
+  background: #808080;
+}
+.selling-label div:nth-child(1){
   background: none;
   border: none;
 }
 
-.selling-result{
-  float: left;
-  width: 15%;
-}
-
-.selling-result>div{
+/************************************/
+.selling-result div{
   text-align: right;
-  border: 0.5px solid black;
-  height: 22px;
-  padding: 1px 5px;
-  margin: 1px 5px;
 }
-
-.selling-result>div:nth-child(1){
+.selling-result div:nth-child(1){
   text-align: center;
-  background-color: #808080;
-  border: none;
 }

@@ -1,61 +1,71 @@
 .productions{
-  overflow: auto;
-  border: 2px solid black;
-  border-radius: 12px;
-  width: 95%;
-  padding: 10px 15px;
-  margin: 10px 0px;
+  display: inline-block;
+  width: 99%;
 }
-
 .block{
-  overflow: auto;
-  margin-bottom: 10px;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
 }
-
-.productions>div>div>div:nth-child(1){
-  height: 25px;
+.productions-label,
+.productions-result,
+.productions-total,
+.all-product{
+  display: inline-block;
+  vertical-align: top;
 }
 
 .productions-label{
-  float: left;
-  width: 40%;
+  width: 30%;
+  text-align: left;
 }
-.productions-label>div{
-  border: 0.5px solid black;
-  background-color: #808080;
-  height: 22px;
-  padding: 1px 5px;
-  margin-bottom: 1px;
-  width: 80%
+.all-product{
+  width: 50%;
+}
+.productions-result{
+  width: 25%;
+}
+.productions-total{
+  width: 10%;
+}
+/************************************/
+
+.productions{
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #808080;
+  overflow: auto;
+  padding: 0px;
+}
+.productions p{
+  background: #808080;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0x;
+  font-size: 25px;
 }
 
-.productions-label>div:nth-child(1){
+/************************************/
+.block{
+  margin-bottom: 5px;
+}
+.productions-label div,
+.productions-result div,
+.productions-total div{
+  padding: 2px 5px;
+  margin: 2.5px 10px;
+  border: 0.5px solid black;
+}
+
+.productions-label div{
+  background: #808080;
+}
+.productions-result div:nth-child(1),
+.productions-total div:nth-child(1){
+  background: #808080;
+}
+.productions-label div:nth-child(1){
   background: none;
   border: none;
 }
 
-.productions-result{
-  float: left;
-  width: 10%;
-}
-
-.productions-total{
-  float: right;
-  width: 10%
-}
-
-.productions-result>div,
-.productions-total>div{
-  text-align: right;
-  border: 0.5px solid black;
-  height: 22px;
-  padding: 1px 5px;
-  margin: 1px 5px;
-}
-
-.productions-result>div:nth-child(1),
-.productions-total>div:nth-child(1){
-  text-align: center;
-  background-color: #808080;
-  border: none;
-}
+/************************************/

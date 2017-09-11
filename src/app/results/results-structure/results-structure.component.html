@@ -3,7 +3,7 @@
   <p>Structure de l'Entreprise</p>
 
   <div class="structure-label">
-    <div><label>   </label></div>
+    <div><label>&nbsp;</label></div>
     <div><label>Capacité productive (heures):</label></div>
     <div><label>Nombre de produits:</label></div>
     <div><label>Stock (en valeur):</label></div>
@@ -17,15 +17,15 @@
 
   <div class="structure-old-period">
     <div><label>Fin de période précédente</label></div>
-    <div>0.0</div>
-    <div>0.0</div>
-    <div>0</div>
-    <div>0</div>
-    <div>0</div>
-    <div>0</div>
-    <div>0</div>
-    <div>0</div>
-    <div>0</div>
+    <div>{{ oldStructure.capacityProduction }}</div>
+    <div>{{ oldStructure.numberProduct }}</div>
+    <div>{{ oldStructure.stockValue }}</div>
+    <div>{{ oldStructure.numberProductor }}</div>
+    <div>{{ oldStructure.numberSellor }}</div>
+    <div>{{ oldStructure.numberManager }}</div>
+    <div>{{ oldStructure.debtClient }}</div>
+    <div>{{ oldStructure.disturbed }}</div>
+    <div>{{ oldStructure.strike }}</div>
   </div>
 
   <div class="structure-new-period">

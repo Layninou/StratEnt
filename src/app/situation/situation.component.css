@@ -3,7 +3,9 @@
   overflow: auto;
   margin-bottom: 10px;
 }
-
+.situation-show{
+  margin-bottom: 12px;
+}
 .situation-show div{
   text-align: center;
 }
@@ -27,5 +29,33 @@
   width: 20px;
   height: 20px;
   border: 1px solid black;
+}
+
+/******************************************************************/
+
+h1,
+h3{
+  margin: 0px;
+}
+
+.flux-periode{
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+/******************************************************************/
+
+.periode-result div:hover{
   background: #808080;
+}
+.choosed{
+  background: #808080;
+}
+
+/******************************************************************/
+.periode{
+  margin-bottom: 10px;
+}
+.results{
+  margin-top: 10px;
 }

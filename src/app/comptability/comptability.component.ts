@@ -22,6 +22,8 @@ export class ComptabilityComponent implements OnInit {
   round: number;
   periode: number;
   listPeriode: any[];
+  boolPeriode: boolean[];
+
   company: Company;
   employeesTest: Employee[];
 
@@ -29,9 +31,9 @@ export class ComptabilityComponent implements OnInit {
               private decision: DecisionsService) {
     this.company = TEST_COMPANY;
     this.employeesTest =[
-      { type: "Producteur", salary: 0 },
-      { type: "Vendeur", salary: 0 },
-      { type: "Cadre", salary: 0 }
+      { type: "Productor", salary: 0 },
+      { type: "Sellor", salary: 0 },
+      { type: "Manager", salary: 0 }
     ];
   }
 
@@ -40,15 +42,22 @@ export class ComptabilityComponent implements OnInit {
       this.teamId = + param['id'];
       var teamShare = "team" + this.teamId;
       this.listPeriode = [];
+      this.boolPeriode = [];
       this.company = this.decision.updateCompany(this.teamId);
       this.round = this.decision.getRound() + 1;
       this.periode = this.decision.getRound() - 1;
-      Object.keys(this.company.result).map( (key) => { this.listPeriode.push( this.company.result[key] ); });
+      Object.keys(this.company.result).map( (key) => {
+        this.listPeriode.push( this.company.result[key] );
+        this.boolPeriode.push(false);
+      });
+      this.boolPeriode[this.boolPeriode.length - 1] = true;
     });
   }
 
   changePeriode(n: number): void{
     this.periode = n;
+    this.boolPeriode.map( (elt,i) => this.boolPeriode[i] = false);
+    this.boolPeriode[n] = true;
   }
 
 }

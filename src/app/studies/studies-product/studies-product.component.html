@@ -15,7 +15,11 @@
 
   <div class="choices" *ngFor="let choice of proprety; let iChoice = index">
     <div class="choices-name">
-      {{ choice }}
+      <span *ngIf="choice === 'price'">Prix</span>
+      <span *ngIf="choice === 'publicity'">Publicité</span>
+      <span *ngIf="choice === 'marketing'">Action Commercial</span>
+      <span *ngIf="choice === 'sellor'">Force de Vente</span>
+      <span *ngIf="choice === 'credit'">Credit</span>
     </div>
     <div class="choices-result" *ngFor="let team of allTeams; let iTeam= index">
       {{ productsChoices[iProd][iTeam][choice] }}

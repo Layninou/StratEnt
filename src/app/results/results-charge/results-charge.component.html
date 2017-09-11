@@ -1,11 +1,11 @@
 <div class="charge">
 
-  <p>Charges d'Exploitation</p>
+  <p class="title">Charges d'Exploitation</p>
 
   <div class="block">
 
     <div class="charge-label">
-      <div><label>   </label></div>
+      <div><label>&nbsp;</label></div>
 
       <div><label>Consommation matières</label></div>
       <div><label>Main d'oeuvre directe</label></div>
@@ -28,6 +28,8 @@
     </div>
 
     <!-- TODO: Service de résultats -->
+    <div class="all-product">
+
     <div class="charge-result" *ngFor="let product of company.companyProduct; let iProd = index">
       <div><label> Produit {{ iProd + 1 }}</label></div>
 
@@ -39,6 +41,8 @@
       <div><label> {{ charges[iProd].sellerLabour | roundAt2 }} </label></div>
       <div><label> {{ charges[iProd].stockCost | roundAt2 }} </label></div>
       <div><label> {{ charges[iProd].amortissementDot | roundAt2 }} </label></div>
+    </div>
+    
     </div>
 
     <div class="charge-total">
@@ -66,15 +70,19 @@
 
   </div>
 
-  <div class="block">
+  <div class="block final">
 
     <div class="charge-label">
-      <div><label></label></div>
+      <div><label>&nbsp;</label></div>
     </div>
+
+  <div class="all-product">
 
     <div class="charge-result" *ngFor="let product of company.companyProduct; let iProd = index">
       <div><label>{{ sumCharges[iProd] }}</label></div>
     </div>
+
+  </div>
 
     <div class="charge-total">
       <div><label>{{ sumChargesTotal }}</label></div>
