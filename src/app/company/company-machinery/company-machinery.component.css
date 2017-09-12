@@ -47,7 +47,17 @@ input{
 
 
 /****************************************/
-
+.hidden{
+  opacity: 0;
+}
+.exist-machine{
+  font-weight: bold;
+}
 .add-machine{
+  opacity: 1;
   color: green;
+}
+.del-machine{
+  opacity: 1;
+  color: red;
 }

@@ -12,7 +12,11 @@
     </div>
 
     <div class="machinery-input">
-      <div> TODO <label class="add-machine">+{{ machinery.buyMachine }}</label></div>
+      <div>
+        <label class="exist-machine">{{ machineNumber }}</label>
+        <label class ="hidden" [class.add-machine]="isVisible(machinery.buyMachine)">+ ( {{ machinery.buyMachine }} )</label>
+        <label class ="hidden" [class.del-machine]="isVisible(machinery.sellMachine)">- ( {{ machinery.sellMachine }} )</label>
+      </div>
       <div><input type="number" [(ngModel)]="machinery.buyMachine"   (change)="changement()" (keyup)="changement()"></div>
       <div><input type="number" [(ngModel)]="machinery.sellMachine"  (change)="changement()" (keyup)="changement()"></div>
       <div><input type="number" [(ngModel)]="machinery.maintenance"  (change)="changement()" (keyup)="changement()"></div>

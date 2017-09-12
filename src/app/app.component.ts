@@ -30,6 +30,7 @@ export class AppComponent{
 
   game: FirebaseListObservable<any[]>;
   companyList: FirebaseListObservable<any[]>;
+  boolCompany: boolean[];
   currentUser: firebase.User;
 
   syncGame: Game;
@@ -56,6 +57,8 @@ export class AppComponent{
 
     afAuth.authState.subscribe((user: firebase.User) => {
       this.currentUser = user;
+      this.boolCompany = [];
+
       if( user !== undefined) {
         if( user !== null) {
 
@@ -83,6 +86,8 @@ export class AppComponent{
             this.authentification = authBool;
           });
 
+          Object.keys(this.companyList).map( () => this.boolCompany.push(false));
+
         }
       }
 
@@ -105,6 +110,10 @@ export class AppComponent{
   shareGame(): void{
     this.syncGame = this.servResult.transformGame(this.protoGame);
     this.servResult.pushGame(this.syncGame);
+  }
+
+  toggleNav(i): void{
+    this.boolCompany[i] = !this.boolCompany[i];
   }
 
   testFire(): void{

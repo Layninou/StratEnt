@@ -21,7 +21,13 @@ import * as firebase from 'firebase/app'; // Do not import from 'firebase' as yo
 export class DecisionsService {
 
   @Output('hire-fire') hireFire: EventEmitter<any> = new EventEmitter<any>();
+  @Output('employees') employees: EventEmitter<any> = new EventEmitter<any>();
   private listHire: any;
+  private employeeCompany: any;
+  private listEmployee: any[];
+
+  @Output('machinery') machinery: EventEmitter<any> = new EventEmitter<any>();
+  private listMachinery: number[];
 
   private companyShared: Company;
   private roundGame: number;
@@ -31,7 +37,8 @@ export class DecisionsService {
 
   constructor(private dbLink: AngularFireDatabase, private afAuth: AngularFireAuth) {
 
-    this.listHire = { productor: 0, sellor: 0};
+    this.listHire = { productor: 0, sellor: 0, manager: 0};
+    this.employeeCompany = { productor: 0 , sellor: 0, manager: 0};
 
     afAuth.authState.subscribe((user: firebase.User) => {
 
@@ -42,9 +49,20 @@ export class DecisionsService {
 
           const companyList = this.dbLink.list( user.uid + '/teams');
           this.allCompany = [];
+          this.listMachinery = [];
+          this.listEmployee = [];
           companyList.subscribe( (snapshots) =>
           snapshots.map( (company) => {
+              var numberProductor = 10;
+              var numberSellor = 10;
+              var numberManager = 0;
               this.allCompany.push(company);
+              this.listMachinery.push(company.companyMachinery.length);
+              this.listEmployee.push({
+                productor: numberProductor,
+                sellor: numberSellor,
+                manager: numberManager
+              });
             })
           );
 
@@ -105,13 +123,52 @@ export class DecisionsService {
   }
 
   changeProductor(n: number){
-    this.listHire.productor = n;
+    this.listHire.productor = n - this.employeeCompany['productor'];
     this.changeHire(this.listHire);
   }
 
   changeSellor(n: number){
-    this.listHire.sellor = n;
+    this.listHire.sellor = n - this.employeeCompany['sellor'];
     this.changeHire(this.listHire);
   }
 
+  changeManager(n: number){
+    this.listHire.manager = n - this.employeeCompany['manager'];
+    this.changeHire(this.listHire);
+  }
+
+  setEmployee(index: number){
+    this.getProductor(index);
+    this.getSellor(index);
+    this.getManager(index);
+    this.employees.emit(this.listEmployee[index]);
+  }
+
+  getEmployee(): EventEmitter<any>{
+    return this.employees;
+  }
+
+  getProductor(index: number): number{
+    this.employeeCompany['productor'] = this.listEmployee[index]['productor'];
+    return this.listEmployee[index]['productor'];
+  }
+
+  getSellor(index: number): number{
+    this.employeeCompany['sellor'] = this.listEmployee[index]['sellor'];
+    return this.listEmployee[index]['sellor'];
+  }
+
+  getManager(index: number): number{
+    this.employeeCompany['manager'] = this.listEmployee[index]['manager'];
+    return this.listEmployee[index]['manager'];
+  }
+
+  //Machinery
+  getNumberMachine(): EventEmitter<any>{
+    return this.machinery;
+  }
+
+  setNumberMachine(index: number){
+    this.machinery.emit(this.listMachinery[index]);
+  }
 }

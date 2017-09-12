@@ -52,3 +52,19 @@ input{
 .management-input div{
   margin: 5px;
 }
+
+/****************************************/
+.hidden{
+  opacity: 0;
+}
+.already-employee{
+  font-weight: bold;
+}
+.add-employee{
+  opacity: 1;
+  color: green;
+}
+.del-employee{
+  opacity: 1;
+  color: red;
+}

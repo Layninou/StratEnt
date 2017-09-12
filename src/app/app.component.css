@@ -63,9 +63,6 @@ body, html{
   max-height: 70vh;
   overflow: auto;
 
-  /*background: #5ca1d4;*/
-  /*border: 1px solid;
-  border-radius: 15px;*/
   box-shadow: 1px 1px 3px #808080;
 }
 
@@ -100,4 +97,20 @@ nav a:hover {
 }
 .company-label{
   font-weight: bold;
+}
+
+/**************************************************************/
+.company-label{
+  cursor: grab;
+}
+.company-label:active{
+  cursor: grabbing;
+}
+.hide{
+  height: 0px;
+  font-size: 0px;
+}
+.seen{
+  height: auto;
+  font-size: auto;
 }

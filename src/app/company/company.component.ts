@@ -64,8 +64,11 @@ export class CompanyComponent implements OnInit {
      this.route.params.subscribe( (param) =>{
         this.teamId = + param['id'];
         var teamShare = "team" + this.teamId;
+
         this.company = this.decision.updateCompany(this.teamId);
         this.round = this.decision.getRound() + 1;
+        this.decision.setNumberMachine(this.teamId);
+        this.decision.setEmployee(this.teamId);
         this.companyDecision = DECISION;
 
         if(this.company.decision !== undefined){

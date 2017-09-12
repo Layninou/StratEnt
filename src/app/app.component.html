@@ -18,33 +18,39 @@
       <div class="label"> Companies: </div>
       <div class="companies-nav" *ngFor="let company of companyList | async; let i = index">
 
-        <label class="company-label">{{ company.name }}</label> <br>
+        <label class="company-label"
+               (click)="toggleNav(i)">{{ company.name }}</label> <br>
 
-        <a [routerLink]="['/choice', i]" (click)="shareCompanyAndRound(company)"> decision of {{ company.name }}</a> <br>
+        <div [class.hide]="!boolCompany[i]" [class.seen]="boolCompany[i]">
 
-        <a *ngIf="company.result"
-          [routerLink]="['/situation',i]"
-          (click)="shareCompanyAndRound(company)">
-          situation of {{ company.name }}
-        </a> <br>
+          <a [routerLink]="['/choice', i]"
+             (click)="shareCompanyAndRound(company)"> decision of {{ company.name }}</a> <br>
 
-        <a *ngIf="company.result"
-          [routerLink]="['/compatability',i]"
-          (click)="shareCompanyAndRound(company)">
-          comptability of {{ company.name }}
-        </a> <br>
+          <a *ngIf="company.result"
+            [routerLink]="['/situation',i]"
+            (click)="shareCompanyAndRound(company)">
+            situation of {{ company.name }}
+          </a> <br>
 
-        <a *ngIf="company.result"
-          [routerLink]="['/flux',i]"
-          (click)="shareCompanyAndRound(company)">
-          flux of {{ company.name }}
-        </a> <br>
+          <a *ngIf="company.result"
+            [routerLink]="['/compatability',i]"
+            (click)="shareCompanyAndRound(company)">
+            comptability of {{ company.name }}
+          </a> <br>
 
-        <a *ngIf="company.result"
-          [routerLink]="['/studies',i]"
-          (click)="shareCompanyAndRound(company)">
-          studies of {{ company.name }}
-        </a> <br>
+          <a *ngIf="company.result"
+            [routerLink]="['/flux',i]"
+            (click)="shareCompanyAndRound(company)">
+            flux of {{ company.name }}
+          </a> <br>
+
+          <a *ngIf="company.result"
+            [routerLink]="['/studies',i]"
+            (click)="shareCompanyAndRound(company)">
+            studies of {{ company.name }}
+          </a> <br>
+
+        </div>
 
       <br>
       </div>
