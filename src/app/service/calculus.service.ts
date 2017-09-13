@@ -5,11 +5,24 @@ import { Product }  from '../objects/product';
 import { Politic }  from '../objects/politic';
 import { Decision } from '../objects/decision';
 
+/*
+* This service manage all result calculus
+* @service
+* @author: layninou
+*/
 @Injectable()
 export class CalculusService {
 
   constructor() { }
 
+  /*
+  * create the result of debt by the credit give
+  * @param {number[]} turnover, it is the turnovers of a team
+  * @param {Decision} dec, the decision of a team
+  * @param {number} indexProduct, the product with compute about
+  * return {number} the debt of the client about this product
+  * @author: layninou
+  */
   calculDebt(turnover: number[], dec: Decision, indexProduct: number): number{
     var debt = 0;
     dec.marketingDecision.map( market => {
@@ -20,6 +33,14 @@ export class CalculusService {
     return Math.round(debt);
   }
 
+  /*
+  * create the result of machine affected in percent
+  * @param {Company} company, it is the team we compute about
+  * @param {Decision} dec, the decision of a team
+  * @param {number} indexProduct, the product with compute about
+  * return {number} the machine ercent about this product
+  * @author: layninou
+  */
   calculAffectedMachinePercent(company: Company, dec: Decision, indexProduct: number): number{
     var affected = 0;
     if ( company.companyMachinery.length == 0){
@@ -29,6 +50,15 @@ export class CalculusService {
     return affected;
   }
 
+  /*
+  * create the result of product possible per machine
+  * @param {Product} product, it is the product we compute about
+  * @param {Company} company, it is the team we compute about
+  * @param {Decision} dec, the decision of a team
+  * @param {number} index, the product with compute about
+  * return {number} the product possible per machine about this product
+  * @author: layninou
+  */
   calculProductPossibleMachine(product: Product, company: Company, dec: Decision, index: number): number{
     //TODO: redo to be specific about the machine use
     var production = 0;
@@ -38,37 +68,65 @@ export class CalculusService {
     return Math.round(production);
   }
 
+  /*
+  * create the result of product possible per productor
+  * @param {Politic} pol, the politic of the game
+  * @param {Decision} dec, the decision of a team
+  * @param {number} index, the product with compute about
+  * return {number} the product possible per productor about this product
+  * @author: layninou
+  */
   calculProductPossibleProductor(pol: Politic, dec: Decision, index: number): number{
     var production = 0;
     production = pol.productorProduction * dec.productionDecision.affectedProductor[index];
     return production;
   }
 
+  /*
+  * create the result of time to fabrique
+  * @param {Product} product, it is the product we compute about
+  * @param {Decision} dec, the decision of a team
+  * @param {number} index, the product with compute about
+  * return {number} the time of product about this product
+  * @author: layninou
+  */
   calculTotalFabricationTime(prod: Product, dec: Decision, index: number): number{
     var fabricationTime = 0;
     fabricationTime = dec.productionDecision.production[index] * prod.productTime;
     return fabricationTime;
   }
 
+  /*
+  * create the result of time per machine
+  * @param {Company} company, it is the team we compute about
+  * @param {Product} product, it is the product we compute about
+  * @param {Decision} dec, the decision of a team
+  * @param {number} index, the product with compute about
+  * return {number} the time of machine about this product
+  * @author: layninou
+  */
   calculUseMachine(company: Company, prod: Product, dec: Decision, index: number): number{
     if(this.calculProductPossibleMachine(prod, company, dec, index) === 0){
       return 0;
     }
     var percent = this.calculTotalFabricationTime(prod, dec, index) / (this.calculProductPossibleMachine(prod, company, dec, index) * prod.productTime);
-    // console.log("");
-    // console.log("fabrication temps total: " + this.calculTotalFabricationTime(prod, dec, index));
-    // console.log("production possible machine: " + this.calculProductPossibleMachine(prod, company, dec, index));
-    // console.log("");
-    // console.log("Overuse: " + percent);
     return percent;
   }
 
+  /*
+  * calcul of the overtime
+  * @param {Politic} pol, the politic of the game
+  * @param {Product} product, it is the product we compute about
+  * @param {Decision} dec, the decision of a team
+  * @param {number} index, the product with compute about
+  * return {number} the overtime about this product
+  * @author: layninou
+  */
   calculOvertime(pol: Politic, prod: Product, dec: Decision, index: number): number{
     if(this.calculProductPossibleProductor(pol, dec, index) === 0){
       return 0;
     }
     var percent = this.calculTotalFabricationTime(prod, dec, index) / this.calculProductPossibleProductor(pol, dec, index);
-    // console.log("OverTime: " + percent);
     return percent;
   }
 
