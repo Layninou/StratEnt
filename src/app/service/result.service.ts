@@ -27,6 +27,11 @@ import { CalculusService }     from '../service/calculus.service';
 //Firebase
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
+/*
+* This service manage all result without calculus
+* @service
+* @author: layninou
+*/
 @Injectable()
 export class ResultService {
 
@@ -112,7 +117,13 @@ export class ResultService {
     });
   }
 
-  //TODO: les autres evolutions
+  /*
+  * Exponential evolution of the product potential
+  * @param {number} evol, the potential selling
+  * @param {number} round, the round of the game
+  * return {number} return the effective selling
+  * @author: layninou
+  */
   exponentialEvolution(evol: number, round: number){
     for( var i = 0; i < round; i++){
       evol *= 1.1;
@@ -120,7 +131,51 @@ export class ResultService {
     return evol;
   }
 
+  /*
+  * Croissant/Decroissant evolution of the product potential
+  * @param {number} evol, the potential selling
+  * @param {number} round, the round of the game
+  * return {number} return the effective selling
+  * @author: layninou
+  */
+  croidecroiEvolution(evol: number, round: number){
+    for( var i = 0; i < round; i++){
+      evol += ((-1)^round) * (round * evol / 10);
+    }
+    return evol;
+  }
+
+  /*
+  * Random evolution of the product potential
+  * @param {number} evol, the potential selling
+  * @param {number} round, the round of the game
+  * return {number} return the effective selling
+  * @author: layninou
+  */
+  randomEvolution(evol: number, round: number){
+    for( var i = 0; i < round; i++){
+      evol *= 1 + Math.random();
+    }
+    return evol;
+  }
+
+  /*
+  * Random Croissant/Decroissant evolution of the product potential
+  * @param {number} evol, the potential selling
+  * @param {number} round, the round of the game
+  * return {number} return the effective selling
+  * @author: layninou
+  */
+  hardRandomEvolution(evol: number, round: number){
+    for( var i = 0; i < round; i++){
+      evol *= ((-1)^round) * (1 + Math.random() );
+    }
+    return evol;
+  }
+
+  //
   // Real Selling
+  //
 
   createRealPotential(theoricPot: number[]): number[]{
     var RealPot = [];
@@ -130,7 +185,9 @@ export class ResultService {
     return RealPot;
   }
 
+  //
   //Apply Model to Selling!
+  //
 
   initNumberTeam(game: Game): void{
     var nbTeams = 0;
@@ -158,10 +215,6 @@ export class ResultService {
     //We prepare all importante decision for the model
     var marketDecision = [];
     Object.keys(team.decision.marketingDecision).map( (key) => marketDecision.push(team.decision.marketingDecision[key]) );
-
-    // console.log(" ");
-    // console.log("That is the result for the team: " + team.name)
-    // console.log(marketDecision);
 
     marketDecision.map( (marketDec) => {
       if(marketDec.type === "price"){
@@ -743,21 +796,12 @@ export class ResultService {
 
   realProduction(company: Company, game: Game, indexProduct: number): number{
 
-    // console.log("")
-    // console.log("preparation de la production reel de l equipe: " + company.name);
-    // console.log("produit: " + indexProduct);
-
     var products = [];
     Object.keys(game.allProduct).map( key => products.push(game.allProduct[key]));
 
     var hypoProduction = company.decision.productionDecision.production[indexProduct];
     var possibleProductionMachine   = this.calculus.calculProductPossibleMachine(products[indexProduct], company, company.decision, indexProduct);
     var possibleProductionProductor = this.calculus.calculProductPossibleProductor(game.politic, company.decision, indexProduct);
-
-    // console.log("");
-    // console.log("production hypothetique: " + hypoProduction);
-    // console.log("production Machine possible: " + possibleProductionMachine);
-    // console.log("production Productor possible: " + possibleProductionProductor);
 
     const limitOvertime = 0.01 * (100 + game.politic.overtimePercent);
     var percentOvertime = this.calculus.calculOvertime(game.politic, company.companyProduct[indexProduct], company.decision, indexProduct);
@@ -792,12 +836,16 @@ export class ResultService {
   }
 
   normalSelling(production: number, buyer: number): number{
+    console.log("normal selling:");
     var sell = production - buyer;
+    console.log("sell:" + sell);
+    console.log("production:" + production);
+    console.log("buyer:" + buyer);
     if(sell <= 0){
-      return buyer;
+      return production;
     }
     if( sell > 0){
-      return production;
+      return buyer;
     }
   }
 
@@ -827,7 +875,11 @@ export class ResultService {
     var machinePercent = this.useMachinePercent(company, indexProduct);
     var overtime = this.overtime(game, company, indexProduct);
 
+    console.log("");
+    console.log("team : " + indexTeam);
+    console.log("produit : " + indexProduct);
     var selling = this.normalSelling(realProduction, buyer[indexTeam]);
+    console.log("Vente final : " + selling);
 
     var turnover = this.turnover(selling, company, indexProduct);
 

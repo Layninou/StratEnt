@@ -12,6 +12,11 @@ class Team{
   marketPart: number;
 }
 
+/*
+* This service create and manage the model of brands
+* @service
+* @author: layninou
+*/
 @Injectable()
 export class ModelizationService {
 
@@ -91,7 +96,11 @@ export class ModelizationService {
   }
 
   sellingForceBrandFunction(sellor: number, commission: number): number{
-    //No need to case 0 because it do not happen if there is no seller
+    if (sellor == 4) {
+      var force = 0;
+      console.log("result for selling forces " + force);
+      return force;
+    }
     if (sellor <= 4) {
       var force = ((4 / 10) + ( (4 / 10) * (commission / 100)));
       console.log("result for selling forces " + force);
@@ -223,6 +232,9 @@ export class ModelizationService {
     this.brands.map( (brand) => {
       attract += brand.brandWeight * this.brandFunction(brand.brandType);
     });
+    if(this.brandFunction("sellorForce") == 0){
+      attract = 0;
+    }
     console.log("Attract Force of the team: " + attract);
     return attract;
   }

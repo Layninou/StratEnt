@@ -365,6 +365,7 @@ export class CreateResultComponent implements OnInit, OnChanges {
     this.round++;
     Object.keys(this.teamsBool).map( (key) => this.teamsBool[key] = false);
     this.disability = !this.disability;
+
   }
 
 }
