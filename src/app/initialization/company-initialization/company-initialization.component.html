@@ -1,6 +1,6 @@
 <div class="companies">
 
-  <p>Compagnies</p>
+  <p>{{ lang.initCompaniesTitle }}</p>
 
   <div class="all">
 
@@ -9,20 +9,20 @@
     <!-- Company Labels -->
     <div class="company-labels">
       <div>
-        <label>Nom de l'entreprise: </label>
+        <label>{{ lang.initCompaniesName }} :</label>
       </div>
       <div>
-        <label>Capital Social: </label>
+        <label>{{ lang.initCompaniesCapital }} :</label>
       </div>
       <div>
-        <label>Nombre de Machine: </label>
+        <label>{{ lang.initCompaniesMachinery }} :</label>
       </div>
     </div>
 
     <!-- Company Inputs -->
     <div class="company-all">
       <div>
-        <label *ngIf="allCompanies.name === 'All Company'">Toutes Les Compagnies</label>
+        <label *ngIf="allCompanies.name === 'All Company'">{{ lang.initCompaniesAll }}</label>
       </div>
       <div>
         <input type="number" [(ngModel)]="allCompanies.socialCapital" (ngModelChange)="initAllSocialCapital()"/>
@@ -36,7 +36,7 @@
   <!-- Each Company -->
   <div class="company-each" *ngFor="let company of companies; let i = index">
     <div>
-      <input type="string" [(ngModel)]="company.name" placeholder="Entreprise {{i + 1}}"/>
+      <input type="string" [(ngModel)]="company.name" placeholder="{{lang.initCompaniesNamePlaceholder}} {{i + 1}}"/>
       <!-- <label>Entreprise {{i + 1}}</label> -->
     </div>
     <div>

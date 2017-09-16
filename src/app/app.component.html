@@ -5,17 +5,21 @@
     <h1>StratEnt</h1>
     <div *ngIf="authentification" class="session">
       <p>
-        <span>{{ user.author }}</span> session <span>{{ user.date }}</span> à <span>{{ user.place }}</span>
+        <span>{{ user.author }}</span> {{ language.principalHaderSession }} <span>{{ user.date }}</span> {{ language.principalHeaderPlace }} <span>{{ user.place }}</span>
       </p>
+    </div>
+    <div class="language">
+      <div class="fr" (click)="changeLang('fr')"><img src="../assets/flag_FR.png" alt="fr"></div>
+      <div class="en" (click)="changeLang('en')"><img src="../assets/flag_EN.png" alt="en"></div>
     </div>
 
   </div>
 
   <div *ngIf="authentification" class="navigator">
     <nav>
-      <a class="label" routerLink='/newproject'>Initialisation</a> <br> <br>
+      <a class="label" routerLink='/newproject'>{{ language.principalNavigatorIntroduction }}</a> <br> <br>
 
-      <div class="label"> Companies: </div>
+      <div class="label"> {{ language.principalNavigatorCompanies }} </div>
       <div class="companies-nav" *ngFor="let company of companyList | async; let i = index">
 
         <label class="company-label"
@@ -24,30 +28,30 @@
         <div [class.hide]="!boolCompany[i]" [class.seen]="boolCompany[i]">
 
           <a [routerLink]="['/choice', i]"
-             (click)="shareCompanyAndRound(company)"> decision of {{ company.name }}</a> <br>
+             (click)="shareCompanyAndRound(company)"> {{ language.principalNavigatorCompaniesDecision }}</a> <br>
 
           <a *ngIf="company.result"
             [routerLink]="['/situation',i]"
             (click)="shareCompanyAndRound(company)">
-            situation of {{ company.name }}
+            {{ language.principalNavigatorCompaniesSituation }}
           </a> <br>
 
           <a *ngIf="company.result"
             [routerLink]="['/compatability',i]"
             (click)="shareCompanyAndRound(company)">
-            comptability of {{ company.name }}
+            {{ language.principalNavigatorCompaniesComptability }}
           </a> <br>
 
           <a *ngIf="company.result"
             [routerLink]="['/flux',i]"
             (click)="shareCompanyAndRound(company)">
-            flux of {{ company.name }}
+            {{ language.principalNavigatorCompaniesFlux }}
           </a> <br>
 
           <a *ngIf="company.result"
             [routerLink]="['/studies',i]"
             (click)="shareCompanyAndRound(company)">
-            studies of {{ company.name }}
+            {{ language.principalNavigatorCompaniesStudies }}
           </a> <br>
 
         </div>
@@ -55,11 +59,11 @@
       <br>
       </div>
 
-      <div class="label"><a routerLink="/result" (click)="shareGame()">Change Periode</a></div>
+      <div class="label"><a routerLink="/result" (click)="shareGame()">{{ language.principalNavigatorPeriode }}</a></div>
 
       <br>
 
-      <div class="label"><a routerLink="/authentification" (click)="logOut()"> Log Out </a></div>
+      <div class="label"><a routerLink="/authentification" (click)="logOut()">{{ language.principalNavigatorLog }}</a></div>
 
     </nav>
   </div>

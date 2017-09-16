@@ -1,14 +1,14 @@
 <div class="game">
 
-  <p>Jeu</p>
+  <p>{{ lang.initGameTitle }}</p>
 
   <div class="choice">
-    <div class="label"><label>Nombre d'Entreprises</label></div>
+    <div class="label"><label>{{ lang.initGameCompany }}</label></div>
     <div class="input"><input type="number" [(ngModel)]="init.nbCompany" (change)="initCompanies()" (keyup)="initCompanies()"/></div>
   </div>
 
   <div class="choice">
-    <div class="label"><label>Nombre de Produits</label></div>
+    <div class="label"><label>{{ lang.initGameProduct }}</label></div>
     <div class="input"><input type="number" [(ngModel)]="init.nbProducts" (change)="initProducts()" (keyupe)="initProducts()"/></div>
   </div>
 

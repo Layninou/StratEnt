@@ -7,6 +7,11 @@ import { Game } from './objects/game';
 //Constant
 import { NULL_GAME } from './constant/init-Game.const';
 
+//Language
+import { FRENCH } from './language/languages/french.const'
+import { Language } from './language/language';
+import { LanguageService } from './language/language.service'
+
 //Firebase
 import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -33,6 +38,8 @@ export class AppComponent{
   boolCompany: boolean[];
   currentUser: firebase.User;
 
+  language: Language;
+
   syncGame: Game;
   protoGame: any[];
 
@@ -46,6 +53,7 @@ export class AppComponent{
               private servDecision: DecisionsService,
               private servAuth: AuthService,
               private servResult: ResultService,
+              private servLang: LanguageService,
               private afAuth: AngularFireAuth){
 
     var anyGame;
@@ -54,6 +62,11 @@ export class AppComponent{
     this.round = -1;
     this.syncGame = NULL_GAME;
     this.user = { author: "", place: "", date: ""};
+    this.language = FRENCH;
+
+    servLang.getLanguage().subscribe( (lang) => {
+      this.language = lang;
+    })
 
     afAuth.authState.subscribe((user: firebase.User) => {
       this.currentUser = user;
@@ -116,10 +129,14 @@ export class AppComponent{
     this.boolCompany[i] = !this.boolCompany[i];
   }
 
-  testFire(): void{
-    this.syncGame = this.servResult.transformGame(this.protoGame);
-    console.log(this.syncGame);
+  changeLang(lang: string): void{
+    this.servLang.setLanguage(lang);
   }
+
+  // testFire(): void{
+  //   this.syncGame = this.servResult.transformGame(this.protoGame);
+  //   console.log(this.syncGame);
+  // }
 
   logOut(): void{
     this.servAuth.logOutAuth();

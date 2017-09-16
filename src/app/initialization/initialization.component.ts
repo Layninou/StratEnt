@@ -10,6 +10,10 @@ import { Attract } from '../objects/attract';
 import { Studies } from '../objects/studies';
 import { Game }    from '../objects/game';
 
+//Language
+import { Language } from '../language/language'
+import { LanguageService } from '../language/language.service'
+
 //Service
 import { InitializationService } from '../service/initialization.service';
   //Firebase
@@ -30,13 +34,16 @@ export class InitializationComponent implements OnInit {
   init: Initialization;
   game: Game;
   newGame: Game;
+
+  lang: Language;
+
   products: Product[];
   companies: Company[];
   allCompanies: Company;
   politics: Politic;
   studies: Studies;
 
-  constructor( private initService: InitializationService, private dbLink: DbFirebaseService) {
+  constructor( private initService: InitializationService, private langServ: LanguageService, private dbLink: DbFirebaseService) {
 
     this.init = { nbCompany: 4, nbProducts: 2 };
        this.products   = this.initService.initProducts(this.init.nbProducts);
@@ -46,6 +53,9 @@ export class InitializationComponent implements OnInit {
 
     this.politics = POLITIC;
     this.studies = STUDIES;
+
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {

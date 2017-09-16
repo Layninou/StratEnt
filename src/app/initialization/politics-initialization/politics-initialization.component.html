@@ -1,45 +1,45 @@
 <div class="politics">
-  <h3>Politique de la simulation</h3>
+  <h3>{{ lang.initPoliticTitle }}</h3>
 
   <div class="all">
 
   <!-- Over Pricing -->
   <table class="box politics-overprice">
-    <p>Supplément</p>
+    <p>{{ lang.initPoliticSupp }}</p>
     <div>
-      <label>Heures Supplémentaire (%): </label>
+      <label>{{ lang.initPoliticSuppTime }} (%): </label>
       <span><input type="number" [(ngModel)]="politics.overtimePercent"/></span>
     </div>
     <div>
-      <label>Surcoût (%): </label>
+      <label>{{ lang.initPoliticSuppCost }} (%): </label>
       <span><input type="number" [(ngModel)]="politics.overheadPercent"/></span>
     </div>
   </table>
 
   <!-- Salary -->
   <table class="box politics-salary">
-    <p>Salaires</p>
+    <p>{{ lang.initPoliticSalary }}</p>
     <!-- Kind Of Employees and Prices -->
     <div class="employees">
       <div *ngFor="let employee of politics.typeOfEmployees">
-        <label *ngIf="employee.type === 'Productor' "> Producteur </label>
-        <label *ngIf="employee.type === 'Sellor' "> Vendeur </label>
-        <label *ngIf="employee.type === 'Manager' "> Cadre </label>
+        <label *ngIf="employee.type === 'Productor' "> {{ lang.initPoliticSalaryProductor }} </label>
+        <label *ngIf="employee.type === 'Sellor' "> {{ lang.initPoliticSalarySellor }} </label>
+        <label *ngIf="employee.type === 'Manager' "> {{ lang.initPoliticSalaryManager }} </label>
         <span><input type="number" [(ngModel)]="employee.salary"></span>
       </div>
     </div>
 
     <div class="cout-employees">
       <div>
-        <label>Coût du licenciement (%): </label>
+        <label>{{ lang.initPoliticSalaryFire }} (%): </label>
         <span><input type="number" [(ngModel)]="politics.firePricePourcent"/></span>
       </div>
       <div>
-        <label>Coût d'embauche (%): </label>
+        <label>{{ lang.initPoliticSalaryHire }} (%): </label>
         <span><input type="number" [(ngModel)]="politics.hirePricePourcent"/></span>
       </div>
       <div>
-        <label>Formation minimal (%): </label>
+        <label>{{ lang.initPoliticSalaryFormation }} (%): </label>
         <span><input type="number" [(ngModel)]="politics.minimalTraining"/></span>
       </div>
     </div>
@@ -48,40 +48,40 @@
   <!-- Finances -->
   <table class="box politics-finances">
 
-    <p>Taux(%)</p>
+    <p>{{ lang.initPoliticRate }}(%)</p>
     <div class="finances-part-one">
       <div>
-        <label>Emprunt: </label>
+        <label>{{ lang.initPoliticRateBorrowing }}: </label>
         <input type="number" [(ngModel)]="politics.loaning"/>
       </div>
       <div>
-        <label>Decouvert authorise: </label>
+        <label>{{ lang.initPoliticRateOverdraft }}: </label>
         <input type="number" [(ngModel)]="politics.overdraft"/>
       </div>
       <div>
-        <label>Decouvert non authorise: </label>
+        <label>{{ lang.initPoliticRateNonOverdraft }}: </label>
         <input type="number" [(ngModel)]="politics.unauthorizedOverdraft"/>
       </div>
       <div>
-        <label>Montant du decouvert authorise: </label>
+        <label>{{ lang.initPoliticRateAuthorization }}: </label>
         <input type="number" [(ngModel)]="politics.overdraftAmountPercent"/>
       </div>
     </div>
     <div class="finances-part-two">
       <div>
-        <label>Placement: </label>
+        <label>{{ lang.initPoliticRatePlacement }}: </label>
         <input type="number" [(ngModel)]="politics.placement"/>
       </div>
       <div>
-        <label>TVA: </label>
+        <label>{{ lang.initPoliticRateVAT }}: </label>
         <input type="number" [(ngModel)]="politics.VAT"/>
       </div>
       <div>
-        <label>Impots societes: </label>
+        <label>{{ lang.initPoliticRateTax }}: </label>
         <input type="number" [(ngModel)]="politics.IT"/>
       </div>
       <div>
-        <label>Credit fournisseurs: </label>
+        <label>{{ lang.initPoliticRateCredit }}: </label>
         <input type="number" [(ngModel)]="politics.supplierCredits"/>
       </div>
     </div>
@@ -92,30 +92,30 @@
 
     <!-- Production -->
     <div class="politics-production">
-      <p>Capacité de production</p>
+      <p>{{ lang.initPoliticCapacity }}</p>
       <div>
-        <label>Heure possible de production par machine: </label>
+        <label>{{ lang.initPoliticCapacityMachinery }}: </label>
         <input type="number" [(ngModel)]="politics.machineProduction"/>
       </div>
       <div>
-        <label>Heure possible de production par productif: </label>
+        <label>{{ lang.initPoliticCapacityProductor }}: </label>
         <input type="number" [(ngModel)]="politics.productorProduction"/>
       </div>
     </div>
 
     <!-- Machinery -->
     <div class="politics-machinery">
-      <p>Type de Machine</p>
+      <p>{{ lang.initPoliticMachinery }}</p>
       <div>
-        <label>Prix d'une machine: </label>
+        <label>{{ lang.initPoliticMachineryPrice }}: </label>
         <input type="number" [(ngModel)]="politics.machineryType.price"/>
       </div>
       <div>
-        <label>Amortissement d'une machine: </label>
+        <label>{{ lang.initPoliticMachineryAmortization }}: </label>
         <input type="number" [(ngModel)]="politics.machineryType.amortization"/>
       </div>
       <div>
-        <label>Prix de reparation d'une machine: </label>
+        <label>{{ lang.initPoliticMachineryReparation }}: </label>
         <input type="number" [(ngModel)]="politics.machineryType.repairPrice"/>
       </div>
     </div>
@@ -124,30 +124,30 @@
 
   <!-- General Cost -->
   <table class="box politics-cost">
-    <p>Coûts Généraux</p>
+    <p>{{ lang.initPoliticCost }}</p>
     <div class="politics-cost-one">
       <div>
-        <label>Prix du stockage: </label>
+        <label>{{ lang.initPoliticCostStockage }}: </label>
         <input type="number" [(ngModel)]="politics.generalCost.stockage"/>
       </div>
       <div>
-        <label>coûts fixes: </label>
+        <label>{{ lang.initPoliticCostFix }}: </label>
         <input type="number" [(ngModel)]="politics.generalCost.fixedPrice"/>
       </div>
     </div>
     <div class="politics-cost-two">
       <div>
-        <label>Tranches d'immovilisations: </label>
+        <label>{{ lang.initPoliticCostSlice }}: </label>
         <input type="number" [(ngModel)]="politics.generalCost.immbilizationTranche"/>
       </div>
       <div>
-        <label>Supplément de coûts fixe par tranche: </label>
+        <label>{{ lang.initPoliticCostSupp }}: </label>
         <input type="number" [(ngModel)]="politics.generalCost.supplementTranche"/>
       </div>
     </div>
     <div class="politics-cost-three">
       <div>
-        <label>Prix de l'assurance (%): </label>
+        <label>{{ lang.initPoliticCostInsurance }} (%): </label>
         <input type="number" [(ngModel)]="politics.generalCost.insurance"/>
       </div>
     </div>

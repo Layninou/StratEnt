@@ -1,36 +1,36 @@
 <div class="products">
 
-  <p>Produits</p>
+  <p>{{ lang.initProductTitle }}</p>
 
 <div class="all">
 
   <div class="products-label">
     <div>
-      <label>Produits: </label>
+      <label>{{ lang.initProductNames }}: </label>
     </div>
     <div>
-      <label>Potentiel de demande par entreprise: </label>
+      <label>{{ lang.initProductPotential }}: </label>
     </div>
     <div>
-      <label>Evolution de cette demande: </label>
+      <label>{{ lang.initProductEvolution }}: </label>
     </div>
     <div>
-      <label>Temps de production: </label>
+      <label>{{ lang.initProductTime }}: </label>
     </div>
     <div>
-      <label>Prix unitaire de production: </label>
+      <label>{{ lang.initProductCost }}: </label>
     </div>
     <div>
-      <label>Prix minimum de vente: </label>
+      <label>{{ lang.initProductMin }}: </label>
     </div>
     <div>
-      <label>Prix maximum de vente: </label>
+      <label>{{ lang.initProductMax }}: </label>
     </div>
   </div>
 
   <div class="products-output" *ngFor="let product of products; let i = index">
     <div>
-      <label>Produit {{i + 1}}</label>
+      <label>{{ lang.initProductName }} {{i + 1}}</label>
     </div>
     <div>
       <input type="number" [(ngModel)]="product.potentialSell"/>
@@ -38,10 +38,10 @@
     <div>
       <!-- <input type="string" [(ngModel)]="product.typeEvolution"/> -->
       <select [(ngModel)]="product.typeEvolution">
-        <option value="c/d">Croissante / Decroissante</option>
-        <option value="exponential">Exponnentielle</option>
-        <option value="random">Aléatoire</option>
-        <option value="totallyRandom">Totalement Aléatoire</option>
+        <option value="c/d">{{ lang.initProductEvolutionCD }}</option>
+        <option value="exponential">{{ lang.initProductEvolutionExpo }}</option>
+        <option value="random">{{ lang.initProductEvolutionRandom }}</option>
+        <option value="totallyRandom">{{ lang.initProductEvolutionTotalRandom }}</option>
       </select>
     </div>
     <div>

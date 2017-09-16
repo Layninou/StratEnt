@@ -1,7 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
+//Object
 import { Product } from '../../objects/product';
 
+//Service
 import { InitializationService } from '../../service/initialization.service';
 
 @Component({
@@ -12,8 +18,12 @@ import { InitializationService } from '../../service/initialization.service';
 export class AffinitiesInitializationComponent implements OnInit {
 
   @Input() products: Product[];
+  lang: Language;
 
-  constructor(private initService: InitializationService) { }
+  constructor(private initService: InitializationService, private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
   }

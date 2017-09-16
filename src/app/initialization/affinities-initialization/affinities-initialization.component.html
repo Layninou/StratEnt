@@ -1,19 +1,19 @@
 <div class="affinities" *ngFor="let product of products; let iProd = index">
 
-  <h3>Affinités du Produit {{ iProd + 1}}</h3>
+  <h3>{{ lang.initAffinityTitle }} {{ iProd + 1}}</h3>
 
   <div class="affinities-data">
     <p>
-      <label>Nombre de poids sensibilisant le consommateur: </label>
+      <label>{{ lang.initAffinityNumber }}: </label>
       <input type="number" [(ngModel)]="product.nbAttracts" (keyup)="initAttract(product.nbAttracts, product)">
     </p>
 
     <div class="affinities-type">
 
       <div class="affinities-label">
-        <div><label>Nom de l'affinité: </label></div>
-        <div><label>Importance (%): </label></div>
-        <div><label>Type: </label></div>
+        <div><label>{{ lang.initAffinityName }}: </label></div>
+        <div><label>{{ lang.initAffinityWeight }} (%): </label></div>
+        <div><label>{{ lang.initAffinityType }}: </label></div>
       </div>
 
       <div class="affinities-inputs" *ngFor="let attract of product.attracts">
@@ -21,19 +21,19 @@
         <div><input type="number" [(ngModel)]="attract.sensibility"></div>
         <!-- <div><input type="text" [(ngModel)]="attract.type"></div> -->
         <div><select [(ngModel)]="attract.type">
-          <option value="price">Prix</option>
-          <option value="publicity">Publicite</option>
-          <option value="research">Recherche et Developpement</option>
-          <option value="credit">Credit</option>
-          <option value="sellorForce">Force de Vente</option>
-          <option value="marketing">Action Commercial</option>
+          <option value="price">{{ lang.initAffinityTypePrice }}</option>
+          <option value="publicity">{{ lang.initAffinityTypePrice }}</option>
+          <option value="research">{{ lang.initAffinityTypeRD }}</option>
+          <option value="credit">{{ lang.initAffinityTypeCredit }}</option>
+          <option value="sellorForce">{{ lang.initAffinityTypeSellor }}</option>
+          <option value="marketing">{{ lang.initAffinityTypeMarketing }}</option>
         </select></div>
       </div>
 
     </div>
 
     <p>
-      <label>Fidelité :</label>
+      <label>{{ lang.initAffinityFidelity }} :</label>
       <input type="number" [(ngModel)]="product.loyalty">
     </p>
 
@@ -44,7 +44,7 @@
       <!-- Graph In The Canvas -->
     </div>
     <div>
-      <span>Fidelité : </span> {{ product.loyalty }}
+      <span>{{ lang.initAffinityFidelity }} : </span> {{ product.loyalty }}
     </div>
   </div>
 

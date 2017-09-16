@@ -67,6 +67,7 @@ import { ResultService }        from './service/result.service';
 import { ModelizationService }  from './service/modelization.service';
 import { CalculusService }      from './service/calculus.service';
 import { AuthService }          from './service/auth.service';
+import { LanguageService }      from './language/language.service'
 
 //Firebase Service
 import { AuthFirebaseService } from './firebase/auth-firebase.service';
@@ -144,6 +145,8 @@ import { RoundAt0Pipe } from './pipe/round-at-0.pipe';
     ModelizationService,
     CalculusService,
     AuthService,
+
+    LanguageService,
 
     AuthFirebaseService,
     DbFirebaseService

@@ -1,14 +1,19 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import { Game } from '../../objects/game';
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
 
-import { InitializationService } from '../../service/initialization.service';
+//Objects
+import { Game } from '../../objects/game';
 import { Product } from '../../objects/product';
 import { Company } from '../../objects/company';
 
+//Service
+import { InitializationService } from '../../service/initialization.service';
+
+//Constant
 import { ORDINATIX } from '../../scenario/Ordinatix';
-
-
 
 @Component({
   selector: 'scenario-initialization',
@@ -23,8 +28,11 @@ export class ScenarioInitializationComponent implements OnInit {
   @Output('machines') nbMachine: EventEmitter<number> = new EventEmitter<number>();
   products: Product[];
   game: Game;
+  lang: Language;
 
-  constructor(private initService: InitializationService) {
+  constructor(private initService: InitializationService, private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {

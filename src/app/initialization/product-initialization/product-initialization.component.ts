@@ -1,5 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
+//Object
 import { Product } from '../../objects/product';
 
 @Component({
@@ -10,8 +15,12 @@ import { Product } from '../../objects/product';
 export class ProductInitializationComponent implements OnInit {
 
   @Input() products: Product[];
+  lang: Language;
 
-  constructor() { }
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
   }

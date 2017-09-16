@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 
+//Language
+import { Language } from '../language/language';
+import { LanguageService } from '../language/language.service';
+
+//Objects
 import { Initialization } from '../objects/initialization';
 import { Machine }        from '../objects/machine';
 import { Product }        from '../objects/product';
@@ -12,7 +17,12 @@ import { Game }           from '../objects/game';
 @Injectable()
 export class InitializationService {
 
-  constructor() { }
+  lang: Language;
+
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   initProducts(nbProduct: number): Product[]{
     var products = [];
@@ -44,7 +54,7 @@ export class InitializationService {
 
   initCompaniesName(companies: Company[]): void{
     for(var i = 1; i < companies.length + 1; i++){
-      var name = "Entreprise " + (i);
+      var name = this.lang.initCompaniesNamePlaceholder + " " + (i);
       this.setCompanyName(name, companies[i - 1]);
     }
   }
