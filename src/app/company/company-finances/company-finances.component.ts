@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
 //Services
 import { DecisionsService } from '../../service/decisions.service';
 
@@ -15,8 +19,12 @@ export class CompanyFinancesComponent implements OnInit {
 
   @Input() financial : FinancialDecision;
   @Output("financial-decision") financialOutput: EventEmitter<FinancialDecision> = new EventEmitter<FinancialDecision>();
+  lang: Language;
 
-  constructor(private decision: DecisionsService) { }
+  constructor(private decision: DecisionsService, private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
   }

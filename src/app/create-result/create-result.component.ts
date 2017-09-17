@@ -1,5 +1,9 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
+//Language
+import { Language } from '../language/language';
+import { LanguageService } from '../language/language.service';
+
   //Object
 import { Game } from '../objects/game';
 
@@ -19,15 +23,19 @@ import { DbFirebaseService } from '../firebase/db-firebase.service';
 export class CreateResultComponent implements OnInit, OnChanges {
 
   game: Game;
+  lang: Language;
   round: number;
   disability: boolean;
   teamsName: any[];
   teamsBool: any;
   teamsKey: any[];
 
-  constructor( private rServ: ResultService, private dbLink: DbFirebaseService) {
+  constructor( private rServ: ResultService, private dbLink: DbFirebaseService, private langServ: LanguageService) {
     this.disability = true;
     this.game = NULL_GAME;
+
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {
@@ -36,6 +44,8 @@ export class CreateResultComponent implements OnInit, OnChanges {
     var numberDec  = 0;
     this.game = this.rServ.getGame();
     this.round = this.rServ.getRound();
+    console.log("the game in the change periode component");
+    console.log(this.game);
 
     //Teams
     this.teamsKey = [];
@@ -365,6 +375,13 @@ export class CreateResultComponent implements OnInit, OnChanges {
     this.round++;
     Object.keys(this.teamsBool).map( (key) => this.teamsBool[key] = false);
     this.disability = !this.disability;
+
+
+    //change the game
+    this.dbLink.changeGame();
+    this.rServ.nullTheDecision();
+    this.game = this.rServ.getGame();
+    console.log(this.game);
 
   }
 

@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
 //Services
 import { DecisionsService } from '../../service/decisions.service';
 
@@ -17,10 +21,14 @@ export class CompanyMachineryComponent implements OnInit {
   @Output('machinery') machineryOutput: EventEmitter<MachineFlux> = new EventEmitter<MachineFlux>();
   machineNumber: any;
 
-  constructor(private decision: DecisionsService) {
+  lang: Language;
+
+  constructor(private decision: DecisionsService, private langServ: LanguageService) {
     decision.getNumberMachine().subscribe( (machinery) => {
       this.machineNumber = machinery;
     });
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {

@@ -92,7 +92,6 @@ export class InitializationComponent implements OnInit {
 
       //the add round
     this.dbLink.setObjectInFirebaseWithUrl({ round: 0}, "");
-    this.dbLink.updateObjectInFirebaseWithUrl({ decision: 0}, "");
 
     teams.map( ( team, index) => {
       this.dbLink.setObjectInFirebaseWithUrl(team, "teams/team" + index);

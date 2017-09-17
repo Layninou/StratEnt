@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
+//Language
+import { Language } from '../language/language';
+import { LanguageService } from '../language/language.service';
+
+//Objects
 import { Company }  from '../objects/company';
 import { Employee } from '../objects/salary';
 import { Result }   from '../objects/result';
@@ -23,12 +28,13 @@ export class SituationComponent implements OnInit {
   periode: number;
   listPeriode: any[];
   boolPeriode: boolean[];
+  lang: Language;
 
   company: Company;
   employeesType: Employee[];
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private decision: DecisionsService) {
+              private decision: DecisionsService, private langServ: LanguageService) {
     this.company = TEST_COMPANY;
     this.employeesType =[
       { type: "Productor", salary: 0 },
@@ -36,6 +42,9 @@ export class SituationComponent implements OnInit {
       { type: "Manager", salary: 0 }
     ];
     this.listPeriode = [];
+
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {

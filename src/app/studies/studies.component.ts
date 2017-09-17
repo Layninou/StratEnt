@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
+//Language
+import { Language } from '../language/language';
+import { LanguageService } from '../language/language.service';
+
+//Objects
 import { Company }  from '../objects/company';
 import { Game } from '../objects/game';
 
@@ -27,11 +32,15 @@ export class StudiesComponent implements OnInit {
 
   company: Company;
   game: Game;
+  lang: Language;
 
-  constructor(private route: ActivatedRoute, private router: Router,
+  constructor(private route: ActivatedRoute, private router: Router, private langServ: LanguageService,
               private decision: DecisionsService, private rServ: ResultService) {
     this.company = TEST_COMPANY;
     this.game = NULL_GAME;
+
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {

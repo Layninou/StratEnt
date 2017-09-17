@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
 //Objects
 import { Product } from '../../objects/product';
 import { Attract } from '../../objects/attract';
@@ -19,8 +23,12 @@ export class CompanyMarketingComponent implements OnInit {
   @Input() marketings: Marketing[];
   @Output('marketings') marketingOutput: EventEmitter<Marketing[]> = new EventEmitter<Marketing[]>();
   largerAttracts: Product;
+  lang: Language;
 
-  constructor(private decServ: DecisionsService) { }
+  constructor(private decServ: DecisionsService, private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
     this.marketings = [];

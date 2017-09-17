@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
+//Object
 import { Product } from '../../objects/product';
 
 @Component({
@@ -12,8 +17,12 @@ export class CompanyClearingComponent implements OnInit {
   @Input() products: Product[];
   @Input() liquidation: number[];
   @Output('liquidation') liquidationOutput: EventEmitter<number[]> = new EventEmitter<number[]>();
+  lang: Language;
 
-  constructor() { }
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
     this.liquidation = [];

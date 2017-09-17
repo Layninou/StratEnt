@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
+
 // Object
 import { Employee } from '../../objects/salary';
 import { HireFire } from '../../objects/decision/hire-fire';
@@ -19,10 +24,14 @@ export class CompanyManagementComponent implements OnInit {
   @Output('hire-fire') hireFireOutput: EventEmitter<HireFire[]> = new EventEmitter<HireFire[]>();
   numberEmployee: any;
 
-  constructor(private decServ: DecisionsService) {
+  lang: Language;
+
+  constructor(private decServ: DecisionsService, private langServ: LanguageService) {
     this.decServ.getEmployee().subscribe( (employee) =>{
       this.numberEmployee = employee;
     });
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {

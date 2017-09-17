@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
+//Language
+import { Language } from '../language/language';
+import { LanguageService } from '../language/language.service';
+
+//Objects
 import { Company }  from '../objects/company';
 import { Employee } from '../objects/salary';
 import { Result }   from '../objects/result';
@@ -16,7 +21,7 @@ import { TEST_COMPANY } from '../constant/test.const';
   templateUrl: './comptability.component.html',
   styleUrls: ['./comptability.component.css']
 })
-export class ComptabilityComponent implements OnInit {
+export class ComptabilityComponent implements OnInit, OnChanges {
 
   teamId: number;
   round: number;
@@ -26,23 +31,28 @@ export class ComptabilityComponent implements OnInit {
 
   company: Company;
   employeesTest: Employee[];
+  lang: Language;
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private decision: DecisionsService) {
+              private decision: DecisionsService, private langServ: LanguageService) {
     this.company = TEST_COMPANY;
     this.employeesTest =[
       { type: "Productor", salary: 0 },
       { type: "Sellor", salary: 0 },
       { type: "Manager", salary: 0 }
     ];
+
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {
     this.route.params.subscribe( (param) =>{
       this.teamId = + param['id'];
-      var teamShare = "team" + this.teamId;
       this.listPeriode = [];
       this.boolPeriode = [];
+
+      var teamShare = "team" + this.teamId;
       this.company = this.decision.updateCompany(this.teamId);
       this.round = this.decision.getRound() + 1;
       this.periode = this.decision.getRound() - 1;
@@ -52,6 +62,10 @@ export class ComptabilityComponent implements OnInit {
       });
       this.boolPeriode[this.boolPeriode.length - 1] = true;
     });
+  }
+
+  ngOnChanges(change: SimpleChanges) {
+    this.ngOnInit();
   }
 
   changePeriode(n: number): void{

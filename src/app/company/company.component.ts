@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
+//Language
+import { Language } from '../language/language';
+import { LanguageService } from '../language/language.service';
+
 //Objects
 import { Company } from '../objects/company';
 import { Employee } from '../objects/salary';
@@ -34,12 +38,13 @@ export class CompanyComponent implements OnInit {
   employees: Employee[];
   currentUser: firebase.User;
   round: number;
+  lang: Language;
 
   //Hire Fire
   hire: any[];
   fire: any[];
 
-  constructor(private decision: DecisionsService, private dbLink: AngularFireDatabase,
+  constructor(private decision: DecisionsService, private dbLink: AngularFireDatabase, private langServ: LanguageService,
               private route: ActivatedRoute, private router: Router, private afAuth: AngularFireAuth) {
 
     this.round = 15;
@@ -53,6 +58,9 @@ export class CompanyComponent implements OnInit {
     this.companyDecision = DECISION;
     //TODO: regler le cas de non définition
     this.companyDecision.exceptionnal = { exceptionnalSelling: [], exceptionnalPrice: []};
+
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
 
     afAuth.authState.subscribe((user: firebase.User) => {
       this.currentUser = user;
@@ -98,9 +106,7 @@ export class CompanyComponent implements OnInit {
           //this.companyDecision.liquidation = this.company.decision.liquidation;
           //this.companyDecision.exceptionnal = this.company.decision.exceptionnal;
         }
-
-        console.log("decision de cette companie: ")
-        console.log(this.companyDecision);
+        
     });
   }
 
@@ -143,9 +149,8 @@ export class CompanyComponent implements OnInit {
 
   saveDecision(): void{
 
-    console.log("attention!, la decision n'est pas orienté par rapport à l'auteur masi est test")
-    console.log(this.company.name + " a decide:");
-    console.log(this.companyDecision);
+    // console.log(this.company.name + " a decide:");
+    // console.log(this.companyDecision);
 
     var pass = "team" + this.teamId;
 

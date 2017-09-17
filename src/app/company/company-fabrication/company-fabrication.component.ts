@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
 //Objects
 import { Production } from '../../objects/decision/production';
 import { Product } from '../../objects/product';
@@ -18,8 +22,12 @@ export class CompanyFabricationComponent implements OnInit {
   @Input() products: Product[];
   @Input() production: Production;
   @Output('production') productionOutput: EventEmitter<Production> = new EventEmitter<Production>();
+  lang: Language;
 
-  constructor(private decServ: DecisionsService) { }
+  constructor(private decServ: DecisionsService, private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   //TODO: si product non null, remplir avec ancienne data à l'init
   ngOnInit() {

@@ -133,11 +133,6 @@ export class AppComponent{
     this.servLang.setLanguage(lang);
   }
 
-  // testFire(): void{
-  //   this.syncGame = this.servResult.transformGame(this.protoGame);
-  //   console.log(this.syncGame);
-  // }
-
   logOut(): void{
     this.servAuth.logOutAuth();
   }

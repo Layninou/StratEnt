@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+//Game Service
+import { ResultService } from '../service/result.service';
+
 //Firebase
 import { AuthFirebaseService } from './auth-firebase.service';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
@@ -13,7 +16,7 @@ export class DbFirebaseService {
   private objectRef: FirebaseObjectObservable<any[]>;
   private currentUser: firebase.User;
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private rServ: ResultService) {
     afAuth.authState.subscribe((user: firebase.User) => {
       this.currentUser = user;
       if( user !== undefined){
@@ -90,6 +93,8 @@ export class DbFirebaseService {
     return this.db.list(url, { preserveSnapshot: true });
   }
 
+  //Game Service
+
   getRound(link: FirebaseListObservable<any[]>): any{
     link.subscribe( snapshots => {
       snapshots.map(
@@ -110,6 +115,13 @@ export class DbFirebaseService {
         }
       });
       return answer;
+    });
+  }
+
+  changeGame() {
+    this.objectRef = this.db.object( this.currentUser.uid );
+    this.objectRef.subscribe( (game) => {
+      return this.rServ.transformGame(game);
     });
   }
 

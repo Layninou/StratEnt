@@ -48,17 +48,21 @@ export class DecisionsService {
         if( user !== null) {
 
           const companyList = this.dbLink.list( user.uid + '/teams');
-          this.allCompany = [];
-          this.listMachinery = [];
-          this.listEmployee = [];
+
+          this.allCompany = new Array();
+          this.listMachinery = new Array();
+          this.listEmployee = new Array();
+
           companyList.subscribe( (snapshots) =>
-          snapshots.map( (company) => {
+          snapshots.map( (company, indexCompany) => {
+
+
               var numberProductor = 10;
               var numberSellor = 10;
               var numberManager = 0;
-              this.allCompany.push(company);
-              this.listMachinery.push(company.companyMachinery.length);
-              this.listEmployee.push({
+              this.allCompany[indexCompany] = (company);
+              this.listMachinery[indexCompany] = (company.companyMachinery.length);
+              this.listEmployee[indexCompany] = ({
                 productor: numberProductor,
                 sellor: numberSellor,
                 manager: numberManager

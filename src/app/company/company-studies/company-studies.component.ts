@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
+//Objects
 import {Product} from '../../objects/product';
 import { Studies } from '../../objects/decision/studies';
 
@@ -13,11 +18,15 @@ export class CompanyStudiesComponent implements OnInit {
   @Input() products: Product[];
   @Input() studies: Studies;
   @Output('studies') studiesOutput: EventEmitter<Studies> = new EventEmitter<Studies>();
+  lang: Language;
 
   //TODO:Regler question du montant
   montant: number;
 
-  constructor() { }
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
     this.montant = 0;

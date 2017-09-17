@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
+//Objects
 import { Product } from '../../objects/product';
 import { Exceptionnal } from '../../objects/decision/exceptionnal';
 
@@ -13,9 +18,11 @@ export class CompanySubmissionComponent implements OnInit {
   @Input() products: Product[];
   @Input() submission: Exceptionnal;
   @Output('submission') subOutput: EventEmitter<Exceptionnal> = new EventEmitter<Exceptionnal>();
+  lang: Language;
 
-  constructor() {
-    
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {

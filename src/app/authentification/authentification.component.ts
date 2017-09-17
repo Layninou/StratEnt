@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
+//Language
+import { Language } from '../language/language';
+import { LanguageService } from '../language/language.service';
+
+//Firebase
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -11,13 +16,17 @@ export class AuthentificationComponent implements OnInit, OnChanges {
 
   auth: boolean;
   users: any[];
+  lang: Language;
 
   author: string;
   place: string;
   date: string;
 
-  constructor( private authServ: AuthService) {
+  constructor( private authServ: AuthService, private langServ: LanguageService) {
     authServ.getUsers().subscribe( (users) => this.users = users );
+
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {
@@ -51,7 +60,7 @@ export class AuthentificationComponent implements OnInit, OnChanges {
         this.authServ.addUser(this.author,this.place,this.date);
       }, 700);
     }, 500);
-    
+
   }
 
   logAuth(user): void{

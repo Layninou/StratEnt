@@ -72,11 +72,16 @@ export class ResultService {
         syncGame[key] = protoGame[key];
       }
     })
+    this.game = syncGame;
     return syncGame;
   }
 
   getAllResult(): FirebaseListObservable<any[]>{
     return this.dbLink.list('/test/result');
+  }
+
+  nullTheDecision(): void{
+    this.game.nbDecision = undefined;
   }
 
   pushGame(game: Game): void{
