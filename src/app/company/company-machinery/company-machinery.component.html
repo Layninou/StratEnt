@@ -1,21 +1,21 @@
 <div class="machinery">
 
-  <p>Machinerie</p>
+  <p>{{ lang.decMachineryTitle }}</p>
 
   <div class="all">
 
     <div class="machinery-label">
-      <div><label>Nombre de Machine</label></div>
-      <div><label>Achats:</label></div>
-      <div><label>Ventes:</label></div>
-      <div><label>Entretien (%):</label></div>
+      <div><label>{{ lang.decMachineryNumber }}</label></div>
+      <div><label>{{ lang.decMachineryAdd }} :</label></div>
+      <div><label>{{ lang.decMachineryDel }} :</label></div>
+      <div><label>{{ lang.decMachineryRepair }} (%):</label></div>
     </div>
 
     <div class="machinery-input">
       <div>
         <label class="exist-machine">{{ machineNumber }}</label>
-        <label class ="hidden" [class.add-machine]="isVisible(machinery.buyMachine)">+ ( {{ machinery.buyMachine }} )</label>
-        <label class ="hidden" [class.del-machine]="isVisible(machinery.sellMachine)">- ( {{ machinery.sellMachine }} )</label>
+        <label class ="hidden" [class.add-machine]="isVisible(machinery.buyMachine)"> + ( {{ machinery.buyMachine }} )</label>
+        <label class ="hidden" [class.del-machine]="isVisible(machinery.sellMachine)"> - ( {{ machinery.sellMachine }} )</label>
       </div>
       <div><input type="number" [(ngModel)]="machinery.buyMachine"   (change)="changement()" (keyup)="changement()"></div>
       <div><input type="number" [(ngModel)]="machinery.sellMachine"  (change)="changement()" (keyup)="changement()"></div>

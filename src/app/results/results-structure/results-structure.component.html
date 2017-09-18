@@ -1,22 +1,22 @@
 <div class="structure">
 
-  <p>Structure de l'Entreprise</p>
+  <p>{{ lang.situStructureTitle }}</p>
 
   <div class="structure-label">
     <div><label>&nbsp;</label></div>
-    <div><label>Capacité productive (heures):</label></div>
-    <div><label>Nombre de produits:</label></div>
-    <div><label>Stock (en valeur):</label></div>
-    <div><label>Effectifs Producteurs :</label></div>
-    <div><label>Effectifs Vendeurs :</label></div>
-    <div><label>Effectifs Cadres :</label></div>
-    <div><label>Créances Clients:</label></div>
-    <div><label>Pannes:</label></div>
-    <div><label>Grèves:</label></div>
+    <div><label>{{ lang.situStructureCapacity }}</label></div>
+    <div><label>{{ lang.situStructureNumber }}</label></div>
+    <div><label>{{ lang.situStructureStorage }}</label></div>
+    <div><label>{{ lang.situStructureProductor }}</label></div>
+    <div><label>{{ lang.situStructureSellor }}</label></div>
+    <div><label>{{ lang.situStructureManager }}</label></div>
+    <div><label>{{ lang.situStructureDebt }}</label></div>
+    <div><label>{{ lang.situStructureBreakdown }}</label></div>
+    <div><label>{{ lang.situStructureStrike }}</label></div>
   </div>
 
   <div class="structure-old-period">
-    <div><label>Fin de période précédente</label></div>
+    <div><label>{{ lang.situStructureOldPeriode }}</label></div>
     <div>{{ oldStructure.capacityProduction }}</div>
     <div>{{ oldStructure.numberProduct }}</div>
     <div>{{ oldStructure.stockValue }}</div>
@@ -29,7 +29,7 @@
   </div>
 
   <div class="structure-new-period">
-    <div><label>Fin de période</label></div>
+    <div><label>{{ lang.situStructureNewPeriode }}</label></div>
     <div>{{ newStructure.capacityProduction }}</div>
     <div>{{ newStructure.numberProduct }}</div>
     <div>{{ newStructure.stockValue }}</div>

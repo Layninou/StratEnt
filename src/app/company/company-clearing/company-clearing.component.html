@@ -1,14 +1,14 @@
 <div class="clearing">
 
-  <p>Liquidation des stocks</p>
+  <p>{{ lang.decStorageTitle }}</p>
 
   <div class="clearing-label">
-    <div><label>Nom du Produit:</label></div>
-    <div><label>Quantité:</label></div>
+    <div><label>{{ lang.decStorageNames }} :</label></div>
+    <div><label>{{ lang.decStorageQuantity }} :</label></div>
   </div>
 
   <div class="clearing-input" *ngFor="let product of products; let i = index;">
-    <div><span>Produit {{ i + 1 }}</span></div>
+    <div><span>{{ lang.decStorageName }} {{ i + 1 }}</span></div>
     <div><input type="number" [(ngModel)]="liquidation[i]" (change)="changement()" (keyup)="changement()"></div>
   </div>
 

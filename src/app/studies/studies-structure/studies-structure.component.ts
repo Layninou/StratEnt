@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
 @Component({
   selector: 'studies-structure',
   templateUrl: './studies-structure.component.html',
@@ -15,7 +19,12 @@ export class StudiesStructureComponent implements OnInit, OnChanges {
   keyList: any[];
   valueList: any[];
 
-  constructor() {}
+  lang: Language;
+
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
     this.allTeams = [];

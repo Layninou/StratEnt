@@ -1,13 +1,13 @@
 <div class="management">
 
-  <p>Employees</p>
+  <p>{{ lang.decEmployeesTitle }}</p>
 
   <div class="management-type" *ngFor="let employee of hireFire; let i = index">
 
     <p>
       <!-- TYPE PRODUCTOR -->
       <span *ngIf="employee.type === 'Productor'">
-        Producteur :
+        {{ lang.decEmployeesProductor }} :
         <span class="already-employee"> {{ numberEmployee.productor }} </span>
         <span class ="hidden" [class.add-employee]="isVisible(employee.hire)"> + ( {{ employee.hire }} ) </span>
         <span class ="hidden" [class.del-employee]="isVisible(employee.fire)"> - ( {{ employee.fire }} ) </span>
@@ -15,7 +15,7 @@
 
       <!-- TYPE SELOOR -->
       <span *ngIf="employee.type === 'Sellor'">
-        Vendeur :
+        {{ lang.decEmployeesSellor }} :
       <span class="already-employee"> {{ numberEmployee.sellor }} </span>
       <span class ="hidden" [class.add-employee]="isVisible(employee.hire)"> + ( {{ employee.hire }} ) </span>
       <span class ="hidden" [class.del-employee]="isVisible(employee.fire)"> - ( {{ employee.fire }} ) </span>
@@ -23,7 +23,7 @@
 
       <!-- TYPE MANAGER -->
       <span *ngIf="employee.type === 'Manager'">
-        Cadre :
+        {{ lang.decEmployeesManager }} :
       <span class="already-employee"> {{ numberEmployee.manager }} </span>
       <span class ="hidden" [class.add-employee]="isVisible(employee.hire)"> + ( {{ employee.hire }} ) </span>
       <span class ="hidden" [class.del-employee]="isVisible(employee.fire)"> - ( {{ employee.fire }} ) </span>
@@ -31,8 +31,8 @@
     </p>
 
     <div class="management-label">
-      <div><label>Embauche:</label></div>
-      <div><label>Licenciement:</label></div>
+      <div><label>{{ lang.decEmployeesHire }} :</label></div>
+      <div><label>{{ lang.decEmployeesFire }} :</label></div>
     </div>
 
     <div class="management-input">

@@ -1,25 +1,25 @@
 <div class="selling">
 
-  <p>Résultats</p>
+  <p>{{ lang.situResultTitle }}</p>
 
   <div class="selling-label">
     <div><label>&nbsp;</label></div>
-    <div><label>Production Réelle</label></div>
-    <div><label>Taux d'utilisation machines</label></div>
-    <div><label>Heures supplémentaires(%)</label></div>
-    <div><label>Ventes normales (quantité)</label></div>
-    <div><label>Ventes soldées (quantité)</label></div>
-    <div><label>Ventes spéciales (quantité)</label></div>
-    <div><label>Chiffre d'affaires</label></div>
-    <div><label>Parts de marché (ventes normales %)</label></div>
-    <div><label>Stock (quantité)</label></div>
-    <div><label>Stock (valeur)</label></div>
+    <div><label>{{ lang.situResultRealProduction }}</label></div>
+    <div><label>{{ lang.situResultUseMachine }}</label></div>
+    <div><label>{{ lang.situResultOvertime }} (%)</label></div>
+    <div><label>{{ lang.situResultSellNormal }}</label></div>
+    <div><label>{{ lang.situResultSellStorage }}</label></div>
+    <div><label>{{ lang.situResultSellSpecial }}</label></div>
+    <div><label>{{ lang.situResultTurnover }}</label></div>
+    <div><label>{{ lang.situResultMarketPart }}</label></div>
+    <div><label>{{ lang.situResultStorageQuantity }}</label></div>
+    <div><label>{{ lang.situResultStorageValue }}</label></div>
     <!-- <div><label>Temps de fabrication futur</label></div> -->
   </div>
 
   <!-- TODO: Service de résultats -->
   <div class="selling-result" *ngFor="let product of company.companyProduct; let iProd = index">
-    <div><label> Produit {{ iProd + 1 }}</label></div>
+    <div><label> {{ lang.situResultName }} {{ iProd + 1 }}</label></div>
     <div><label> {{ situations[iProd].realProduction | roundAt2 }} </label></div>
     <div><label> {{ situations[iProd].machinePercent | roundAt0 }} </label></div>
     <div><label> {{ situations[iProd].overtime | roundAt2 }} </label></div>

@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
+//Objects
 import { Company }  from '../../objects/company';
 import { Situation } from '../../objects/result/situation';
 
@@ -13,8 +18,12 @@ export class ResultsSellingComponent implements OnInit, OnChanges {
   @Input() company: any;
   @Input() periode: number;
   situations: any[];
+  lang: Language;
 
-  constructor() { }
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
     this.situations = [];

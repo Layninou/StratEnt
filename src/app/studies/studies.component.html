@@ -1,14 +1,14 @@
 <div class="result studies">
 
   <div class="studies-show">
-    <div><h1>Studies</h1></div>
-    <div><h3>Entreprise:  {{ company.name }}</h3></div>
+    <div><h1>{{ lang.studiesTitle }}</h1></div>
+    <div><h3>{{ lang.studiesCompany }}:  {{ company.name }}</h3></div>
   </div>
 
   <div class="studies-periode">
 
     <div class="periode">
-      <h3>PERIODE: </h3>
+      <h3>{{ lang.studiesPeriode }}: </h3>
     </div>
     <div class="periode periode-result" *ngIf="company.result">
       <div *ngFor="let item of listPeriode; let i = index" (click)="changePeriode(i)" [class.choosed]="boolPeriode[i]">

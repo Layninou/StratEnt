@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
+//Objects
 import { Company }  from '../../objects/company';
 import { Exploitation } from '../../objects/result/exploitation'
 
@@ -17,8 +22,12 @@ export class ResultsProductionsComponent implements OnInit, OnChanges {
 
   sumExploitations: number[];
   sumAllExploitations: number;
+  lang: Language;
 
-  constructor() {}
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
 

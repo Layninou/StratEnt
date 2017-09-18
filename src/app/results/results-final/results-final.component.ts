@@ -1,5 +1,9 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
 @Component({
   selector: 'results-final',
   templateUrl: './results-final.component.html',
@@ -11,8 +15,12 @@ export class ResultsFinalComponent implements OnInit, OnChanges {
   @Input() periode: number;
   exceptional: any;
   exercice: any;
+  lang: Language;
 
-  constructor() { }
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
 

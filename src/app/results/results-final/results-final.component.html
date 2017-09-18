@@ -1,24 +1,24 @@
 <!-- TODO: Faire le service bon sens -->
 <div class="comptability">
 
-  <p>Résultats</p>
+  <p>{{ lang.comptaFinalTitle }}</p>
 
   <div class="block">
 
     <div class="comptability-label">
-      <div><label>Resultats d'Exploitation</label></div>
-      <div><label>Resultats Financiers</label></div>
-      <div><label>Resultats Exceptionnels (produits)</label></div>
-      <div><label>Resultats Exceptionnels (charges)</label></div>
-      <div><label>Remboursement assurances</label></div>
+      <div><label>{{ lang.comptaFinalExploitation }}</label></div>
+      <div><label>{{ lang.comptaFinalFinance }}</label></div>
+      <div><label>{{ lang.comptaFinalExceptionnalProduct }}</label></div>
+      <div><label>{{ lang.comptaFinalExceptionnalCharges }}</label></div>
+      <div><label>{{ lang.comptaFinalInsurance }}</label></div>
     </div>
 
     <div class="comptability-first">
       <!-- The Blank One are here to make the space -->
       <div class="space">&nbsp;</div>
       <div class="space">&nbsp;</div>
-      <div>{{ exceptional.exceptionalCharges }}</div>
-      <div>{{ exceptional.exceptionalProduct }}</div>
+      <div>{{ exceptional.exceptionalCharges | roundAt2 }}</div>
+      <div>{{ exceptional.exceptionalProduct | roundAt2 }}</div>
       <div class="space">&nbsp;</div>
     </div>
 
@@ -35,8 +35,8 @@
   <div class="block">
 
     <div class="comptability-label">
-      <div><label>Resultat avant impôt</label></div>
-      <div><label>impôt sur les societes</label></div>
+      <div><label>{{ lang.comptaFinalBeforeTax }}</label></div>
+      <div><label>{{ lang.comptaFinalTax }}</label></div>
     </div>
 
     <div class="comptability-first">
@@ -46,7 +46,7 @@
     </div>
 
     <div class="comptability-second">
-      <div>{{ exercice.exerciceNet }}</div>
+      <div>{{ exercice.exerciceNet | roundAt2 }}</div>
       <div>0</div> <!-- TODO: exercice finances -->
     </div>
 
@@ -55,7 +55,7 @@
   <div class="block">
 
     <div class="comptability-label">
-      <div><label>Resultats Net</label></div>
+      <div><label>{{ lang.comptaFinalNetResult }}</label></div>
     </div>
 
     <div class="comptability-first">
@@ -64,7 +64,7 @@
     </div>
 
     <div class="comptability-second">
-      <div>{{ exercice.exerciceWithTax }}</div>
+      <div>{{ exercice.exerciceWithTax | roundAt2 }}</div>
     </div>
 
   </div>

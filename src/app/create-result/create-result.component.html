@@ -6,9 +6,9 @@
     </div>
   </div>
 
-  <h1>Create Result</h1>
-  <h3>This simulation is at round: {{ round + 1}}</h3>
+  <h1>{{ lang.periodeChangeCreation }}</h1>
+  <h3>{{ lang.periodeChangeRound }}: {{ round + 1}}</h3>
 
-  <button [class.is-able]="!disability" [disabled]="disability" (click)="createResult()"> Change Round </button>
+  <button [class.is-able]="!disability" [disabled]="disability" (click)="createResult()"> {{ lang.periodeChangeButton }} </button>
 
 </div>

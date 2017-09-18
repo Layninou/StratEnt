@@ -1,7 +1,7 @@
 <div class="market">
 
   <div class="title">
-    Parts de marché des concurrents sur les produits
+    {{ lang.studiesMPTitle }}
   </div>
 
   <div class="teams">
@@ -15,7 +15,7 @@
 
   <div class="products" *ngFor="let product of allProducts; let iProd = index">
     <div class="products-name">
-      Product {{ iProd + 1 }}
+      {{ lang.studiesMPProd }} {{ iProd + 1 }}
     </div>
     <div class="products-result" *ngFor="let team of allTeams; let iTeam= index">
       {{ markets[iProd][iTeam][team.name] | roundAt2 }}

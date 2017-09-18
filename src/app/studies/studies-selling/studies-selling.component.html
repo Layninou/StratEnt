@@ -1,7 +1,7 @@
 <div class="market">
 
   <div class="title">
-    Situation du marché
+    {{ lang.studiesMSTitle }}
   </div>
 
   <div class="product">
@@ -9,13 +9,13 @@
       <span>&nbsp;</span>
     </div>
     <div class="product-name" *ngFor="let product of allProducts; let i = index">
-      <span>Product {{ i + 1 }}</span>
+      <span>{{ lang.studiesPerformanceNameProduct }} {{ i + 1 }}</span>
     </div>
   </div>
 
   <div class="potential selling">
     <div class="potential-name selling-name">
-      Demande Potentielle
+      {{ lang.studiesMSPotential }}
     </div>
     <div class="potential-result selling-result" *ngFor="let product of allProducts; let iProd = index">
       {{ selling.potential[iProd] | roundAt0 }}
@@ -24,7 +24,7 @@
 
   <div class="effective selling">
     <div class="effective-name selling-name">
-      Demande Effective
+      {{ lang.studiesMSEffective }}
     </div>
     <div class="effective-result selling-result" *ngFor="let product of allProducts; let iProd = index">
       {{ selling.effective[iProd] }}

@@ -49,7 +49,7 @@ body, html{
 }
 .language{
   width: 25%;
-  position: fixed;
+  position: absolute;
   margin: 12px;
   right: 0px;
   top: 0px;

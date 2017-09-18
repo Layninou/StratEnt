@@ -1,7 +1,7 @@
 <div class="market" *ngFor="let product of allProducts; let iProd = index">
 
   <div class="title">
-    Politiques des concurrents sur le produit {{ iProd + 1}}
+    {{ lang.studiesProductTitle }} {{ iProd + 1}}
   </div>
 
   <div class="teams">
@@ -15,11 +15,11 @@
 
   <div class="choices" *ngFor="let choice of proprety; let iChoice = index">
     <div class="choices-name">
-      <span *ngIf="choice === 'price'">Prix</span>
-      <span *ngIf="choice === 'publicity'">Publicité</span>
-      <span *ngIf="choice === 'marketing'">Action Commercial</span>
-      <span *ngIf="choice === 'sellor'">Force de Vente</span>
-      <span *ngIf="choice === 'credit'">Credit</span>
+      <span *ngIf="choice === 'price'">{{ lang.studiesProductPrice }}</span>
+      <span *ngIf="choice === 'publicity'">{{ lang.studiesProductPublicity }}</span>
+      <span *ngIf="choice === 'marketing'">{{ lang.studiesProductAction }}</span>
+      <span *ngIf="choice === 'sellor'">{{ lang.studiesProductSellor }}</span>
+      <span *ngIf="choice === 'credit'">{{ lang.studiesProductCredit }}</span>
     </div>
     <div class="choices-result" *ngFor="let team of allTeams; let iTeam= index">
       {{ productsChoices[iProd][iTeam][choice] }}

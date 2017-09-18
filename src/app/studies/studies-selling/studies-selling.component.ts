@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
 @Component({
   selector: 'studies-selling',
   templateUrl: './studies-selling.component.html',
@@ -14,8 +18,13 @@ export class StudiesSellingComponent implements OnInit, OnChanges {
   allProducts: any[];
   selling: any;
 
+  lang: Language;
 
-  constructor() {
+
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+
     this.selling = {
       potential: 0,
       effective: 0,

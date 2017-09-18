@@ -1,5 +1,9 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
+//Language
+import { Language } from '../../language/language';
+import { LanguageService } from '../../language/language.service';
+
 @Component({
   selector: 'liability',
   templateUrl: './liability.component.html',
@@ -10,8 +14,12 @@ export class LiabilityComponent implements OnInit, OnChanges {
   @Input() company: any;
   @Input() periode: number;
   liability: any;
+  lang: Language;
 
-  constructor() { }
+  constructor(private langServ: LanguageService) {
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
+  }
 
   ngOnInit() {
 

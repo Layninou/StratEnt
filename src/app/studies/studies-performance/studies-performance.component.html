@@ -1,7 +1,7 @@
 <div class="market">
 
   <div class="title">
-    Performance de l'entreprise
+    {{ lang.studiesPerformanceTitle }}
   </div>
 
   <div class="products">
@@ -9,7 +9,7 @@
       <span>&nbsp;</span>
     </div>
     <div class="products-name" *ngFor="let product of allProducts; let iProd = index">
-      <span>Product {{ iProd + 1 }}</span>
+      <span>{{ lang.studiesPerformanceNameProduct }} {{ iProd + 1 }}</span>
     </div>
   </div>
 
