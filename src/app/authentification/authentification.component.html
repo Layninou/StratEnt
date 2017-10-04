@@ -5,18 +5,18 @@
     <div class="form">
 
       <div class="form-block form-input">
-        <label>{{ lang.authName }}</label>
-        <input [(ngModel)]="author">
+        <label [class.label-up]="authorBool">{{ lang.authName }}</label>
+        <input [(ngModel)]="author" (focus)="animatorClick()" (focusout)="animatorUnclick()">
       </div>
 
       <div class="form-block form-input">
-        <label>{{ lang.authPlace }}</label>
-        <input [(ngModel)]="place">
+        <label [class.label-up]="placeBool">{{ lang.authPlace }}</label>
+        <input [(ngModel)]="place" (focus)="placeClick()"  (focusout)="placeUnclick()">
       </div>
 
       <div class="form-block form-input">
-        <label>{{ lang.authDate }}</label>
-        <input [(ngModel)]="date">
+        <label [class.label-up]="dateBool">{{ lang.authDate }}</label>
+        <input [(ngModel)]="date" (focus)="dateClick()"  (focusout)="dateUnclick()">
       </div>
 
     </div>

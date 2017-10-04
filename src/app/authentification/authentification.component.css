@@ -18,6 +18,9 @@
   margin: 5px 5px;
   text-align: center;
 }
+input{
+  text-align: center;
+}
 
 /************************* BUTTON ******************************/
 
@@ -48,7 +51,7 @@ input{
 
   border: none;
   border-bottom: solid 2px black;
-  padding-bottom: 7px;
+  padding-bottom: 0px;
 }
 input:focus, input:active{
   outline: none;
@@ -57,11 +60,12 @@ input:focus, input:active{
 .form-input{
   position: relative;
   padding: 0px 7px;
+  margin-bottom: 20px;
 }
 
 label{
   position: absolute;
-  top: 10px;
+  top: 0px;
   left: 50%;
   transform: translateX(-50%);
   font-style: italic;
@@ -71,7 +75,21 @@ label{
   transition: all 500ms ease-in-out;
 }
 
+
+/************************** Animation ******************************/
+
 /*TODO: reduire et monter les labels quand clic*/
+.label-up{
+  font-size: 10px;
+  transform: translate(-50%,-15px);
+}
+.label-up:hover{
+  font-size: 5px;
+}
+
+.transform{
+
+}
 
 /************************** Other Session ******************************/
 

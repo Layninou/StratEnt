@@ -22,11 +22,19 @@ export class AuthentificationComponent implements OnInit, OnChanges {
   place: string;
   date: string;
 
+  authorBool: boolean;
+  placeBool: boolean;
+  dateBool: boolean;
+
   constructor( private authServ: AuthService, private langServ: LanguageService) {
     authServ.getUsers().subscribe( (users) => this.users = users );
 
     this.lang = langServ.getLanguageConstructor();
     langServ.getLanguage().subscribe( lang => this.lang = lang );
+
+    this.authorBool = false;
+    this.placeBool = false;
+    this.dateBool= false;
   }
 
   ngOnInit() {
@@ -71,6 +79,35 @@ export class AuthentificationComponent implements OnInit, OnChanges {
       this.authServ.getAuth();
     }, 500);
 
+  }
+
+  //Animation Input
+
+  animatorClick(){
+    this.authorBool = true;
+  }
+  animatorUnclick(){
+    if( this.author === "" || this.author === undefined ){
+      this.authorBool = false;
+    }
+  }
+
+  placeClick(){
+    this.placeBool = true;
+  }
+  placeUnclick(){
+    if( this.place === "" || this.place === undefined ){
+      this.placeBool = false;
+    }
+  }
+
+  dateClick(){
+    this.dateBool = true;
+  }
+  dateUnclick(){
+    if( this.date === "" || this.date === undefined ){
+      this.dateBool = false;
+    }
   }
 
 }
