@@ -23,11 +23,11 @@
     </div>
 
     <div class="comptability-second">
-      <div>0</div>
-      <div>0</div> <!-- TODO: exercice finances -->
+      <div>{{ exercice.exerciceExercie | roundAt2 }}</div>
+      <div>{{ exercice.exerciceFinance | roundAt2 }}</div> <!-- TODO: exercice finances -->
       <div class="space">&nbsp;</div>
       <div>{{ exceptional.result }}</div>
-      <div>0</div>
+      <div>{{ exercice.exerciceRefund | roundAt2 }}</div>
     </div>
 
   </div>
@@ -47,7 +47,7 @@
 
     <div class="comptability-second">
       <div>{{ exercice.exerciceNet | roundAt2 }}</div>
-      <div>0</div> <!-- TODO: exercice finances -->
+      <div>{{ exercice.exerciceTax | roundAt2 }}</div> <!-- TODO: exercice finances -->
     </div>
 
   </div>

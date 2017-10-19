@@ -57,9 +57,18 @@ export class DecisionsService {
           snapshots.map( (company, indexCompany) => {
 
 
-              var numberProductor = 10;
-              var numberSellor = 10;
+              var numberProductor = 0;
+              var numberSellor = 0;
               var numberManager = 0;
+
+              if(company.employeesList !== undefined){                
+                company.employeesList.map( (employee, index) => {
+                  if( employee.type === "Productor"){ numberProductor++}
+                  if( employee.type === "Sellor"){ numberSellor++}
+                  if( employee.type === "Manager"){ numberManager++}
+                });
+              }
+
               this.allCompany[indexCompany] = (company);
               this.listMachinery[indexCompany] = (company.companyMachinery.length);
               this.listEmployee[indexCompany] = ({

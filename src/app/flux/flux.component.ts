@@ -4,6 +4,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 //Objects
 import { Company }  from '../objects/company';
 
+//Language
+import { Language } from '../language/language';
+import { LanguageService } from '../language/language.service';
+
 //Service
 import { DecisionsService } from '../service/decisions.service';
 
@@ -23,10 +27,13 @@ export class FluxComponent implements OnInit {
   listPeriode: any[];
   boolPeriode: boolean[];
   company: Company;
+  lang: Language;
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private decision: DecisionsService) {
+              private decision: DecisionsService, private langServ: LanguageService) {
     this.company = TEST_COMPANY;
+    this.lang = langServ.getLanguageConstructor();
+    langServ.getLanguage().subscribe( lang => this.lang = lang );
   }
 
   ngOnInit() {

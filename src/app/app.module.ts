@@ -76,6 +76,7 @@ import { DbFirebaseService }   from './firebase/db-firebase.service';
 //Pipe
 import { RoundAt2Pipe } from './pipe/round-at-2.pipe';
 import { RoundAt0Pipe } from './pipe/round-at-0.pipe';
+import { PercentPipe } from './pipe//percent.pipe';
 
 @NgModule({
   declarations: [
@@ -130,6 +131,7 @@ import { RoundAt0Pipe } from './pipe/round-at-0.pipe';
     //Pipe
     RoundAt2Pipe,
     RoundAt0Pipe,
+    PercentPipe,
   ],
   imports: [
     BrowserModule,

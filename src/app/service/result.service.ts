@@ -68,6 +68,9 @@ export class ResultService {
       if( key === "result"){
         syncGame.result = protoGame[key];
       }
+      if( key === "studies"){
+        syncGame.studies = protoGame[key];
+      }
       if( key.startsWith("result")){
         syncGame[key] = protoGame[key];
       }
@@ -203,7 +206,6 @@ export class ResultService {
   initBrand(prod: Product): void{
     var attracts = [];
     Object.keys(prod.attracts).map( (key) => attracts.push(prod.attracts[key]) );
-
     attracts.map( (attract) => {
       this.model.addBrand(attract.sensibility, attract.type);
     });
@@ -268,12 +270,13 @@ export class ResultService {
     this.marketPart = [];
     products.map( (prod, indexProd) => {
 
+
       var falseMarket = [];
 
       this.model.setBrandNull();
       this.model.setTeamNull();
 
-      //TODO: set MArket comme il faut
+      //TODO: set Market comme il faut (FIDELITY)
       this.model.setMarketNull();
 
       this.initBrand(products[indexProd]);
@@ -316,7 +319,7 @@ export class ResultService {
     var numberProductor = 0;
     if(company.employeesList !== undefined){
       Object.keys(company.employeesList).map( (key) => {
-        if( company.employeesList[key] === "Productor" ){
+        if( company.employeesList[key].type === "Productor" ){
           numberProductor++;
         }
       })
@@ -324,7 +327,6 @@ export class ResultService {
 
     var hireNumber = 0;
     var fireNumber = 0;
-    //TODO: You know whatToDo
     Object.keys(company.decision.hireFire).map( (key) =>{
       if(company.decision.hireFire[key].type === "Productor"){
         hireNumber = company.decision.hireFire[key].hire;
@@ -352,7 +354,7 @@ export class ResultService {
 
     if(company.employeesList !== undefined){
       Object.keys(company.employeesList).map( (key) => {
-        if( company.employeesList[key] === "Sellor" ){
+        if( company.employeesList[key].type === "Sellor" ){
           numberSellor++;
         }
       })
@@ -360,7 +362,6 @@ export class ResultService {
 
     var hireNumber = 0;
     var fireNumber = 0;
-    //TODO: You know whatToDo
     Object.keys(company.decision.hireFire).map( (key) =>{
       if(company.decision.hireFire[key].type === "Sellor"){
         hireNumber = company.decision.hireFire[key].hire;
@@ -388,7 +389,7 @@ export class ResultService {
 
     if(company.employeesList !== undefined){
       Object.keys(company.employeesList).map( (key) => {
-        if( company.employeesList[key] === "Manager" ){
+        if( company.employeesList[key].type === "Manager" ){
           numberManager++;
         }
       })
@@ -396,7 +397,6 @@ export class ResultService {
 
     var hireNumber = 0;
     var fireNumber = 0;
-    //TODO: You know whatToDo
     Object.keys(company.decision.hireFire).map( (key) =>{
       if(company.decision.hireFire[key].type === "Manager"){
         hireNumber = company.decision.hireFire[key].hire;
@@ -678,6 +678,11 @@ export class ResultService {
     return allChoices;
   }
 
+  /****************************************************************************/
+  /****************************************************************************/
+  /***********************  STRUCTURE  ****************************************/
+  /****************************************************************************/
+  /****************************************************************************/
   //Structure
 
   productionCapacity(company: Company): number{
@@ -699,46 +704,79 @@ export class ResultService {
     return nbProduct;
   }
 
-  getStockValue(): number{
-    return 0;
+  getStockValue(allExploitation: any[]): number{
+    var stock = allExploitation["stockValue"];
+    return stock;
   }
 
   getProductors(company: Company): number{
     var nbProductor = 0;
     if(company.employeesList !== undefined){
-      //TODO: You know!
       Object.keys(company.employeesList).map( (key) => {
         if( company.employeesList[key].type === "Productor" ){
           nbProductor++;
         }
       })
     }
+
+    var hireNumber = 0;
+    var fireNumber = 0;
+    Object.keys(company.decision.hireFire).map( (key) =>{
+      if(company.decision.hireFire[key].type === "Productor"){
+        hireNumber = company.decision.hireFire[key].hire;
+        fireNumber = company.decision.hireFire[key].fire;
+      }
+    });
+
+    nbProductor += hireNumber - fireNumber;
     return nbProductor;
   }
 
   getSellors(company: Company): number{
     var nbSellor = 0;
+
     if(company.employeesList !== undefined){
-      //TODO: You know!
       Object.keys(company.employeesList).map( (key) => {
         if( company.employeesList[key].type === "Sellor" ){
           nbSellor++;
         }
       })
     }
+
+    var hireNumber = 0;
+    var fireNumber = 0;
+    Object.keys(company.decision.hireFire).map( (key) =>{
+      if(company.decision.hireFire[key].type === "Sellor"){
+        hireNumber = company.decision.hireFire[key].hire;
+        fireNumber = company.decision.hireFire[key].fire;
+      }
+    });
+    nbSellor += hireNumber - fireNumber;
+
     return nbSellor;
   }
 
   getManager(company: Company): number{
     var nbManager = 0;
+
     if(company.employeesList !== undefined){
-      //TODO: You know!
       Object.keys(company.employeesList).map( (key) => {
         if( company.employeesList[key].type === "Manager" ){
           nbManager++;
         }
       })
     }
+
+    var hireNumber = 0;
+    var fireNumber = 0;
+    Object.keys(company.decision.hireFire).map( (key) =>{
+      if(company.decision.hireFire[key].type === "Manager"){
+        hireNumber = company.decision.hireFire[key].hire;
+        fireNumber = company.decision.hireFire[key].fire;
+      }
+    });
+    nbManager += hireNumber - fireNumber;
+
     return nbManager;
   }
 
@@ -747,24 +785,37 @@ export class ResultService {
   }
 
   //TODO
-  getDisturbed(): number{
-    return 0;
+  getDisturbed(sit: Situation[]): number{
+    var disturbed = 0;
+
+    //TODO: faire suivre par rapport au prochaine structure et mettre des problemes dessus. 
+    var situationMachine = 0;
+    sit.map( s => {
+      situationMachine += Math.round(s.machinePercent) - 100;
+    })
+    if( situationMachine < 100){
+      disturbed = situationMachine;
+    } else {
+      disturbed = 100;
+    }
+
+    return disturbed;
   }
 
   getStrikes(): number{
     return 0;
   }
 
-  makeOneStructure(company: Company, turnovers: number[]): Structure{
+  makeOneStructure(company: Company, sit: Situation[], turnovers: number[], allExploitation: any[]): Structure{
 
     var capacityProduction  = this.productionCapacity(company);
     var numberProduct       = this.numberProduct(company);
-    var stockValue          = this.getStockValue();
+    var stockValue          = this.getStockValue(allExploitation);
     var numberProductor     = this.getProductors(company);;
     var numberSellor        = this.getSellors(company);
     var numberManager       = this.getManager(company);
     var debtClient          = this.getDebt(company, turnovers);
-    var disturbed           = this.getDisturbed();
+    var disturbed           = this.getDisturbed(sit);
     var strike              = this.getStrikes();
 
     var structure : Structure = {
@@ -782,7 +833,7 @@ export class ResultService {
     return structure;
   }
 
-  makeAllStructure(game: Game, turnovers: any[]): any{
+  makeAllStructure(game: Game, sits: any[], turnovers: any[], allExploitationPack: any[]): any{
     var structures = [];
 
     var teams = [];
@@ -790,14 +841,18 @@ export class ResultService {
 
     teams.map( (team, indexTeam) => {
       var structure: Structure;
-      structure = this.makeOneStructure(team, turnovers[indexTeam]);
+      structure = this.makeOneStructure(team, sits[indexTeam], turnovers[indexTeam], allExploitationPack[indexTeam]);
       structures.push(structure);
     });
 
     return structures;
   }
 
-  //Situation
+/****************************************************************************/
+/****************************************************************************/
+/***********************  SITUATION  ****************************************/
+/****************************************************************************/
+/****************************************************************************/
 
   realProduction(company: Company, game: Game, indexProduct: number): number{
 
@@ -841,11 +896,8 @@ export class ResultService {
   }
 
   normalSelling(production: number, buyer: number): number{
-    console.log("normal selling:");
+
     var sell = production - buyer;
-    console.log("sell:" + sell);
-    console.log("production:" + production);
-    console.log("buyer:" + buyer);
     if(sell <= 0){
       return production;
     }
@@ -880,11 +932,7 @@ export class ResultService {
     var machinePercent = this.useMachinePercent(company, indexProduct);
     var overtime = this.overtime(game, company, indexProduct);
 
-    console.log("");
-    console.log("team : " + indexTeam);
-    console.log("produit : " + indexProduct);
     var selling = this.normalSelling(realProduction, buyer[indexTeam]);
-    console.log("Vente final : " + selling);
 
     var turnover = this.turnover(selling, company, indexProduct);
 
@@ -1016,7 +1064,11 @@ export class ResultService {
     return turnoversTeam;
   }
 
-
+  /****************************************************************************/
+  /****************************************************************************/
+  /*************************** STOCK ******************************************/
+  /****************************************************************************/
+  /****************************************************************************/
   //Stock
 
    valueSellStockProduct(company: Company, game: Game, stock: any, indexProduct: number): number {
@@ -1175,6 +1227,11 @@ export class ResultService {
     return allExploitations;
   }
 
+  /****************************************************************************/
+  /****************************************************************************/
+  /************************* CHARGES ******************************************/
+  /****************************************************************************/
+  /****************************************************************************/
   //Charges
 
   matterConsommation(company: Company, game: Game, indexProduct: number): number{
@@ -1245,18 +1302,42 @@ export class ResultService {
     return cost;
   }
 
-  //TODO !!!
-  stockageCost(): number{
-    return 0;
+  //TODO: error with stockage
+  stockageCostProduct(game: Game, company: Company, indexTeam: number, indexProduct: number): number{
+    var stock = 0;
+
+    if(game.round !== 0){
+      var period = game.round -1;
+      var result = "result" + period;
+      var team = "team" + indexTeam;
+      var oldStock = game[result][team].exploitation[indexProduct].stockValue;
+      stock += oldStock;
+    }
+
+    return stock;
   }
 
-  amortizementDotationProduct(company: Company, indexProduct: number): number{
-    var cost = this.calculus.calculProductDotationAmortissement(company, company.decision, indexProduct);
+  stockageCost(game: Game, company: Company, indexTeam: number): number{
+    var stock = 0;
+
+    if(game.round !== 0){
+      var period = game.round -1;
+      var result = "result" + period;
+      var team = "team" + indexTeam;
+      var oldStock = game[result][team].exploitation["all"].stockValue;
+      stock += oldStock;
+    }
+
+    return stock;
+  }
+
+  amortizementDotationProduct(game: Game, company: Company, indexProduct: number): number{
+    var cost = this.calculus.calculProductDotationAmortissement(company, game.politic, company.decision, indexProduct);
     return cost;
   }
 
-  amortizementDotation(company: Company): number{
-    var cost = this.calculus.calculAllDotationAmortissement(company);
+  amortizementDotation(game: Game, company: Company): number{
+    var cost = this.calculus.calculAllDotationAmortissement(company, game.politic);
     return cost;
   }
 
@@ -1290,21 +1371,86 @@ export class ResultService {
     return cost;
   }
 
-  //TODO !!!
-  reparationCost():number{
-    return 0;
+  reparationCost(game: Game, company: Company, disturbing: number):number{
+    var cost = 0;
+
+    var allReparationPrice = 0;
+    var percentReparation = 0.01 * company.decision.machineFlux.maintenance;
+    company.companyMachinery.map( (machine, index) => {
+      allReparationPrice += machine.repairPrice;
+    })
+
+    var percent = 0;
+    if( disturbing < percentReparation){
+      cost = allReparationPrice * disturbing;
+    }
+    if( disturbing >= percentReparation){
+      cost = allReparationPrice * percentReparation;
+    }
+    if( disturbing === 0){
+      cost = 0;
+    }
+
+    return cost;
   }
 
-  servicingCost(): number{
-    return 0;
+  servicingCost(game: Game, company: Company): number{
+    var cost = 0;
+
+    var allReparationPrice = 0;
+    var percentReparation = 0.01 * company.decision.machineFlux.maintenance;
+    company.companyMachinery.map( (machine, index) => {
+      allReparationPrice += machine.price / 10; //because i is a servicingCost
+    })
+    cost = allReparationPrice * percentReparation;
+
+    return cost;
   }
 
-  studiesCost(): number{
-    return 0;
+  studiesCost(game: Game, company: Company): number{
+    var cost = 0;
+
+    //TODO: permettre de choisir le nombre de round
+    if( game.round >= 2 ){
+
+      var allProductStudiesCost = [];
+      Object.keys(game.studies.productStudies).map( (key) => {
+        allProductStudiesCost.push(game.studies.productStudies[key]);
+      })
+      var booleanProductStudies = []
+      Object.keys(company.decision.studies.productStudies).map( (key) => {
+        booleanProductStudies.push(company.decision.studies.productStudies[key]);
+      })
+
+      if(company.decision.studies.finance === true){ cost += game.studies.concurrenceStudies }
+      if(company.decision.studies.market === true){ cost += game.studies.marketStudies }
+      if(company.decision.studies.performance === true){ cost += game.studies.performanceStudies }
+      if(company.decision.studies.situation === true){ cost += game.studies.sellingStudies }
+      if(company.decision.studies.result === true){ cost += game.studies.structureStudies }
+
+      //map
+      allProductStudiesCost.map( (costProd, index) => {
+        if(booleanProductStudies[index]){
+          cost += costProd;
+        }
+      })
+
+    }
+
+    return cost;
   }
 
-  assuranceCost(): number{
-    return 0;
+  assuranceCost(game: Game, company: Company): number{
+    var assurance = 0;
+
+    var taux = game.politic.generalCost.insurance;
+    var tools = 0;
+    company.companyMachinery.map( (machine) => {
+      tools += machine.price;
+    })
+    assurance = tools * ( 0.01 * taux);
+
+    return assurance;
   }
 
   makeOneProductCharges(buyer: number[], game: Game, company: Company, indexProduct: number, indexTeam: number): Charges{
@@ -1315,8 +1461,8 @@ export class ResultService {
     var publicityCost = this.publicityCostProduct(company.decision, indexProduct);
     var marketCost    = this.marketingCostProduct(company.decision, indexProduct);
     var sellorCost    = this.sellorCost(buyer, company, game, indexTeam, indexProduct);
-    var stockCost     = this.stockageCost();
-    var amortissement = this.amortizementDotationProduct(company, indexProduct);
+    var stockCost     = this.stockageCostProduct(game, company, indexTeam, indexProduct);
+    var amortissement = this.amortizementDotationProduct(game, company, indexProduct);
 
     var charges: Charges = {
       materialConso: matterConso,
@@ -1383,7 +1529,7 @@ export class ResultService {
     return teamCharges;
   }
 
-  makeOneTotalCharges(company: Company, game: Game, allCharges: any[]): Charges{
+  makeOneTotalCharges(company: Company, game: Game, allCharges: any[], indexTeam: number): Charges{
 
     //Old Part
     var materialConso    = 0;
@@ -1407,16 +1553,18 @@ export class ResultService {
     });
 
     //New Part
-    amortissementDot   = this.amortizementDotation(company);
+    stockCost          = this.stockageCost(game, company, indexTeam)
+    amortissementDot   = this.amortizementDotation(game, company);
     var managerCost    = this.costManager(company, game);
     var hireCost       = this.hireCost(company, game);
     var fireCost       = this.fireCost(company, game);
     var formationCost  = this.formationCost(company,game);
     var fixedCost      = this.fixedCost(company, game);
-    var reparationCost = this.reparationCost();
-    var servicingCost  = this.servicingCost();
-    var assuranceCost  = this.assuranceCost();
-    var studiesCost    = this.studiesCost();
+    var disturbing     = 0;
+    var reparationCost = this.reparationCost(game, company, disturbing);
+    var servicingCost  = this.servicingCost(game, company);
+    var assuranceCost  = this.assuranceCost(game, company);
+    var studiesCost    = this.studiesCost(game, company);
 
     //Final Part
     var totalCharges: Charges = {
@@ -1463,11 +1611,17 @@ export class ResultService {
     });
 
     teams.map( (team, index) => {
-      allCharges.push(this.makeOneTotalCharges(team, game, charges[index]));
+      allCharges.push(this.makeOneTotalCharges(team, game, charges[index], index));
     });
 
     return allCharges;
   }
+
+  /****************************************************************************/
+  /****************************************************************************/
+  /************************ Exceptional ***************************************/
+  /****************************************************************************/
+  /****************************************************************************/
 
   //Exceptional
 
@@ -1515,6 +1669,11 @@ export class ResultService {
   }
 
 
+  /****************************************************************************/
+  /****************************************************************************/
+  /************************ FINANCES ******************************************/
+  /****************************************************************************/
+  /****************************************************************************/
   //Finances
 
   getFinanceProducts(dec: Decision): number{
@@ -1559,7 +1718,11 @@ export class ResultService {
     return finances;
   }
 
-
+  /****************************************************************************/
+  /****************************************************************************/
+  /************************ EXERCICE ******************************************/
+  /****************************************************************************/
+  /****************************************************************************/
   //Excercice Result
   makeResultExploitation(allExploitation: Exploitation): number{
     var result = 0;
@@ -1577,28 +1740,55 @@ export class ResultService {
     return result;
   }
 
-  makeResultNet(resultExploitation: number, resultCharges: number): number{
+  makeResultExercice(resultExploitation: number, resultCharges: number): number{
     var result = resultExploitation - resultCharges;
     return result;
   }
 
-  makeResultWithTax(resultNet: number): number{
-    var result = 0;
+  makeResultNet(resultExercie: number, resultFinance: number, resultException: number, resultRefund: number): number{
+    var result = resultExercie + resultFinance + resultException + resultRefund;
     return result;
   }
 
-  //TODO: Do the Exceptional Selling ?
-  makeCompanyExercice(allExploitation: Exploitation, allCharges: Charges): Exercice{
+  makeResultTax(game: Game, resultNet: number): number{
+    var result = 0;
+    var tax = game.politic.IT;
+
+    if(resultNet > 0){
+      result = 0.01 * (resultNet * tax);
+    }
+
+    return result;
+  }
+
+  makeResultWithTax(resultNet: number, tax: number): number{
+    var result = 0;
+    result = resultNet - tax;
+    return result;
+  }
+
+  //TODO: Make the other result
+  makeCompanyExercice(game: Game,allExploitation: Exploitation, allCharges: Charges): Exercice{
 
     var resultExploitation = this.makeResultExploitation(allExploitation);
     var resultCharges      = this.makeResultCharges(allCharges);
-    var exerciceNet        = this.makeResultNet(resultExploitation,resultCharges);
-    var exerciceWithTax    = this.makeResultWithTax(exerciceNet);
+    var resultExercice     = this.makeResultExercice(resultExploitation,resultCharges);
+    var exerciceFinance    = 0;
+    var exerciceException  = 0;
+    var exerciceRefund     = 0;
+    var exerciceNet        = this.makeResultNet(resultExercice, exerciceFinance, exerciceException, exerciceRefund);
+    var exerciceTaxes      = this.makeResultTax(game, exerciceNet);
+    var exerciceWithTax    = this.makeResultWithTax(exerciceNet, exerciceTaxes);
 
     var exercice: Exercice = {
       resultExploitation: resultExploitation,
       resultCharges: resultCharges,
+      exerciceExercie: resultExercice,
+      exerciceFinance: exerciceFinance,
+      exerciceException: exerciceException,
+      exerciceRefund: exerciceRefund,
       exerciceNet: exerciceNet,
+      exerciceTax: exerciceTaxes,
       exerciceWithTax: exerciceWithTax
     };
 
@@ -1612,40 +1802,70 @@ export class ResultService {
     Object.keys(game.teams).map( key => teams.push(game.teams[key]));
 
     teams.map( (team, indexTeam) => {
-      exercices.push(this.makeCompanyExercice(allExploitation[indexTeam],allCharges[indexTeam]));
+      exercices.push(this.makeCompanyExercice(game, allExploitation[indexTeam],allCharges[indexTeam]));
     });
 
     return exercices;
   }
 
+  /****************************************************************************/
+  /****************************************************************************/
+  /*************************   FLUX  ******************************************/
+  /****************************************************************************/
+  /****************************************************************************/
   //Flux
 
     //Immobilization
   //TODO !!!
-  getFluxToolsValue(): number{
+  getFluxToolsValue(company: Company): number{
     var tools = 0;
+
+    var machinery = [];
+    Object.keys(company.companyMachinery).map( (key) => {
+      machinery.push(company.companyMachinery[key]);
+    });
+    machinery.map((machine) => {
+      tools += machine.price;
+    })
+
     return tools;
   }
 
-  getFluxAmortizationValue(): number{
+  getFluxAmortizationValue(game: Game, companyIndex: number, toolsValue: number): number{
     var amortization = 0;
+
+    if(game.round !== 0){
+      var round = "result" + (game.round - 1);
+      var company = "team" + companyIndex;
+      var oldAmort = game[round][company].flux.amortizement;
+      amortization += oldAmort;
+    }
+
+    //Not Good
+    var amortDivisor = game.politic.machineryType.amortization;
+    //TODO: Change Amortissment for all machinery
+    amortization += toolsValue / amortDivisor;
+
     return amortization;
   }
 
   makeImmobilization(tools: number, amortissement: number): number{
     var immobilization = 0;
+    immobilization = tools - amortissement;
     return immobilization;
   }
 
     //Ciculization
 
-  getFluxStockValue(): number{
+  getFluxStockValue(allExploitationPack: any[], companyIndex: number): number{
     var stock = 0;
+    stock = allExploitationPack[companyIndex].stockValue;
     return stock;
   }
 
-  getFluxClientsDebt(): number{
+  getFluxClientsDebt(structuresPack: any[], companyIndex: number): number{
     var client = 0;
+    client += structuresPack[companyIndex].debtClient;
     return client;
   }
 
@@ -1656,13 +1876,15 @@ export class ResultService {
 
   makeCirculization(stock: number, client: number, bank: number): number{
     var circulization = 0;
+    circulization = stock + client + bank;
     return circulization;
   }
 
     //Own Ressources
 
-  getFluxSocialCapital(): number{
+  getFluxSocialCapital(company: Company): number{
     var social = 0;
+    social = company.socialCapital;
     return social;
   }
 
@@ -1671,13 +1893,15 @@ export class ResultService {
     return reserve;
   }
 
-  getFluxExercice(): number{
+  getFluxExercice(exo: Exercice): number{
     var exercice = 0;
+    exercice = exo.exerciceWithTax;
     return exercice;
   }
 
   makeOwnRessources(social: number, reserve: number, exercice: number): number{
     var own = 0;
+    own = social + reserve + exercice;
     return own;
   }
 
@@ -1705,6 +1929,7 @@ export class ResultService {
 
   makeBorrowRessources(loans: number, bank: number, provider: number, fiscal: number): number{
     var borrow = 0;
+    borrow = loans + bank + provider + fiscal;
     return borrow;
   }
 
@@ -1712,33 +1937,35 @@ export class ResultService {
 
   makeFluxAssets(immobilization: number, circulization: number): number{
     var assets = 0;
+    assets = immobilization + circulization;
     return assets;
   }
 
   makeFluxLiabilities(own: number, debt: number): number{
     var liabilities = 0;
+    liabilities = own + debt;
     return liabilities;
   }
 
 
-  makeCompanyFlux(): Flux{
+  makeCompanyFlux(game: Game, company: Company, allExploitation: any[], structurePack: any[], exo: Exercice, companyIndex: number): Flux{
 
     //Actif
-    var tools = this.getFluxToolsValue();
-    var amortizement = this.getFluxAmortizationValue();
+    var tools = this.getFluxToolsValue(company);
+    var amortizement = this.getFluxAmortizationValue(game, companyIndex, tools);
     var immobilisation = this.makeImmobilization(tools, amortizement);
 
-    var stockage = this.getFluxStockValue();
-    var clients = this.getFluxClientsDebt();
+    var stockage = this.getFluxStockValue(allExploitation, companyIndex);
+    var clients = this.getFluxClientsDebt(structurePack, companyIndex);
     var bank = this.getFluxBank();
     var circulization = this.makeCirculization(stockage, clients, bank);
 
     var totalAssets = this.makeFluxAssets(immobilisation, circulization);
 
     //Passif
-    var socialCapital = this.getFluxSocialCapital();
+    var socialCapital = this.getFluxSocialCapital(company);
     var reserve = this.getFluxReserve();
-    var exercice = this.getFluxExercice();
+    var exercice = this.getFluxExercice(exo);
     var ownRessource = this.makeOwnRessources(socialCapital, reserve, exercice);
 
     var borrow = this.getFluxLoans();
@@ -1778,14 +2005,14 @@ export class ResultService {
     return flux;
   }
 
-  makeAllFlux(game: Game): Flux[]{
+  makeAllFlux(game: Game, allExploitation: any[], structurePack: any[], exos: Exercice[]): Flux[]{
     var flux: Flux[] = [];
 
     var teams = [];
     Object.keys(game.teams).map( key => teams.push(game.teams[key]));
 
     teams.map( (team, indexTeam) => {
-      flux.push(this.makeCompanyFlux());
+      flux.push(this.makeCompanyFlux(game, team, allExploitation, structurePack, exos[indexTeam], indexTeam));
     });
 
     return flux;

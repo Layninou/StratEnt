@@ -52,7 +52,6 @@ export class ModelizationService {
     if( price === 0 ){
       this.theoricalMarketValue = theoricalMarket;
     }
-    console.log("Theorical Market Buyer: " + this.theoricalMarketValue);
   }
 
   setNumberPart(n: number){
@@ -64,7 +63,10 @@ export class ModelizationService {
   }
 
   setMarketNull(): void{
-    this.teams.map( team => team.marketPart = 0);
+    this.teams.map( team => {
+      team.marketPart = 0
+      team.attraction = 0;
+    });
   }
 
   setMarket(market: number): void{
@@ -85,68 +87,54 @@ export class ModelizationService {
   //These are the brand function
   priceBrandFunction(price: number, priceMin: number): number{
     var idealPrice = priceMin + (0.05 * priceMin);
-    console.log("result for price " + Math.exp( - (price - priceMin) ))
     return Math.exp( - (price - priceMin) );
   }
 
   publicityBrandFunction(publicity: number): number{
     var fct: number = 1.2 * ( 1 - Math.exp( - publicity / (10 * this.theoricalMarketValue)) );
-    console.log("result for publicity " + fct);
     return fct;
   }
 
   sellingForceBrandFunction(sellor: number, commission: number): number{
     if (sellor == 4) {
       var force = 0;
-      console.log("result for selling forces " + force);
       return force;
     }
     if (sellor <= 4) {
       var force = ((4 / 10) + ( (4 / 10) * (commission / 100)));
-      console.log("result for selling forces " + force);
       return force;
     }
     if (sellor <= 10) {
       var force = ((sellor / 10) + ( (sellor / 10) * (commission / 100)));
-      console.log("result for selling forces " + force);
       return force;
     }
-    console.log("result for selling forces " + ( 1 + (commission / 100)) );
     return 1 + (commission / 100);
   }
 
   creditBrandFunction(credit: number): number{
     if (credit <= 15) {
-      console.log("result for credit " + 0);
       return 0;
     }
     if (credit <= 30) {
-      console.log("result for credit " + 0.3);
       return 0.3;
     }
     if (credit <= 45) {
-      console.log("result for credit " + 0.5);
       return 0.5;
     }
     if (credit <= 60) {
-      console.log("result for credit " + 0.7);
       return 0.7;
     }
     if (credit <= 75) {
-      console.log("result for credit " + 0.9);
       return 0.9;
     }
     if (credit <= 90) {
-      console.log("result for credit " + 1.2);
       return 1.2;
     }
-    console.log("result for credit " + 1.2);
     return 1.2;
   }
 
   marketingBrandFunction(sellor: number, marketing: number): number{
     var fct: number = 1.2 * ( 1 - Math.exp( - ( marketing * sellor) / (10 * this.theoricalMarketValue)) );
-    console.log("result for marketing " + fct);
     return fct;
   }
 
@@ -232,10 +220,9 @@ export class ModelizationService {
     this.brands.map( (brand) => {
       attract += brand.brandWeight * this.brandFunction(brand.brandType);
     });
-    if(this.brandFunction("sellorForce") == 0){
-      attract = 0;
-    }
-    console.log("Attract Force of the team: " + attract);
+    // if(this.brandFunction("sellorForce") == 0){
+    //   attract = 0;
+    // }
     return attract;
   }
 
@@ -251,6 +238,9 @@ export class ModelizationService {
     }
     this.teams.map( (team) => {
       team.marketPart = (team.marketPart * this.fidelity) + ( (1 - this.fidelity) * (team.attraction / maxAttract) );
+      // if(maxAttract === 0){
+      //   team.marketPart = 0;
+      // }
     });
   }
 

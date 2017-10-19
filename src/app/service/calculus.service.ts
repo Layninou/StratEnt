@@ -345,19 +345,39 @@ export class CalculusService {
   }
 
   //TODO: refaire avce outillage.
-  calculAllDotationAmortissement(company: Company): number{
+  calculAllDotationAmortissement(company: Company, pol: Politic): number{
     var dotation = 0;
-    //TODO: make amortissement for company, and make it decrease
-    var amortization = 5;
-    if (amortization >= 0){
-      dotation = company.socialCapital / amortization;
-    }
+
+    //TODO: Error
+    var maxAmort = pol.machineryType.amortization;
+    var prixAmort = pol.machineryType.price / maxAmort;
+    var nbMachineAmort = 0;
+    company.companyMachinery.map( (machine) => {
+      if( machine.amortization >= 0){
+        nbMachineAmort++;
+      }
+    })
+    dotation = nbMachineAmort * prixAmort;
+
     return dotation;
   }
 
-  calculProductDotationAmortissement(company: Company, dec: Decision, indexProd: number): number{
+  //TODO: error
+  calculProductDotationAmortissement(company: Company, pol: Politic, dec: Decision, indexProd: number): number{
     var dotation = 0;
-    dotation = this.calculAllDotationAmortissement(company) / dec.productionDecision.affectedMachine[indexProd];
+
+    var maxAmort = pol.machineryType.amortization;
+    var prixAmort = pol.machineryType.price / maxAmort;
+    var nbMachineAmort = 0;
+    company.companyMachinery.map( (machine, index) => {
+      if(index <= dec.productionDecision.affectedMachine[indexProd]){
+        if( machine.amortization >= 0){
+          nbMachineAmort++;
+        }
+      }
+    })
+    dotation = nbMachineAmort * prixAmort;
+
     return dotation;
   }
 
@@ -366,7 +386,7 @@ export class CalculusService {
 
     var matterConso = this.calculConsmomationProduct(product, pol, dec, indexProduct);
     var productorCost = this.productorCost(dec.productionDecision.affectedProductor[0], pol);
-    var dotation = this.calculProductDotationAmortissement(company, dec, indexProduct);
+    var dotation = this.calculProductDotationAmortissement(company, pol, dec, indexProduct);
 
     directCost = (matterConso + productorCost + dotation) / realProduction;
 

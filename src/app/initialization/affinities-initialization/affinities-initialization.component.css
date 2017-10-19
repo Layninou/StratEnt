@@ -20,13 +20,14 @@
 .affinities-data{
   float: left;
   padding: 10px 15px;
-  width: 75%;
+  width: 65%;
   border-right: 0.5px solid #808080;
 }
 .affinities-graph{
-  width: 20%;
-  padding: 10px 15px;
   float: left;
+  width: 30%;
+  padding: 10px 15px;
+  border-left: 0.5px solid #808080;
 }
 
 .affinities-type{
@@ -39,4 +40,15 @@
 .affinities-inputs{
   float: left;
   margin: 5px;
+}
+
+/**************************** Canvas **********************************/
+.chart{
+  width: 400px;
+  height: 200px;
+}
+canvas{
+  background-color: none;
+  width: 100%;
+  height: 100%;
 }

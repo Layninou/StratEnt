@@ -126,3 +126,11 @@ nav a:hover {
   height: auto;
   font-size: auto;
 }
+
+/**********************************************************/
+.language div:hover{
+  cursor: grab;
+}
+.language div:active{
+  cursor: grabbing;
+}

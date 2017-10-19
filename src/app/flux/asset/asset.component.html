@@ -14,8 +14,8 @@
       </div>
 
       <div class="actif-first">
-        <div><label>{{ asset.tools }}</label></div>
-        <div><label>{{ asset.amortizement }}</label></div>
+        <div><label>{{ asset.tools | roundAt2 }}</label></div>
+        <div><label>{{ asset.amortizement | roundAt2 }}</label></div>
       </div>
 
       <div class="actif-total space-only">
@@ -34,7 +34,7 @@
         <div><label>&nbsp;</label></div>
       </div>
       <div class="actif-total">
-        <div>{{ asset.immobilisation }}</div>
+        <div>{{ asset.immobilisation | roundAt2 }}</div>
       </div>
 
     </div>
@@ -54,9 +54,9 @@
       </div>
 
       <div class="actif-first">
-        <div><label>{{ asset.stockage }}</label></div>
-        <div><label>{{ asset.clients }}</label></div>
-        <div><label>{{ asset.bank }}</label></div>
+        <div><label>{{ asset.stockage | roundAt2 }}</label></div>
+        <div><label>{{ asset.clients | roundAt2 }}</label></div>
+        <div><label>{{ asset.bank | roundAt2 }}</label></div>
       </div>
 
       <div class="actif-total space-only">
@@ -78,7 +78,7 @@
       </div>
 
       <div class="actif-total">
-        <div>{{ asset.circulization }}</div>
+        <div>{{ asset.circulization | roundAt2 }}</div>
       </div>
 
     </div>
@@ -96,7 +96,7 @@
     </div>
 
     <div class="actif-total">
-      <div>{{ asset.totalAssets }}</div>
+      <div>{{ asset.totalAssets | roundAt2 }}</div>
     </div>
 
   </div>

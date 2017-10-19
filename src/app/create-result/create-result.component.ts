@@ -111,6 +111,9 @@ export class CreateResultComponent implements OnInit, OnChanges {
 
       console.log("repart the market:");
     var market = this.rServ.initAllTeamsOrdinatix(this.game);
+    console.log(" ");
+    console.log("save the market:");
+    console.log(market);
     this.dbLink.updateObjectInFirebaseWithUrl( { market: market}, noderesult);
     market.map( (mar) => console.table(mar));
     console.log(" ");
@@ -127,6 +130,8 @@ export class CreateResultComponent implements OnInit, OnChanges {
 
     hireFireList.map( (hireFire, indexTeam) => {
       var teamIndex = "team" + indexTeam + "/employeesList";
+      console.log(teamIndex);
+      console.log(hireFire);
       this.dbLink.updateObjectInFirebaseWithUrl( { [teamIndex]: hireFire}, "teams");
     });
     console.log(" ");
@@ -155,9 +160,6 @@ export class CreateResultComponent implements OnInit, OnChanges {
     //Exercices
     var exercicePack = this.rServ.makeAllExercice(this.game, allExploitationPack, allChargesPack);
 
-    //Flux
-    var fluxPack = this.rServ.makeAllFlux(this.game);
-
     //Resort
     var teamSituations = this.rServ.resortSituations(this.game, situationPack);
     var teamExploitations = this.rServ.resortExploitations(this.game, exploitationPack);
@@ -167,20 +169,16 @@ export class CreateResultComponent implements OnInit, OnChanges {
     var turnovers = this.rServ.getAllTurnover(teamSituations);
 
     console.log(" ");
-    var structuresPack = this.rServ.makeAllStructure(this.game, turnovers);
+    var structuresPack = this.rServ.makeAllStructure(this.game, teamSituations, turnovers, allExploitationPack);
     console.log("structures:")
     console.log(structuresPack)
 
+    //Flux
+    var fluxPack = this.rServ.makeAllFlux(this.game, allExploitationPack, structuresPack, exercicePack);
+
     //Machinery
     var machineryList = this.rServ.createAllNewMachinery(this.game);
-
-    // console.log("les nouvelles listes de machineries: ");
-    // console.log(machineryList);
-
-    // console.log(" ");
     machineryList.map( (machinery, indexTeam) => {
-      // console.log("Machinerie pour la team " + indexTeam);
-      // console.log(machinery);
       var teamIndex = "team" + indexTeam + "/companyMachinery";
       this.dbLink.updateObjectInFirebaseWithUrl( { [teamIndex]: machinery}, "teams");
     })

@@ -5,7 +5,7 @@
   <div class="affinities-data">
     <p>
       <label>{{ lang.initAffinityNumber }}: </label>
-      <input type="number" [(ngModel)]="product.nbAttracts" (keyup)="initAttract(product.nbAttracts, product)">
+      <input type="number" [(ngModel)]="product.nbAttracts" (keyup)="initAttract(product.nbAttracts, product)" (change)="createPie(product, iProd)">
     </p>
 
     <div class="affinities-type">
@@ -40,8 +40,9 @@
   </div>
 
   <div class="affinities-graph">
-    <div>
+    <div class="chart">
       <!-- Graph In The Canvas -->
+      <canvas [attr.id]="'pieChartAffinity' + iProd"></canvas>
     </div>
     <div>
       <span>{{ lang.initAffinityFidelity }} : </span> {{ product.loyalty }}

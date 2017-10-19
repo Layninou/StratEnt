@@ -84,29 +84,29 @@ export class CompanyComponent implements OnInit {
           if (this.company.decision.financialDecision !== undefined) {
             this.companyDecision.financialDecision = this.company.decision.financialDecision;
           }
-          if (this.company.decision.financialDecision !== undefined) {
+          if (this.company.decision.machineFlux !== undefined) {
             this.companyDecision.machineFlux = this.company.decision.machineFlux;
           }
-          if (this.company.decision.financialDecision !== undefined) {
+          if (this.company.decision.productionDecision !== undefined) {
             this.companyDecision.productionDecision = this.company.decision.productionDecision;
           }
-          if (this.company.decision.financialDecision !== undefined) {
+          if (this.company.decision.marketingDecision !== undefined) {
             this.companyDecision.marketingDecision = this.company.decision.marketingDecision;
           }
-          if (this.company.decision.financialDecision !== undefined) {
+          if (this.company.decision.remuneration !== undefined) {
             this.companyDecision.remuneration = this.company.decision.remuneration;
           }
 
           //this.companyDecision.hireFire = this.company.decision.hireFire;
 
-          if (this.company.decision.financialDecision !== undefined) {
+          if (this.company.decision.studies !== undefined) {
             this.companyDecision.studies = this.company.decision.studies;
           }
 
           //this.companyDecision.liquidation = this.company.decision.liquidation;
           //this.companyDecision.exceptionnal = this.company.decision.exceptionnal;
         }
-        
+
     });
   }
 

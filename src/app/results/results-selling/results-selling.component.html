@@ -21,7 +21,7 @@
   <div class="selling-result" *ngFor="let product of company.companyProduct; let iProd = index">
     <div><label> {{ lang.situResultName }} {{ iProd + 1 }}</label></div>
     <div><label> {{ situations[iProd].realProduction | roundAt2 }} </label></div>
-    <div><label> {{ situations[iProd].machinePercent | roundAt0 }} </label></div>
+    <div><label> {{ situations[iProd].machinePercent | roundAt0 | percent }} </label></div>
     <div><label> {{ situations[iProd].overtime | roundAt2 }} </label></div>
     <div><label> {{ situations[iProd].sellingNormal | roundAt2 }} </label></div>
     <div><label> {{ situations[iProd].sellingClear | roundAt2 }} </label></div>

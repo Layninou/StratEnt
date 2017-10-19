@@ -15,9 +15,9 @@
       </div>
 
       <div class="liability-first">
-        <div><label>{{ liability.socialCapital }}</label></div>
-        <div><label>{{ liability.reserve }}</label></div>
-        <div><label>{{ liability.exercice }}</label></div>
+        <div><label>{{ liability.socialCapital | roundAt2 }}</label></div>
+        <div><label>{{ liability.reserve | roundAt2 }}</label></div>
+        <div><label>{{ liability.exercice | roundAt2 }}</label></div>
       </div>
 
       <div class="liability-total space-only">
@@ -39,7 +39,7 @@
       </div>
 
       <div class="liability-total">
-        <div>{{ liability.ownRessource }}</div>
+        <div>{{ liability.ownRessource | roundAt2 }}</div>
       </div>
 
     </div>
@@ -63,10 +63,10 @@
       </div>
 
       <div class="liability-first">
-        <div><label>{{ liability.borrow }}</label></div>
-        <div><label>{{ liability.bankLoans }}</label></div>
-        <div><label>{{ liability.provider }}</label></div>
-        <div><label>{{ liability.taxDebts }}</label></div>
+        <div><label>{{ liability.borrow | roundAt2 }}</label></div>
+        <div><label>{{ liability.bankLoans | roundAt2 }}</label></div>
+        <div><label>{{ liability.provider | roundAt2 }}</label></div>
+        <div><label>{{ liability.taxDebts | roundAt2 }}</label></div>
       </div>
 
       <div class="liability-total space-only">
@@ -89,7 +89,7 @@
       </div>
 
       <div class="liability-total">
-        <div>{{ liability.borrowRessource }}</div>
+        <div>{{ liability.borrowRessource | roundAt2 }}</div>
       </div>
 
     </div>
@@ -110,7 +110,7 @@
     </div>
 
     <div class="liability-total">
-      <div>{{ liability.totalLiabilities }}</div>
+      <div>{{ liability.totalLiabilities | roundAt2 }}</div>
     </div>
 
   </div>
